@@ -1,0 +1,37 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import CourseNav from '../components/CourseNav.astro';
+import SchoolLinks from '../components/SchoolLinks.astro';
+import type { CurriculumSection } from '../data/curriculum';
+import type { Course } from '../data/courses';
+
+interface Props {
+  title: string;
+  course: Course;
+  sections: CurriculumSection[];
+  activeId?: string;
+}
+
+const { title, course, sections, activeId } = Astro.props;
+---
+
+<BaseLayout title={title}>
+  <div class="course-breadcrumbs">
+    <a href="/">Home</a>
+    <span aria-hidden="true">/</span>
+    <a href={`/${course.slug}/`}>{course.title}</a>
+    {activeId && <>
+      <span aria-hidden="true">/</span>
+      <span>{title}</span>
+    </>}
+  </div>
+  <div class="curriculum-layout">
+    <aside class="curriculum-sidebar">
+      <CourseNav courseSlug={course.slug} sections={sections} activeId={activeId} />
+      <SchoolLinks courseSlug={course.slug} />
+    </aside>
+    <article class="lesson-content">
+      <slot />
+    </article>
+  </div>
+</BaseLayout>

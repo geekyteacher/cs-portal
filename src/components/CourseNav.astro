@@ -1,0 +1,41 @@
+---
+import type { CurriculumSection } from '../data/curriculum';
+
+interface Props {
+  courseSlug: string;
+  sections: CurriculumSection[];
+  activeId?: string;
+}
+
+const { courseSlug, sections, activeId } = Astro.props;
+---
+
+<nav class="curriculum-nav" aria-label="Course contents">
+  <h2>Course contents</h2>
+  {sections.length ? (
+    sections.map((section) => (
+      <section class="curriculum-nav__section">
+        <h3>{section.title}</h3>
+        <ul>
+          {section.lessons.map((lesson) => {
+            const lessonSlug = lesson.id.split('/').slice(1).join('/');
+            const href = `/${courseSlug}/${lessonSlug}`;
+
+            return (
+              <li>
+                <a
+                  href={href}
+                  aria-current={lesson.id === activeId ? 'page' : undefined}
+                >
+                  {lesson.data.title}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    ))
+  ) : (
+    <p class="muted-copy">No lessons published yet.</p>
+  )}
+</nav>

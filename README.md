@@ -32,3 +32,20 @@ each `.astro` file becomes a route.
 
 The site uses Astro's static output. Deploy the contents of `dist/` to your
 static hosting provider.
+
+## Adding course content
+
+Markdown lessons live in `content/`, grouped by course and curriculum section.
+Open the repository (or `content/`) as an Obsidian vault, edit the Markdown,
+and commit the changes with Git. Use standard Markdown links and image syntax;
+Astro does not render Obsidian wikilinks by default.
+
+Each lesson needs `title` and `description` frontmatter. Set `draft: true` while
+writing; draft lessons are omitted from the published site. Set it to `false`
+when the lesson is ready. The `order` field controls its position within a
+section.
+
+Top-level courses are listed in `src/data/courses.ts`. Lesson pages and course
+navigation are generated from the collection configured in
+`src/content.config.ts`. Optional school-specific links are kept separately in
+`src/data/school-links.ts` and are not part of lesson Markdown.

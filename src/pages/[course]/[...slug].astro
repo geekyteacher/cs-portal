@@ -1,0 +1,45 @@
+---
+import { getCollection, render } from 'astro:content';
+import CourseLayout from '../../layouts/CourseLayout.astro';
+import { courses } from '../../data/courses';
+import { groupLessons } from '../../data/curriculum';
+
+export async function getStaticPaths() {
+  const courseSlugs = new Set(courses.map((course) => course.slug));
+  const lessons = await getCollection(
+    'lessons',
+    (lesson) => !lesson.data.draft && courseSlugs.has(lesson.id.split('/')[0]),
+  );
+
+  return lessons.map((lesson) => {
+    const [course, ...slugParts] = lesson.id.split('/');
+
+    return {
+      params: { course, slug: slugParts.join('/') },
+      props: { lesson },
+    };
+  });
+}
+
+const { lesson } = Astro.props;
+const courseSlug = lesson.id.split('/')[0];
+const course = courses.find((item) => item.slug === courseSlug)!;
+const courseLessons = await getCollection(
+  'lessons',
+  (entry) => entry.id.startsWith(`${course.slug}/`) && !entry.data.draft,
+);
+const sections = groupLessons(course.slug, courseLessons);
+const { Content } = await render(lesson);
+---
+
+<CourseLayout
+  title={lesson.data.title}
+  course={course}
+  sections={sections}
+  activeId={lesson.id}
+>
+  <p class="eyebrow">{course.title}</p>
+  <h1>{lesson.data.title}</h1>
+  <p class="lesson-description">{lesson.data.description}</p>
+  <Content />
+</CourseLayout>

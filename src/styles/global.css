@@ -165,6 +165,134 @@ main {
   border-top: 1px solid var(--line);
 }
 
+.course-breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 28px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.course-breadcrumbs a {
+  text-decoration: none;
+}
+
+.course-breadcrumbs a:hover,
+.curriculum-nav a:hover,
+.course-lesson-list a:hover {
+  color: var(--accent);
+}
+
+.curriculum-layout {
+  display: grid;
+  grid-template-columns: minmax(190px, 250px) minmax(0, 1fr);
+  align-items: start;
+  gap: 40px;
+  padding: 30px 0 72px;
+}
+
+.curriculum-sidebar {
+  border-right: 1px solid var(--line);
+  padding-right: 24px;
+}
+
+.curriculum-nav h2,
+.school-links h2 {
+  margin: 0 0 18px;
+  font-size: 1rem;
+}
+
+.curriculum-nav__section {
+  margin-bottom: 22px;
+}
+
+.curriculum-nav__section h3 {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+}
+
+.curriculum-nav ul,
+.school-links ul {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.curriculum-nav a,
+.school-links a,
+.course-lesson-list a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.curriculum-nav a[aria-current='page'] {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.lesson-content {
+  min-width: 0;
+  padding-bottom: 30px;
+  line-height: 1.7;
+}
+
+.lesson-content h1 {
+  margin: 10px 0 12px;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.1;
+}
+
+.lesson-content h2 {
+  margin-top: 2rem;
+  font-size: 1.45rem;
+}
+
+.lesson-content h3 {
+  margin-top: 1.5rem;
+  font-size: 1.15rem;
+}
+
+.lesson-description,
+.course-description,
+.muted-copy {
+  color: var(--muted);
+}
+
+.course-section {
+  margin-top: 34px;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+
+.course-section h2 {
+  margin: 0 0 12px;
+  font-size: 1.25rem;
+}
+
+.course-lesson-list {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.course-lesson-list p {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+.school-links {
+  margin-top: 28px;
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+}
+
 .empty-state h2 {
   margin: 0 0 8px;
   font-size: 1.15rem;
@@ -203,5 +331,16 @@ main {
   .intro,
   .page-heading {
     padding-top: 48px;
+  }
+
+  .curriculum-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .curriculum-sidebar {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    padding: 0 0 12px;
   }
 }

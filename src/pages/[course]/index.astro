@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import CourseLayout from '../../layouts/CourseLayout.astro';
+import { courses } from '../../data/courses';
+import { groupLessons } from '../../data/curriculum';
+
+export function getStaticPaths() {
+  return courses.map((course) => ({
+    params: { course: course.slug },
+    props: { course },
+  }));
+}
+
+const { course } = Astro.props;
+const lessons = await getCollection(
+  'lessons',
+  (lesson) => lesson.id.startsWith(`${course.slug}/`) && !lesson.data.draft,
+);
+const sections = groupLessons(course.slug, lessons);
+---
+
+<CourseLayout title={course.title} course={course} sections={sections}>
+  <p class="eyebrow">Course resources</p>
+  <h1>{course.title}</h1>
+  <p class="course-description">{course.description}</p>
+
+  {sections.length ? (
+    sections.map((section) => (
+      <section class="course-section">
+        <h2>{section.title}</h2>
+        <ul class="course-lesson-list">
+          {section.lessons.map((lesson) => {
+            const lessonSlug = lesson.id.split('/').slice(1).join('/');
+
+            return (
+              <li>
+                <a href={`/${course.slug}/${lessonSlug}`}>{lesson.data.title}</a>
+                <p>{lesson.data.description}</p>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    ))
+  ) : (
+    <section class="empty-state">
+      <h2>Resources coming soon</h2>
+      <p>Materials for this course will be added here.</p>
+    </section>
+  )}
+</CourseLayout>

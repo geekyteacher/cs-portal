@@ -1,0 +1,20 @@
+---
+import { schoolLinks } from '../data/school-links';
+
+interface Props {
+  courseSlug: string;
+}
+
+const links = schoolLinks[Astro.props.courseSlug] ?? [];
+---
+
+{links.length > 0 && (
+  <section class="school-links" aria-label="School links">
+    <h2>School links</h2>
+    <ul>
+      {links.map((link) => (
+        <li><a href={link.href}>{link.label}</a></li>
+      ))}
+    </ul>
+  </section>
+)}
