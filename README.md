@@ -1,2 +1,2 @@
-# cs-portal
-Computing portal
+# Geeky-teacher.com
+

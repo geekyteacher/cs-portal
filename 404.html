@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
+  <script>
+    const host = window.location.hostname;
+    const gradeMap = {
+      'g4': 'y5',
+      'g5': 'y6',
+      'g6': 'y7',
+      'g7': 'y8',
+      'g8': 'y9',
+      'g9': 'y10',
+      'g10': 'y11'
+    };
+
+    const prefix = host.split('.')[0];
+
+    if (gradeMap[prefix]) {
+      window.location.replace(`https://geeky-teacher.com/cis/${gradeMap[prefix]}/`);
+    } else {
+      window.location.replace('https://geeky-teacher.com');
+    }
+  </script>
+</head>
+<body>
+  <p>Redirecting to classroom portal...</p>
+</body>
+</html>

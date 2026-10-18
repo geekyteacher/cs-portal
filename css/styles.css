@@ -1,0 +1,204 @@
+
+@import "reset.css";
+@import "vars.css"; 
+
+@import "nav.css";
+@import "hero.css";
+@import "service_card.css";
+@import "cta.css";
+@import "contact.css";
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    min-height: 100vh;
+}
+
+.container {
+    width: 99%;
+    margin: 0 auto;
+    padding: 1em 20px;
+}
+
+/* Main Content */
+main {
+    background: var(--color-bg);
+    margin-top: 0;
+}
+
+
+p { 
+    font-size: 1em; 
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+section {
+    padding: 80px 0;
+}
+
+section:nth-child(even) {
+    background: var(--color-bg-alt);
+}
+
+h1 {
+    font-size: var(--font-size-h1);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--color-primary);
+}
+
+h2 {
+    font-size: var(--font-size-h2);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--color-primary);
+}
+
+li {
+    margin-bottom: 24px;
+}
+
+/* Generic grid for two-column layouts (About, Contact, etc.) */
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.content-grid.about {
+    align-items: center;
+}
+
+.content-grid.contact {
+    align-items: left;
+}
+
+/* About */
+.about-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.skills-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.skill-item {
+    background: var(--color-secondary);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Highlighted section for visual emphasis */
+.highlight-section {
+    background: var(--color-bg-alt, #f9f9fc);
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+
+/* Footer */
+footer {
+    background: var(--color-footer-bg);
+    color: var(--color-footer-text);
+    text-align: center;
+    padding: 2rem 0;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (min-width: 1024px) {
+    /* Desktop navigation styles */
+    .menu-toggle {
+        display: none;
+    }
+
+    nav.container {
+        padding: 1rem 20px;
+    }
+
+    .nav-links {
+        display: flex !important; /* Override mobile hidden state */
+        flex-direction: row;
+        position: static;
+        background: none;
+        box-shadow: none;
+        padding: 0;
+        margin-left: auto; /* Push navigation to the right */
+        gap: 2rem;
+    }
+
+    .nav-links li {
+        margin-bottom: 0;
+    }
+
+    .nav-links a {
+        font-size: 1rem;
+        padding: 0;
+    }
+
+    /* Other desktop adjustments */
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+    
+    .container {
+        max-width: 1100px;
+        padding: 20px;
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+    }
+   
+    .skills-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .skill-item {
+        background: var(--color-secondary);
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border-radius: 25px;
+        text-align: center;
+        font-weight: 500;
+    }
+
+
+    section {
+        padding: 80px 0;
+    }
+
+}
