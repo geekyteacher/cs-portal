@@ -1,6 +1,10 @@
 {
   "name": "cs-hub",
   "type": "module",
+  "engines": {
+    "node": "^20.19.0 || >=22.19.0",
+    "npm": ">=9.6.5"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
