@@ -1,0 +1,55 @@
+/* Define CSS variables */
+:root {
+    /* Accent colors */
+    /* --color-royal-blue: #2563ebff;
+    --color-persian-blue: #1e40afff;
+    --color-picton-blue: #0ea5e9ff;
+    --color-shamrock-green: #059669ff;
+    --color-persimmon: #ea580cff; */
+    /* Colors */
+
+    /* Primary brand colors */
+    --color-primary: #2563eb;        /* Royal blue (was purple) */
+    --color-secondary: #059669;      /* Shamrock green (was yellow) */
+    --color-accent: #ea580c;         /* Persimmon orange (was red) */
+    
+    /* Background colors */
+    --color-bg: #fff;
+    --color-bg-alt: #f0f8ff;         /* Very light blue tint instead of grey */
+    
+    /* Text colors */
+    --color-text: #333;
+    
+    /* Interactive colors */
+    --color-link: #2563eb;           /* Royal blue for links */
+    --color-hover: #1e40af;          /* Persian blue for hover states */
+    --color-border: #e9ecef;
+    
+    /* Navigation */
+    --color-navbar-bg: #fff;
+    --color-navbar-text: #2563eb;    /* Royal blue text */
+    --color-navbar-hover: #059669;   /* Green on hover */
+    
+    /* Footer */
+    --color-footer-bg: #1f2937;      /* Slightly softer than pure #333 */
+    --color-footer-text: #fff;
+
+    /* Typography */
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    --font-size-base: 1rem;
+    --font-size-h1: 2.5rem;
+    --font-size-h2: 2rem;
+    --font-size-h3: 1.5rem;
+
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --radius: 15px;
+
+    /* Component basics */
+    --navbar-height: 70px;
+    --button-bg: #764ba2;
+    --button-radius: 50px;
+}
