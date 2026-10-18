@@ -56,3 +56,15 @@ Top-level courses are listed in `src/data/courses.ts`. Lesson pages and course
 navigation are generated from the collection configured in
 `src/content.config.ts`. Optional school-specific links are kept separately in
 `src/data/school-links.ts` and are not part of lesson Markdown.
+
+Use GitHub-style alerts for lesson callouts:
+
+```md
+> [!NOTE]
+>
+> Extra information for the student.
+```
+
+Supported types are `NOTE`, `TIP`, `WARNING`, and `CHALLENGE`. Use
+` ```pseudocode ` for CAIE pseudocode examples and ` ```python ` for Python so
+the site can style and highlight each language appropriately.

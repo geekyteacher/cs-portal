@@ -10,6 +10,10 @@
   --muted: #a8b8bd;
   --accent: #54d6c2;
   --line: #30464e;
+  --callout-note: #83caff;
+  --callout-tip: #54d6c2;
+  --callout-warning: #f2bd68;
+  --callout-challenge: #ff927d;
 }
 
 * {
@@ -257,6 +261,35 @@ main {
   font-size: 1.15rem;
 }
 
+.lesson-content a {
+  color: var(--callout-note);
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}
+
+.lesson-content table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.lesson-content th,
+.lesson-content td {
+  border: 1px solid var(--line);
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.lesson-content th {
+  background: var(--surface-raised);
+  color: #f4f7f8;
+}
+
 .lesson-content blockquote {
   margin: 1.5rem 0;
   border: 1px solid var(--line);
@@ -264,6 +297,24 @@ main {
   border-radius: 4px;
   padding: 14px 18px;
   background: var(--surface);
+}
+
+.lesson-content blockquote.callout {
+  --callout-color: var(--callout-note);
+  border-left-color: var(--callout-color);
+  background: color-mix(in srgb, var(--callout-color) 7%, var(--surface));
+}
+
+.lesson-content blockquote.callout-tip {
+  --callout-color: var(--callout-tip);
+}
+
+.lesson-content blockquote.callout-warning {
+  --callout-color: var(--callout-warning);
+}
+
+.lesson-content blockquote.callout-challenge {
+  --callout-color: var(--callout-challenge);
 }
 
 .lesson-content blockquote > :first-child {
@@ -277,13 +328,38 @@ main {
 .lesson-content blockquote > p:first-child > strong:first-child {
   display: block;
   margin-bottom: 6px;
-  color: var(--accent);
+  color: var(--callout-color, var(--accent));
   font-size: 0.78rem;
   text-transform: uppercase;
 }
 
 .lesson-content blockquote li + li {
   margin-top: 8px;
+}
+
+.lesson-content pre[data-language='pseudocode'] {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--callout-note);
+  border-radius: 4px;
+  background: #111b22 !important;
+}
+
+.lesson-content pre[data-language='pseudocode']::before {
+  display: block;
+  border-bottom: 1px solid var(--line);
+  padding: 7px 14px;
+  color: var(--callout-note);
+  content: 'CAIE Pseudocode';
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.lesson-content pre[data-language='pseudocode'] code {
+  display: block;
+  padding: 12px 14px;
 }
 
 .lesson-description,

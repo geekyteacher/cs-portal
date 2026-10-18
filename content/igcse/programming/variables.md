@@ -17,13 +17,13 @@ draft: false
 
 ### What is a variable?
 
-> **Key definition**
+> [!NOTE]
 >
 > A **variable** is a named memory location used to store a value. A program can read that value and, when appropriate, change it while the program runs.
 
 The examples assign a value to `score` and then display it:
 
-```text
+```pseudocode
 DECLARE score : INTEGER
 score ← 12
 OUTPUT score
@@ -40,7 +40,7 @@ Here, `score` is the identifier (name), and `12` is its value.
 
 A **variable** can be updated. A **constant** stores a value that should not change during the program. In CAIE pseudocode, use `CONSTANT` to define a constant and its value.
 
-```text
+```pseudocode
 CONSTANT PassMark = 50
 ```
 
@@ -54,7 +54,7 @@ PASS_MARK = 50
 
 **Assignment** stores a value in a variable. In CAIE pseudocode, the arrow `←` means “is assigned the value.” In Python, a single equals sign `=` is used for assignment.
 
-```text
+```pseudocode
 score ← 12
 ```
 
@@ -64,7 +64,7 @@ score = 12
 
 CAIE pseudocode requires variables to be declared with a data type before use. Python is dynamically typed: a variable is created when a value is assigned, and Python determines its type from that value.
 
-```text
+```pseudocode
 DECLARE score : INTEGER
 score ← 12
 ```
@@ -87,7 +87,7 @@ A data type describes the kind of value a variable can store. Common CAIE types 
 
 Use a type that suits the information. For example, use an integer for a whole-number count and a string for a person's name.
 
-```text
+```pseudocode
 DECLARE age : INTEGER
 DECLARE temperature : REAL
 DECLARE name : STRING
@@ -109,7 +109,7 @@ An **identifier** is the name given to a variable or constant. Choose names that
 
 In Python, names can contain letters, digits, and underscores, but cannot begin with a digit or be a Python keyword. Python distinguishes between uppercase and lowercase letters, so `score` and `Score` are different names. CAIE pseudocode identifiers should also be meaningful and used consistently.
 
-```text
+```pseudocode
 DECLARE totalMarks : INTEGER
 ```
 
@@ -121,7 +121,7 @@ total_marks = 0
 
 Use `INPUT` and `OUTPUT` in CAIE pseudocode to receive and display values. In Python, use `input()` and `print()`. Python's `input()` returns text, so convert the input when a number is required. Use `int()` for whole numbers and `float()` for decimal numbers.
 
-```text
+```pseudocode
 DECLARE age : INTEGER
 INPUT age
 OUTPUT age
@@ -136,7 +136,7 @@ print(age)
 
 A variable can be assigned a new value. For example, a counter is often increased by one each time an event occurs.
 
-```text
+```pseudocode
 count ← count + 1
 ```
 
@@ -146,7 +146,7 @@ count = count + 1
 
 The right side is evaluated first, then the result is stored back in `count`.
 
-> **Common errors**
+> [!WARNING]
 >
 > - **Using a variable before assigning it:** Give the variable a value before reading or updating it.
 > - **Using the wrong data type:** Check that the type suits the value and the operation.
@@ -166,7 +166,7 @@ Check that names follow the language’s rules and that values have the expected
 | Value does not match a CAIE pseudocode type | `DECLARE age : INTEGER`, then `age ← "fourteen"` | Assign an integer value to `age` |
 
 **pseudocode**
-```text
+```pseudocode
 Incorrect:
 DECLARE age : STRING
 INPUT age
@@ -197,7 +197,7 @@ The program asks for a student's name and two whole-number test scores. It calcu
 
 ### CAIE pseudocode
 
-```text
+```pseudocode
 DECLARE studentName : STRING
 DECLARE firstScore : INTEGER
 DECLARE secondScore : INTEGER
@@ -252,7 +252,7 @@ Write the value of each variable at the end of each program, then state the outp
 
 1. **CAIE pseudocode**
 
-```text
+```pseudocode
 DECLARE number : INTEGER
 DECLARE result : INTEGER
 
@@ -277,7 +277,7 @@ print(quantity)
 
 3. **CAIE pseudocode**
 
-```text
+```pseudocode
 DECLARE isOpen : BOOLEAN
 DECLARE message : STRING
 
@@ -323,7 +323,7 @@ A variable can be updated while a program runs; a constant is intended to keep t
 
 **CAIE pseudocode**
 
-```text
+```pseudocode
 DECLARE productName : STRING
 DECLARE price : REAL
 DECLARE quantity : INTEGER
