@@ -1,0 +1,19 @@
+---
+const links = [
+  { label: 'Home', href: '/' },
+  { label: 'Year 5', href: '/year5' },
+  { label: 'Year 6', href: '/year6' },
+  { label: 'Year 7', href: '/year7' },
+  { label: 'Year 8', href: '/year8' },
+  { label: 'Year 9', href: '/year9' },
+  { label: 'IGCSE', href: '/igcse' },
+  { label: 'A Level', href: '/alevel' },
+];
+---
+
+<header class="site-header">
+  <a class="wordmark" href="/" aria-label="Geeky Teacher home">Geeky Teacher</a>
+  <nav aria-label="Main navigation">
+    {links.map((link) => <a href={link.href}>{link.label}</a>)}
+  </nav>
+</header>

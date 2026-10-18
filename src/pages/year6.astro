@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const title = 'Year 6';
+---
+
+<BaseLayout title={title}>
+  <section class="page-heading">
+    <a class="back-link" href="/">&larr; All classes</a>
+    <p class="eyebrow">Class resources</p>
+    <h1>{title}</h1>
+    <p>Computing resources and activities for Year 6.</p>
+  </section>
+  <section class="empty-state" aria-live="polite">
+    <h2>Resources coming soon</h2>
+    <p>Materials for this class will be added here.</p>
+  </section>
+</BaseLayout>

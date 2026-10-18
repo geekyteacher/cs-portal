@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ResourceCard from '../components/ResourceCard.astro';
+
+const courses = [
+  { title: 'Year 5', description: 'Class computing resources and activities.', href: '/year5' },
+  { title: 'Year 6', description: 'Class computing resources and activities.', href: '/year6' },
+  { title: 'Year 7', description: 'Class computing resources and activities.', href: '/year7' },
+  { title: 'Year 8', description: 'Class computing resources and activities.', href: '/year8' },
+  { title: 'Year 9', description: 'Class computing resources and activities.', href: '/year9' },
+  { title: 'IGCSE', description: 'Revision and course materials.', href: '/igcse' },
+  { title: 'A Level', description: 'Revision and course materials.', href: '/alevel' },
+];
+---
+
+<BaseLayout title="The Computing Portal" description="Computing resources for Geeky Teacher classes.">
+  <section class="intro">
+    <p class="eyebrow">Geeky Teacher</p>
+    <h1>The Computing Portal</h1>
+    <p>Choose your class to find its computing resources.</p>
+  </section>
+  <section class="course-grid" aria-label="Classes">
+    {courses.map((course) => <ResourceCard {...course} />)}
+  </section>
+</BaseLayout>

@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const title = 'A Level';
+---
+
+<BaseLayout title={title}>
+  <section class="page-heading">
+    <a class="back-link" href="/">&larr; All classes</a>
+    <p class="eyebrow">Course resources</p>
+    <h1>{title}</h1>
+    <p>Revision and course materials for A Level Computer Science.</p>
+  </section>
+  <section class="empty-state" aria-live="polite">
+    <h2>Resources coming soon</h2>
+    <p>Materials for this course will be added here.</p>
+  </section>
+</BaseLayout>
