@@ -40,6 +40,10 @@ for i in range(1, 11):
 
 In Python, the final value in `range()` is not included. Therefore, `range(1, 11)` produces values from 1 to 10.
 
+> **Exam tip**
+>
+> When translating an inclusive pseudocode range to Python, remember that `range()` excludes its stop value. For example, `FOR i ← 1 TO 10` becomes `range(1, 11)`.
+
 ### Condition-controlled loops
 
 Use a condition-controlled loop when repetition depends on a condition rather than a fixed number of repetitions.
@@ -122,15 +126,12 @@ print(count)
 print(total)
 ```
 
-### Common errors
-
-- **Infinite loop:** A condition-controlled loop never ends because its condition never becomes true or false as needed. Check that a variable used in the condition is updated.
-
-- **Off-by-one error:** A loop runs one time too many or too few. Check the first and last values, and remember that Python `range()` excludes its stop value.
-
-- **Incorrect initialization:** A total or counter is not set before the loop begins, so its value is undefined or carried over from earlier work.
-
-- **Incorrect nesting:** Indentation determines which instructions belong to a loop in Python. In pseudocode, check that each `NEXT` matches the correct `FOR`.
+> **Common errors**
+>
+> - **Infinite loop:** A condition-controlled loop never ends because its condition never becomes true or false as needed. Check that a variable used in the condition is updated.
+> - **Off-by-one error:** A loop runs one time too many or too few. Check the first and last values, and remember that Python `range()` excludes its stop value.
+> - **Incorrect initialization:** A total or counter is not set before the loop begins, so its value is undefined or carried over from earlier work.
+> - **Incorrect nesting:** Indentation determines which instructions belong to a loop in Python. In pseudocode, check that each `NEXT` matches the correct `FOR`.
 
 ## Worked example
 
@@ -163,17 +164,12 @@ print(total)
 
 Suppose the inputs are 4, 7, and 2:
 
-+-------------+-------------+-------------+------------------------+
-| Repetition  | `i`         | `number`    | `total` after addition |
-+=============+=============+=============+========================+
-| Start       | —           | —           | 0                      |
-+-------------+-------------+-------------+------------------------+
-| 1           | 1           | 4           | 4                      |
-+-------------+-------------+-------------+------------------------+
-| 2           | 2           | 7           | 11                     |
-+-------------+-------------+-------------+------------------------+
-| 3           | 3           | 2           | 13                     |
-+-------------+-------------+-------------+------------------------+
+| Repetition | `i` | `number` | `total` after addition |
+| --- | --- | --- | --- |
+| Start | — | — | 0 |
+| 1 | 1 | 4 | 4 |
+| 2 | 2 | 7 | 11 |
+| 3 | 3 | 2 | 13 |
 
 1. `total` is initialized to 0 before the loop.
 

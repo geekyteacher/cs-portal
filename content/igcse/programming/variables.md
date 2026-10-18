@@ -5,25 +5,21 @@ order: 1
 draft: false
 ---
 
-# Variables
-
 ## Learning goals
 
 - [ ] Explain what a variable is.
-
 - [ ] Create and update variables in a program.
-
 - [ ] Choose suitable names and data types.
-
 - [ ] Distinguish variables from constants.
-
 - [ ] Use input, output, and type conversion with variables.
 
 ## Key ideas
 
 ### What is a variable?
 
-A **variable** is a named memory location used to store a value. A program can read that value and, when appropriate, change it while the program runs.
+> **Key definition**
+>
+> A **variable** is a named memory location used to store a value. A program can read that value and, when appropriate, change it while the program runs.
 
 The examples assign a value to `score` and then display it:
 
@@ -81,19 +77,13 @@ score = 12
 
 A data type describes the kind of value a variable can store. Common CAIE types and their Python equivalents are:
 
-+-------------------+-----------------------+-------------------+
-| CAIE pseudocode   | Python                | Example value     |
-+===================+=======================+===================+
-| `INTEGER`         | `int`                 | `12`              |
-+-------------------+-----------------------+-------------------+
-| `REAL`            | `float`               | `3.5`             |
-+-------------------+-----------------------+-------------------+
-| `STRING`          | `str`                 | `"Hello"`         |
-+-------------------+-----------------------+-------------------+
-| `CHAR`            | `str` (one character) | `"A"`             |
-+-------------------+-----------------------+-------------------+
-| `BOOLEAN`         | `bool`                | `TRUE` / `True`   |
-+-------------------+-----------------------+-------------------+
+| CAIE pseudocode | Python                | Example value   |
+| --- | --- | --- |
+| `INTEGER` | `int` | `12` |
+| `REAL` | `float` | `3.5` |
+| `STRING` | `str` | `"Hello"` |
+| `CHAR` | `str` (one character) | `"A"` |
+| `BOOLEAN` | `bool` | `TRUE` / `True` |
 
 Use a type that suits the information. For example, use an integer for a whole-number count and a string for a person's name.
 
@@ -156,13 +146,48 @@ count = count + 1
 
 The right side is evaluated first, then the result is stored back in `count`.
 
-### Common errors
+> **Common errors**
+>
+> - **Using a variable before assigning it:** Give the variable a value before reading or updating it.
+> - **Using the wrong data type:** Check that the type suits the value and the operation.
+> - **Misspelling a name:** Use the same identifier consistently; Python treats uppercase and lowercase letters as different.
 
-- **Using a variable before assigning it:** Give the variable a value before reading or updating it.
+### Common naming and type errors
 
-- **Using the wrong data type:** Check that the type suits the value and the operation.
+Check that names follow the language’s rules and that values have the expected type.
 
-- **Misspelling a name:** Use the same identifier consistently; Python treats uppercase and lowercase letters as different.
+| Error | Example | Fix |
+| --- | --- | --- |
+| Python name starts with a digit | `2ndScore` | `second_score` |
+| Spaces or hyphens in a Python name | `total marks` or `total-marks` | `total_marks` |
+| Using a Python keyword as a name | `class` or `for` | Choose a descriptive name, such as `class_name` |
+| Inconsistent capitalization | `score` and `Score` refer to different names | Use the same capitalization consistently |
+| Forgetting to convert Python input | `age = input(...)`; `age + 1` causes a `TypeError` | `age = int(input(...))` |
+| Value does not match a CAIE pseudocode type | `DECLARE age : INTEGER`, then `age ← "fourteen"` | Assign an integer value to `age` |
+
+**pseudocode**
+```text
+Incorrect:
+DECLARE age : STRING
+INPUT age
+age ← age + 1
+
+Corrected:
+DECLARE age : INTEGER
+INPUT age
+age ← age + 1
+```
+
+**python**
+```python
+Incorrect:
+age = input("Enter your age: ")
+age + 1
+
+Corrected:
+age = int(input("Enter your age: "))
+age + 1
+```
 
 - **Confusing assignment with comparison:** In Python, `=` assigns a value, while `==` compares two values.
 
@@ -203,19 +228,13 @@ print(total)
 
 Suppose the inputs are the name `"Kai"` and the scores `18` and `24`:
 
-+-------------------+--------------------------------+-------------------+
-| Step              | Variable or action             | Value             |
-+===================+================================+===================+
-| 1                 | `studentName` / `student_name` | `"Kai"`           |
-+-------------------+--------------------------------+-------------------+
-| 2                 | `firstScore` / `first_score`   | `18`              |
-+-------------------+--------------------------------+-------------------+
-| 3                 | `secondScore` / `second_score` | `24`              |
-+-------------------+--------------------------------+-------------------+
-| 4                 | `total`                        | `42`              |
-+-------------------+--------------------------------+-------------------+
-| 5                 | Output                         | `Kai`, then `42`  |
-+-------------------+--------------------------------+-------------------+
+| Step | Variable or action | Value |
+| --- | --- | --- |
+| 1 | `studentName` / `student_name` | `"Kai"` |
+| 2 | `firstScore` / `first_score` | `18` |
+| 3 | `secondScore` / `second_score` | `24` |
+| 4 | `total` | `42` |
+| 5 | Output | `Kai`, then `42` |
 
 1. The pseudocode declares each variable with an appropriate data type. Python creates each variable when a value is assigned.
 

@@ -257,6 +257,35 @@ main {
   font-size: 1.15rem;
 }
 
+.lesson-content blockquote {
+  margin: 1.5rem 0;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 4px;
+  padding: 14px 18px;
+  background: var(--surface);
+}
+
+.lesson-content blockquote > :first-child {
+  margin-top: 0;
+}
+
+.lesson-content blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+.lesson-content blockquote > p:first-child > strong:first-child {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--accent);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+}
+
+.lesson-content blockquote li + li {
+  margin-top: 8px;
+}
+
 .lesson-description,
 .course-description,
 .muted-copy {
