@@ -5,8 +5,6 @@ order: 3
 draft: false
 ---
 
-# Iteration
-
 ## Learning goals
 
 - [ ] Explain why iteration is used.
@@ -230,11 +228,9 @@ Write a program in both Python and CAIE pseudocode that:
 
 - Calculates and outputs the total of all five numbers.
 
-<details>
-<summary>
-<h3>Answers</h3>
-</summary>
-<h4>A. Trace the loops</h4>
+## Answers
+
+### A. Trace the loops
 
 1. Output: 2, 3, 4, 5.
 
@@ -242,11 +238,11 @@ Write a program in both Python and CAIE pseudocode that:
 
 3. Output: 3.
 
-<h4>B. Short answer</h4>
+### B. Short answer
 
 A `WHILE` loop checks its condition before the body runs, so the body might run zero times. A `REPEAT ... UNTIL` loop checks after the body, so the body runs at least once. Use `WHILE` when the condition should be checked before starting; use `REPEAT ... UNTIL` when an action must happen at least once, such as asking for input before checking it.
 
-#### C. Programming task: sample solution
+### C. Programming task: sample solution
 
 **CAIE pseudocode**
 
@@ -281,4 +277,3 @@ for i in range(1, 6):
 print(total)
 print(count)
 ```
-</details>

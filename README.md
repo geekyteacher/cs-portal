@@ -65,6 +65,7 @@ Use GitHub-style alerts for lesson callouts:
 > Extra information for the student.
 ```
 
-Supported types are `NOTE`, `TIP`, `WARNING`, and `CHALLENGE`. Use
-` ```pseudocode ` for CAIE pseudocode examples and ` ```python ` for Python so
-the site can style and highlight each language appropriately.
+Supported types are `NOTE`, `TIP`, `WARNING`, and `CHALLENGE`. Use a
+`pseudocode` code fence for CAIE pseudocode examples and a `python` code fence
+for Python so the site can style and highlight each language appropriately.
+An H2 heading named `Answers` is rendered as a collapsed disclosure section.

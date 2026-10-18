@@ -337,6 +337,34 @@ main {
   margin-top: 8px;
 }
 
+.lesson-content details.answer-disclosure {
+  margin: 2rem 0;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--surface);
+}
+
+.lesson-content details.answer-disclosure > summary {
+  cursor: pointer;
+  padding: 13px 16px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.lesson-content details.answer-disclosure[open] > summary {
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.lesson-content details.answer-disclosure[open] > :not(summary) {
+  margin-right: 16px;
+  margin-left: 16px;
+}
+
+.lesson-content details.answer-disclosure[open] > :last-child {
+  margin-bottom: 16px;
+}
+
 .lesson-content pre[data-language='pseudocode'] {
   margin: 1.5rem 0;
   overflow-x: auto;

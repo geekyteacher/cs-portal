@@ -81,10 +81,49 @@ function remarkCallouts() {
   };
 }
 
+function remarkAnswerDetails() {
+  return (tree) => {
+    const children = tree.children ?? [];
+    const answerIndex = children.findIndex((node) =>
+      node.type === 'heading'
+      && node.depth === 2
+      && node.children?.map((child) => child.value ?? '').join('').trim().toLowerCase() === 'answers'
+    );
+
+    if (answerIndex === -1) return;
+
+    let sectionEnd = answerIndex + 1;
+    while (
+      sectionEnd < children.length
+      && !(children[sectionEnd].type === 'heading' && children[sectionEnd].depth <= 2)
+    ) {
+      sectionEnd += 1;
+    }
+
+    const heading = children[answerIndex];
+    const answerContent = children.slice(answerIndex + 1, sectionEnd);
+    children.splice(answerIndex, sectionEnd - answerIndex, {
+      type: 'answerDetails',
+      data: {
+        hName: 'details',
+        hProperties: { className: ['answer-disclosure'] },
+      },
+      children: [
+        {
+          type: 'paragraph',
+          data: { hName: 'summary' },
+          children: heading.children,
+        },
+        ...answerContent,
+      ],
+    });
+  };
+}
+
 export default defineConfig({
   output: 'static',
   markdown: {
-    remarkPlugins: [remarkCallouts],
+    remarkPlugins: [remarkCallouts, remarkAnswerDetails],
     shikiConfig: {
       langs: [pseudocodeLanguage],
     },
