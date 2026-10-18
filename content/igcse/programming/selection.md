@@ -230,3 +230,171 @@ Construct an algorithm using a `CASE` statement (or `Select Case` / `switch`) th
 4. `/` (Divide)
 
 > **Extension Challenge:** Include a validation check within the division branch to prevent division by zero (`/ 0`).
+
+## IGCSE Exam-Style Questions
+
+### Question 1 (2 marks)
+
+State the output produced by the following algorithm.
+
+```pseudocode
+number ← 25
+
+IF number > 20 THEN
+    OUTPUT "High"
+ENDIF
+```
+
+---
+
+### Question 2 (3 marks)
+
+State the output produced by the following algorithm.
+
+```pseudocode
+score ← 45
+
+IF score >= 50 THEN
+    OUTPUT "Pass"
+ELSE
+    OUTPUT "Fail"
+ENDIF
+```
+
+---
+
+### Question 3 (4 marks)
+
+A student enters a temperature into a program.
+
+Write a selection statement that outputs:
+
+```text
+Hot
+```
+
+when the temperature is greater than 25.
+
+Otherwise output:
+
+```text
+Cold
+```
+
+Use CAIE pseudocode.
+
+---
+
+### Question 4 (4 marks)
+
+State the condition being tested in the following algorithm:
+
+```pseudocode
+IF age >= 16 THEN
+    OUTPUT "Can Drive"
+ENDIF
+```
+
+Explain what happens when:
+
+a) age = 18
+
+b) age = 10
+
+---
+
+### Question 5 (6 marks)
+
+A theme park charges entry based on height.
+
+If a person is 120cm or taller they may ride the rollercoaster.
+
+Otherwise they may not.
+
+Write a complete algorithm using selection to display:
+
+```text
+Ride Allowed
+```
+
+or
+
+```text
+Ride Not Allowed
+```
+
+---
+
+## Answers
+
+### Question 1
+
+```text
+High
+```
+
+(2 marks)
+
+---
+
+### Question 2
+
+```text
+Fail
+```
+
+(3 marks)
+
+---
+
+### Question 3
+
+```pseudocode
+IF temperature > 25 THEN
+    OUTPUT "Hot"
+ELSE
+    OUTPUT "Cold"
+ENDIF
+```
+
+(4 marks)
+
+---
+
+### Question 4
+
+Condition:
+
+```text
+age >= 16
+```
+
+a)
+
+```text
+Can Drive
+```
+
+is displayed.
+
+b)
+
+No output is displayed.
+
+(4 marks)
+
+---
+
+### Question 5
+
+```pseudocode
+INPUT height
+
+IF height >= 120 THEN
+    OUTPUT "Ride Allowed"
+ELSE
+    OUTPUT "Ride Not Allowed"
+ENDIF
+```
+
+(6 marks)
