@@ -233,7 +233,7 @@ Construct an algorithm using a `CASE` statement (or `Select Case` / `switch`) th
 
 ## IGCSE Exam-Style Questions
 
-### Question 1 (2 marks)
+### Question 1 (1 mark)
 
 State the output produced by the following algorithm.
 
@@ -247,7 +247,7 @@ ENDIF
 
 ---
 
-### Question 2 (3 marks)
+### Question 2 (1 mark)
 
 State the output produced by the following algorithm.
 
@@ -263,7 +263,7 @@ ENDIF
 
 ---
 
-### Question 3 (4 marks)
+### Question 3 (2 marks)
 
 A student enters a temperature into a program.
 
@@ -285,7 +285,7 @@ Use CAIE pseudocode.
 
 ---
 
-### Question 4 (4 marks)
+### Question 4 (2 marks)
 
 State the condition being tested in the following algorithm:
 
@@ -303,7 +303,7 @@ b) age = 10
 
 ---
 
-### Question 5 (6 marks)
+### Question 5 (4 marks)
 
 A theme park charges entry based on height.
 
@@ -333,7 +333,7 @@ Ride Not Allowed
 High
 ```
 
-(2 marks)
+(1 marks)
 
 ---
 
@@ -343,7 +343,7 @@ High
 Fail
 ```
 
-(3 marks)
+(1 marks)
 
 ---
 
@@ -357,7 +357,7 @@ ELSE
 ENDIF
 ```
 
-(4 marks)
+(2 marks)
 
 ---
 
@@ -381,7 +381,7 @@ b)
 
 No output is displayed.
 
-(4 marks)
+(2 marks)
 
 ---
 
@@ -397,4 +397,4 @@ ELSE
 ENDIF
 ```
 
-(6 marks)
+(4 marks)
