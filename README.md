@@ -33,6 +33,13 @@ each `.astro` file becomes a route.
 The site uses Astro's static output. Deploy the contents of `dist/` to your
 static hosting provider.
 
+## Cloudflare
+
+This project deploys as a static-assets Worker. In Cloudflare Workers Builds,
+set the build command to `npm run build` and leave the deploy command as
+`npx wrangler deploy`. The `wrangler.jsonc` configuration points Wrangler at
+Astro's `dist/` output directory.
+
 ## Adding course content
 
 Markdown lessons live in `content/`, grouped by course and curriculum section.
