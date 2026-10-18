@@ -2,7 +2,7 @@
 title: Selection
 description: Make a program choose between actions using conditions.
 order: 2
-draft: true
+draft: false
 ---
 
 ## Learning goals
