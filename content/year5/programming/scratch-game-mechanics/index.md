@@ -21,7 +21,7 @@ In this unit you will learn how game developers create:
 
 ## Lessons
 
-1. [Loops and Patrol Enemies](./lesson-1-loops-and-patrol-enemies)
+1. [Loops and Patrol Enemies](/year5/programming/scratch-game-mechanics/lesson-1-loops-and-patrol-enemies)
 2. Score Systems
 3. Timers
 4. Random Events

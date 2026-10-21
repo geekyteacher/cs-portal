@@ -1,0 +1,22 @@
+---
+import { submitWorkLinks } from '../data/submit-work-links';
+
+interface Props {
+  courseSlug: string;
+}
+
+const links = submitWorkLinks[Astro.props.courseSlug] ?? [];
+---
+
+{links.length > 0 && (
+  <footer class="submit-work" aria-label="Submit work">
+    <h2>Submit your work</h2>
+    <div class="submit-work__links">
+      {links.map((link) => (
+        <a href={link.href} target="_blank" rel="noopener noreferrer">
+          Submit: {link.label}
+        </a>
+      ))}
+    </div>
+  </footer>
+)}

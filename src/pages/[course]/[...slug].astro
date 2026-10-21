@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import CourseLayout from '../../layouts/CourseLayout.astro';
+import SubmitWorkLinks from '../../components/SubmitWorkLinks.astro';
 import { courses } from '../../data/courses';
 import { getEntryRouteSlug, groupLessons } from '../../data/curriculum';
 
@@ -42,4 +43,5 @@ const { Content } = await render(lesson);
   <h1>{lesson.data.title}</h1>
   <p class="lesson-description">{lesson.data.description}</p>
   <Content />
+  {lesson.data.type === 'lesson' && <SubmitWorkLinks courseSlug={course.slug} />}
 </CourseLayout>
