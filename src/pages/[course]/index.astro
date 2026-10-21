@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import CourseLayout from '../../layouts/CourseLayout.astro';
 import { courses } from '../../data/courses';
-import { groupLessons } from '../../data/curriculum';
+import { getEntryRouteSlug, groupLessons } from '../../data/curriculum';
 
 export function getStaticPaths() {
   return courses.map((course) => ({
@@ -17,6 +17,11 @@ const lessons = await getCollection(
   (lesson) => lesson.id.startsWith(`${course.slug}/`) && !lesson.data.draft,
 );
 const sections = groupLessons(course.slug, lessons);
+const hasUnits = lessons.some((lesson) => lesson.data.type === 'unit');
+const pageSections = groupLessons(
+  course.slug,
+  hasUnits ? lessons.filter((lesson) => lesson.data.type === 'unit') : lessons,
+);
 ---
 
 <CourseLayout title={course.title} course={course} sections={sections}>
@@ -24,13 +29,13 @@ const sections = groupLessons(course.slug, lessons);
   <h1>{course.title}</h1>
   <p class="course-description">{course.description}</p>
 
-  {sections.length ? (
-    sections.map((section) => (
+  {pageSections.length ? (
+    pageSections.map((section) => (
       <section class="course-section">
         <h2>{section.title}</h2>
         <ul class="course-lesson-list">
           {section.lessons.map((lesson) => {
-            const lessonSlug = lesson.id.split('/').slice(1).join('/');
+            const lessonSlug = getEntryRouteSlug(lesson);
 
             return (
               <li>

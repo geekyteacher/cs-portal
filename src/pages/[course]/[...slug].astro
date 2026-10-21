@@ -2,7 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import CourseLayout from '../../layouts/CourseLayout.astro';
 import { courses } from '../../data/courses';
-import { groupLessons } from '../../data/curriculum';
+import { getEntryRouteSlug, groupLessons } from '../../data/curriculum';
 
 export async function getStaticPaths() {
   const courseSlugs = new Set(courses.map((course) => course.slug));
@@ -12,10 +12,10 @@ export async function getStaticPaths() {
   );
 
   return lessons.map((lesson) => {
-    const [course, ...slugParts] = lesson.id.split('/');
+    const [course] = lesson.id.split('/');
 
     return {
-      params: { course, slug: slugParts.join('/') },
+      params: { course, slug: getEntryRouteSlug(lesson) },
       props: { lesson },
     };
   });

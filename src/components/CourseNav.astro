@@ -1,5 +1,6 @@
 ---
 import type { CurriculumSection } from '../data/curriculum';
+import { getEntryRouteSlug } from '../data/curriculum';
 
 interface Props {
   courseSlug: string;
@@ -18,7 +19,7 @@ const { courseSlug, sections, activeId } = Astro.props;
         <h3>{section.title}</h3>
         <ul>
           {section.lessons.map((lesson) => {
-            const lessonSlug = lesson.id.split('/').slice(1).join('/');
+            const lessonSlug = getEntryRouteSlug(lesson);
             const href = `/${courseSlug}/${lessonSlug}`;
 
             return (

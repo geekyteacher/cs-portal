@@ -6,6 +6,7 @@ const lessons = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    type: z.enum(['unit', 'lesson']).default('lesson'),
     order: z.number().default(0),
     draft: z.boolean().default(false),
   }),

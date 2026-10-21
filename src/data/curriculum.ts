@@ -8,6 +8,16 @@ export interface CurriculumSection {
   lessons: Lesson[];
 }
 
+export function getEntryRouteSlug(entry: Pick<Lesson, 'id'>) {
+  const routeSegments = entry.id.split('/').slice(1);
+
+  if (routeSegments[routeSegments.length - 1] === 'index') {
+    routeSegments.pop();
+  }
+
+  return routeSegments.join('/');
+}
+
 const igcseSectionOrder = [
   'programming',
   'algorithms',
