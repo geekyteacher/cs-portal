@@ -261,6 +261,35 @@ main {
   font-size: 1.15rem;
 }
 
+.submit-work {
+  margin-top: 3rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1.5rem;
+}
+
+.submit-work h2 {
+  margin: 0 0 1rem;
+}
+
+.submit-work__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.submit-work__links a {
+  display: inline-block;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  padding: 9px 14px;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.submit-work__links a:hover {
+  background: var(--surface-raised);
+}
+
 .lesson-content a {
   color: var(--callout-note);
   text-decoration: underline;
