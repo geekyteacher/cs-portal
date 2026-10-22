@@ -42,6 +42,9 @@ Astro's `dist/` output directory.
 
 ## Adding course content
 
+For a step-by-step guide to writing lessons, using media, and editing styles,
+see the [Teacher's Guide](./TEACHER-GUIDE.md).
+
 Markdown lessons live in `content/`, grouped by course and curriculum section.
 Open the repository (or `content/`) as an Obsidian vault, edit the Markdown,
 and commit the changes with Git. Use standard Markdown links and image syntax;
