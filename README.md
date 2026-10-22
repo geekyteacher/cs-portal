@@ -33,6 +33,9 @@ each `.astro` file becomes a route.
 The site uses Astro's static output. Deploy the contents of `dist/` to your
 static hosting provider.
 
+For step-by-step guidance on writing lessons, managing shared links, adding
+media, and changing styles, see the [teacher maintenance guide](docs/teacher-maintenance.md).
+
 ## Cloudflare
 
 This project deploys as a static-assets Worker. In Cloudflare Workers Builds,
@@ -41,9 +44,6 @@ set the build command to `npm run build` and leave the deploy command as
 Astro's `dist/` output directory.
 
 ## Adding course content
-
-For a step-by-step guide to writing lessons, using media, and editing styles,
-see the [Teacher's Guide](./TEACHER-GUIDE.md).
 
 Markdown lessons live in `content/`, grouped by course and curriculum section.
 Open the repository (or `content/`) as an Obsidian vault, edit the Markdown,
