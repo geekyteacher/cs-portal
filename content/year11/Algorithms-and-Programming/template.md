@@ -1,13 +1,8 @@
 ---
-
 title: Lesson Title
-
 description: Brief description of the lesson.
-
 draft: true
-
 order: 1
-
 ---
 ## Learning Objectives
 

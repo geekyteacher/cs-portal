@@ -2,6 +2,9 @@
 title: "Topic 7.2: Methods Used to Design and Construct a Solution"
 topic: "Algorithm Design & Problem Solving"
 week: 1
+description: Brief description of the lesson.
+draft: true
+order: 1
 ---
 
 ## 🎯 Learning Objectives
