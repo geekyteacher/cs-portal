@@ -60,23 +60,48 @@ print("Total cost is:", total)
 
 1. **Definition:** Define the term *Sequence* in your own words.
 2. **Algorithm Design:** Write pseudocode that:
-* Asks the user to enter two numbers.
-* Adds the two numbers together.
-* Displays the result to the screen.
+* Prompts the user to enter a temperature in Celsius.
+* Calculates the temperature in Fahrenheit using: $\text{Fahrenheit} = (\text{Celsius} \times 1.8) + 32$.
+Outputs the calculated temperature in Fahrenheit.
 
 
-3. **Trace Check:** What is the output of the following sequence if the user inputs `10` then `5`?
+3. **Trace Check:** 
+
+Complete a trace table for the given pseudocode using the test dataset: 4, 12, -3, 8, -1.
 
 ```pseudocode
-INPUT A
-INPUT B
-A <- A + 5
-B <- B * 2
-OUTPUT A + B
+01 DECLARE Num, Count, Total : INTEGER
+02 Count ← 0
+03 Total ← 0
+04 REPEAT
+05     INPUT Num
+06     IF Num > 0 THEN
+07         Total ← Total + Num
+08         Count ← Count + 1
+09     ENDIF
+10 UNTIL Num < 0 OR Count = 5
+11 OUTPUT Total, Count
 
 ```
+**Trace table example** 
+
+| Num | Count | Total | OUTPUT |
+|-----|-------|-------|--------|
+|     | 0     | 0     |        |
+|  4  |       |       |        |
+|     |       |       |        |
 
 ---
+
+> [!CHALLENGE]
+> **Extension 1: Validation & Error Handling**
+> Modify your temperature program so that it checks if the entered temperature in Celsius is below absolute zero (`-273.15`). If it is, output `"Error: Invalid temperature"`.
+>
+> **Extension 2: Algorithmic Efficiency**
+> Rewrite the pseudocode to process a batch of 5 temperature inputs in a loop and calculate the average temperature.
+
+---
+
 <!--
 ## Answers
 
@@ -96,5 +121,14 @@ OUTPUT "The sum is: ", Sum
 
 ```
 
-3. **Trace Check Output:** `25` (Calculation: $A = 10 + 5 = 15$, $B = 5 \times 2 = 10$, Output $15 + 10 = 25$).
+3. **Trace Check Output:** 
+
+| `Num` | `Count` | `Total` | `OUTPUT` |
+| :---: | :---: | :---: | :---: |
+| | 0 | 0 | |
+| 4 | 1 | 4 | |
+| 12 | 2 | 16 | |
+| -3 | | | **16, 2** |
+
+*(Explanation: When `-3` is input, `Num > 0` evaluates to FALSE, so `Total` and `Count` do not change. The loop terminates because `Num < 0` is TRUE, outputting `16` and `2`.)*
 -->
