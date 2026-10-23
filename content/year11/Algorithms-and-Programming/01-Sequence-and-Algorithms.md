@@ -1,13 +1,8 @@
 ---
-
 title: Sequence and Algorithms
-
 description: Understand what an algorithm is and how sequence controls the order of instructions.
-
 draft: true
-
 order: 1
-
 ---
 ## Learning Objectives
 
