@@ -182,15 +182,16 @@ Explain why the algorithm may not work as intended.
 
 ## Submit
 
-Use the ASSIGNMENT set in Teams
-Complete the Microsoft Form. [Pseudocode Fundamentals: Variables, Input, Output, and Sequence (IGCSE CS 2026-27) – Fill in form](https://forms.cloud.microsoft/e/hhUqPYpNcL)
+Use the **ASSIGNMENT** set in Teams
+Attach a document that contains your work. This should be a Word document, text file, image or code file. You can hand write your work and submit a photo, a scan as a PDF, or jsut hand it to your teacher!
 
 Required evidence:
 
 - Practice tasks completed.
 - Exam questions attempted.
 
-## Answers
+
+<!-- ## Answers
 
 ### Explore
 
@@ -231,7 +232,7 @@ OUTPUT name
 **Q2:** 25
 
 **Q3:** The variable is used before it has been assigned a value.
-
+-->
 ## Teacher Notes
 
 ### Common Misconceptions
