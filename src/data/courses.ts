@@ -25,6 +25,11 @@ export const courses = [
     description: 'Computing resources and activities for Year 9.',
   },
   {
+    slug: 'year11',
+    title: 'Year 11',
+    description: 'Computer Science resources and activities for Year 11.',
+  },
+  {
     slug: 'igcse',
     title: 'GCSE Computer Science',
     description: 'Programming, algorithms, data representation, and networks.',
