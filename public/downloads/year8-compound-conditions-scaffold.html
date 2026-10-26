@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Compound Conditions - Coding Scaffold Worksheet</title>
+    <style>
+      :root {
+        color: #172033;
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.45;
+      }
+
+      body {
+        margin: 0 auto;
+        max-width: 850px;
+        padding: 2rem;
+      }
+
+      h1,
+      h2 {
+        line-height: 1.2;
+      }
+
+      h2 {
+        border-bottom: 1px solid #9aa4b2;
+        margin-top: 2rem;
+        padding-bottom: 0.35rem;
+      }
+
+      .student-details {
+        display: flex;
+        gap: 2rem;
+        margin: 1.5rem 0;
+      }
+
+      .write-in {
+        border-bottom: 1px solid #172033;
+        flex: 1;
+        min-height: 1.5rem;
+      }
+
+      pre {
+        background: #f2f4f7;
+        border: 1px solid #c7cdd5;
+        border-radius: 4px;
+        font-family: Consolas, "Courier New", monospace;
+        font-size: 0.92rem;
+        overflow-wrap: anywhere;
+        padding: 1rem;
+        white-space: pre-wrap;
+      }
+
+      .answer-space {
+        min-height: 3rem;
+      }
+
+      .hint {
+        color: #39465b;
+      }
+
+      @media print {
+        body {
+          max-width: none;
+          padding: 0;
+        }
+
+        h2 {
+          break-after: avoid;
+        }
+
+        pre {
+          background: #fff;
+          border-color: #777;
+          break-inside: avoid;
+        }
+
+        .task {
+          break-inside: avoid;
+        }
+
+        .hint {
+          color: #172033;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Compound Conditions: Coding Scaffolds</h1>
+      <p>Year 8 Python</p>
+
+      <div class="student-details">
+        <span>Name:</span><span class="write-in"></span>
+        <span>Class:</span><span class="write-in"></span>
+      </div>
+
+      <p>
+        Complete the gaps in each starter. You can write the missing parts on
+        this sheet, or copy the code into Python and fill them in there.
+      </p>
+
+      <section class="task">
+        <h2>Bronze: Concert Gatekeeper</h2>
+        <p>
+          Allow entry only when the person is 18 or older <strong>and</strong>
+          has a ticket. Fill in both gaps.
+        </p>
+        <pre><code>age = int(input("Age: "))
+has_ticket = input("Do you have a ticket? (yes/no): ").strip().lower()
+
+if age &gt;= _____ and has_ticket == "_____":
+    print("Entry Granted")
+else:
+    print("Entry Denied")</code></pre>
+        <p class="hint">
+          Hint: the age limit is 18. The ticket response is text.
+        </p>
+        <p>What will happen if the person is 20 and has no ticket?</p>
+        <div class="answer-space"></div>
+      </section>
+
+      <section class="task">
+        <h2>Silver: Cinema Special Pass</h2>
+        <p>
+          Allow entry if the customer is 12 or older <strong>or</strong> is
+          accompanied by an adult. Fill in the missing operator.
+        </p>
+        <pre><code>age = int(input("Age: "))
+with_adult = input("Are you with an adult? (yes/no): ").strip().lower()
+
+if age &gt;= 12 _____ with_adult == "yes":
+    print("Entry Granted")
+else:
+    print("Entry Denied")</code></pre>
+        <p class="hint">
+          Hint: use the operator that needs at least one condition to be true.
+        </p>
+        <p>What will happen if the customer is 10 and is with an adult?</p>
+        <div class="answer-space"></div>
+      </section>
+
+      <section class="task">
+        <h2>Gold: Secure Vault System</h2>
+        <p>
+          Allow access only when the username is <code>admin</code>, the
+          password is <code>secret123</code>, and the security level is greater
+          than 5. Fill in the three missing values.
+        </p>
+        <pre><code>username = input("Username: ")
+password = input("Password: ")
+security_level = int(input("Security level: "))
+
+if username == "_____" and password == "_____" and security_level &gt; _____:
+    print("Access Granted")
+else:
+    print("Access Denied")</code></pre>
+        <p class="hint">
+          Hint: text values go inside quotation marks; the security level is a
+          number.
+        </p>
+        <p>Why does this condition use <code>and</code> rather than
+          <code>or</code>?</p>
+        <div class="answer-space"></div>
+      </section>
+
+      <section>
+        <h2>Ready for a challenge?</h2>
+        <p>
+          Write your own condition: the username and password must both be
+          correct, and the user must be an Admin or a VIP.
+        </p>
+        <div class="answer-space"></div>
+        <div class="answer-space"></div>
+      </section>
+    </main>
+  </body>
+</html>
