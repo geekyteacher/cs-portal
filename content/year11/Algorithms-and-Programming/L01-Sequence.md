@@ -61,7 +61,7 @@ print("Total cost is:", total)
 1. **Definition:** Define the term *Sequence* in your own words.
 2. **Algorithm Design:** Write pseudocode that:
 * Prompts the user to enter a temperature in Celsius.
-* Calculates the temperature in Fahrenheit using: $\text{Fahrenheit} = (\text{Celsius} \times 1.8) + 32$.
+* Calculates the temperature in Fahrenheit using: Fahrenheit = (Celsius * 1.8) + 32.
 Outputs the calculated temperature in Fahrenheit.
 
 
