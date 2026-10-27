@@ -1,5 +1,5 @@
 ---
-title: Year 7 Python: Chatbots, Variables and Input
+title: "Year 7 Python: Chatbots, Variables and Input"
 description: Use input, variables, and print to build a simple interactive Python chatbot.
 order: 3
 draft: false

@@ -1,5 +1,5 @@
 ---
-title: Python Iteration: Loops Review
+title: "Python Iteration: Loops Review"
 description: Refresh your knowledge of for and while loops, debug common errors, and practise using loops in Python.
 order: 3
 draft: false
