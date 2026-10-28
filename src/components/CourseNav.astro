@@ -12,17 +12,24 @@ const { courseSlug, sections, activeId } = Astro.props;
 const visibleSections = sections
   .map((section) => {
     const units = section.lessons.filter((lesson) => lesson.data.type === 'unit');
-    const lessons = section.lessons.filter(
-      (lesson) =>
-        lesson.data.type === 'unit' ||
-        !units.some((unit) => {
-          const unitPrefix = unit.id.replace(/\/index$/, '');
-          return (
-            lesson.id.startsWith(`${unitPrefix}/`) &&
-            !activeId?.startsWith(`${unitPrefix}/`)
-          );
-        }),
-    );
+    const activeUnit = units.find((unit) => {
+      const unitPrefix = unit.id.replace(/\/index$/, '');
+      return activeId === unit.id || activeId?.startsWith(`${unitPrefix}/`);
+    });
+    const activeUnitPrefix = activeUnit?.id.replace(/\/index$/, '');
+    const lessons = activeUnit
+      ? section.lessons.filter(
+          (lesson) =>
+            lesson.id === activeUnit.id || lesson.id.startsWith(`${activeUnitPrefix}/`),
+        )
+      : section.lessons.filter(
+          (lesson) =>
+            lesson.data.type === 'unit' ||
+            !units.some((unit) => {
+              const unitPrefix = unit.id.replace(/\/index$/, '');
+              return lesson.id.startsWith(`${unitPrefix}/`);
+            }),
+        );
 
     return { ...section, lessons };
   })
