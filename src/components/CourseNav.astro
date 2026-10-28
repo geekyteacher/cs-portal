@@ -9,12 +9,30 @@ interface Props {
 }
 
 const { courseSlug, sections, activeId } = Astro.props;
+const visibleSections = sections
+  .map((section) => {
+    const units = section.lessons.filter((lesson) => lesson.data.type === 'unit');
+    const lessons = section.lessons.filter(
+      (lesson) =>
+        lesson.data.type === 'unit' ||
+        !units.some((unit) => {
+          const unitPrefix = unit.id.replace(/\/index$/, '');
+          return (
+            lesson.id.startsWith(`${unitPrefix}/`) &&
+            !activeId?.startsWith(`${unitPrefix}/`)
+          );
+        }),
+    );
+
+    return { ...section, lessons };
+  })
+  .filter((section) => section.lessons.length > 0);
 ---
 
 <nav class="curriculum-nav" aria-label="Course contents">
   <h2>Course contents</h2>
-  {sections.length ? (
-    sections.map((section) => (
+  {visibleSections.length ? (
+    visibleSections.map((section) => (
       <section class="curriculum-nav__section">
         <h3>{section.title}</h3>
         <ul>

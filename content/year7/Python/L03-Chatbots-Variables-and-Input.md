@@ -1,159 +1,117 @@
 ---
-title: "Year 7 Python: Chatbots, Variables and Input"
-description: Use input, variables, and print to build a simple interactive Python chatbot.
+title: "01 - Chatbots, Variables and Input"
+description: Ask a question, save the answer, and use it in a Python chatbot.
 order: 3
 draft: false
 ---
-## Learning Objectives
+## Today you will
 
-By the end of this lesson you should be able to:
+Make a small chatbot that asks a question and replies using the answer.
 
-- Explain what a variable is and how it stores information.
-- Use `input()` to ask the user a question.
-- Store an answer in a variable and use it in a response.
-- Build a simple interactive chatbot.
+By the end, you should be able to:
 
-## Prior Knowledge
+- ask a question with `input()`;
+- save the answer in a variable; and
+- use the saved answer in a message.
 
-Before starting this lesson, you should be able to:
+## Get ready
 
-- Open Python in Thonny and run a program.
-- Use `print()` to display text.
-- Recognise that Python runs instructions from top to bottom.
+Open Thonny and get ready to type and run a Python program. Use made-up
+answers only. Do not enter real passwords, addresses, phone numbers, or other
+private information.
 
-## Quick Knowledge Check
+## 1. Watch and predict
 
-Try these before running the examples:
-
-1. What does `print()` do?
-2. What do you think this code displays?
-
-   ```python
-   name = "Alex"
-   print("Hello", name)
-   ```
-
-3. What do you think `input()` lets a program do?
-
-## Learn
-
-### What is a variable?
-
-A variable is a named place for storing a value. You can use that name later
-to work with the stored value.
+Look at the code. Before it runs, think: **What will appear on the screen?**
+What do you think `name` will contain?
 
 ```python
 name = "Alex"
 print("Hello", name)
 ```
 
-The `=` sign assigns the value `"Alex"` to the variable `name`. It does not
-mean “is equal to” in the way it is used in a maths equation.
+`name` is a **variable**: a named place where the program keeps information.
+The `=` sign puts `"Alex"` into the variable `name`.
 
-### Asking for input
+## 2. Run it together
 
-The `input()` function displays a prompt, waits for the user to type, and
-returns what they typed as text. Assign the result to a variable to keep it:
+Run the code and compare what happened with your prediction.
+
+Now look at this new instruction:
+
+```python
+name = input("What is your name? ")
+```
+
+`input()` asks a question and waits for someone to type an answer and press
+Enter. The program saves that answer in `name`.
+
+Run this complete program. Type a made-up name when it asks:
 
 ```python
 name = input("What is your name? ")
 print("Hello", name)
 ```
 
-The program pauses at `input()` until the user types an answer and presses
-Enter. That answer is stored in `name`, so the program can use it in the
-greeting.
+## 3. Investigate
 
-### Building a chatbot
+Follow what happens in order:
 
-A chatbot can ask questions, remember answers in variables, and respond to
-them:
+1. `input()` asks the question.
+2. The program waits while you type and press Enter.
+3. Your answer is saved in `name`.
+4. `print()` displays the greeting and the saved answer.
+
+The program runs from top to bottom. The answer must be saved before the
+program can use it.
+
+## 4. Change the code
+
+Add a second question and reply. Use the same pattern as the first question:
 
 ```python
 name = input("What is your name? ")
 favourite_game = input("What is your favourite game? ")
 
-print(f"Hello, {name}!")
-print(f"{favourite_game} sounds fun.")
+print("Hello", name)
+print(favourite_game, "sounds fun.")
 ```
 
-The `f` before a string lets Python insert the value of a variable inside
-curly brackets, such as `{name}`.
+Run the program. Try different made-up answers. Notice how the replies change.
 
-> [!WARNING]
->
-> Use fictional answers while practising. Do not type real passwords,
-> addresses, phone numbers, or other private information into a class activity.
+## 5. Make your chatbot
 
-## Teacher Demonstration
+Write a chatbot that:
 
-Project Thonny or the class Python environment and type the example as you
-teach. Ask students to predict what will happen before each run.
+1. asks for a made-up name;
+2. asks for a hobby; and
+3. replies using both answers.
 
-1. Start with `print("Hello!")` and run it to recap output.
-2. Add `name = input("What is your name? ")`. Run the program, type a
-   fictional name, and point out that the program pauses until Enter is
-   pressed.
-3. Add `print("Hello", name)`. Run it again and trace how the typed answer is
-   stored and then displayed.
-4. Add a second question and response using `favourite_game`. Demonstrate that
-   the variable names in the f-strings must match the names used when storing
-   the answers.
-5. Ask students to predict what would happen if `print()` used `favourite_game`
-   before the program had asked for it.
-
-## Guided Practice
-
-Copy this starter into Thonny and fill in the gaps. Use made-up answers.
-
-```python
-name = input("What is your name? ")
-favourite_food = input("What food do you like? ")
-
-print(f"Hello, {_____}!")
-print(f"I like hearing about {_____}.")
-```
-
-Check that the program asks both questions and uses each answer in a response.
-
-## Practice
-
-### Task 1: Friendly Greeting
-
-Write a program that:
-
-1. Asks the user for a name.
-2. Stores the answer in a variable.
-3. Prints a greeting that includes the answer.
-
-### Task 2: Mini Chatbot
-
-Make a chatbot that asks for the user's name and favourite hobby. It should
-then respond using both answers.
-
-Use this scaffold if you need help:
+Use this starter if you need it. Replace each `_____` with the correct
+variable name:
 
 ```python
 name = input("What is your name? ")
 hobby = input("What is a hobby you enjoy? ")
 
-print(f"Hello, {_____}!")
-print(f"{_____} sounds like fun.")
+print("Hello", _____)
+print(_____, "sounds like fun.")
 ```
 
-### Challenge: Chatbot Plus
+**Finished early?** Add another question, save its answer in a new variable,
+and use that answer in another reply.
 
-Add one more question, such as a favourite animal or fictional superpower.
-Store the answer in a new variable and include it in another response.
+## Check your work
 
-Can you make the chatbot display a three-line conversation using all of its
-answers?
+Before handing in, check:
 
-## Summary
+- [ ] My program asks for a name and a hobby.
+- [ ] I saved each answer in a variable.
+- [ ] My replies use both answers.
+- [ ] I ran my program and fixed any errors.
 
-You should now be able to:
+## Hand in your work
 
-- Use `input()` to collect text typed by the user.
-- Store input in a variable using `=`.
-- Use variables in `print()` and f-strings.
-- Create a simple interactive chatbot.
+Save your Python program as your teacher has shown you. Use the submission
+link for your class at the bottom of this page and follow the instructions
+there to send in your file.

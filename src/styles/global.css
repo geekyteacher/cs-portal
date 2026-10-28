@@ -261,6 +261,15 @@ main {
   font-size: 1.15rem;
 }
 
+.lesson-content img {
+  display: block;
+  width: auto;
+  max-width: min(100%, 520px);
+  max-height: 65vh;
+  margin: 1.5rem 0;
+  object-fit: contain;
+}
+
 .submit-work {
   margin-top: 3rem;
   border-top: 1px solid var(--line);
