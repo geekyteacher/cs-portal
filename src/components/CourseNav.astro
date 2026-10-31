@@ -34,33 +34,89 @@ const visibleSections = sections
     return { ...section, lessons };
   })
   .filter((section) => section.lessons.length > 0);
+const alevelLessons = sections.flatMap((section) => section.lessons);
+const alevelUnits = alevelLessons.filter((lesson) => lesson.data.type === 'unit');
+const unitPrefixes = alevelUnits.map((unit) => unit.id.replace(/\/index$/, ''));
+const alevelGroups = [
+  ...alevelUnits.map((unit) => {
+    const unitPrefix = unit.id.replace(/\/index$/, '');
+
+    return {
+      title: unit.data.title,
+      lessons: [
+        unit,
+        ...alevelLessons.filter(
+          (lesson) => lesson.id !== unit.id && lesson.id.startsWith(`${unitPrefix}/`),
+        ),
+      ],
+    };
+  }),
+  ...sections
+    .map((section) => ({
+      title: section.title,
+      lessons: section.lessons.filter(
+        (lesson) =>
+          lesson.data.type !== 'unit' &&
+          !unitPrefixes.some((unitPrefix) => lesson.id.startsWith(`${unitPrefix}/`)),
+      ),
+    }))
+    .filter((section) => section.lessons.length > 0),
+];
 ---
 
 <nav class="curriculum-nav" aria-label="Course contents">
   <h2>Course contents</h2>
   {visibleSections.length ? (
-    visibleSections.map((section) => (
-      <section class="curriculum-nav__section">
-        <h3>{section.title}</h3>
-        <ul>
-          {section.lessons.map((lesson) => {
-            const lessonSlug = getEntryRouteSlug(lesson);
-            const href = `/${courseSlug}/${lessonSlug}`;
+    courseSlug === 'alevel' ? (
+      alevelGroups.map((group) => {
+        const groupIsActive = group.lessons.some((lesson) => lesson.id === activeId);
+        return (
+          <details class="curriculum-nav__group" open={!activeId || groupIsActive}>
+            <summary>{group.title}</summary>
+            <ul>
+              {group.lessons.map((lesson) => {
+                const lessonSlug = getEntryRouteSlug(lesson);
+                const href = `/${courseSlug}/${lessonSlug}`;
 
-            return (
-              <li>
-                <a
-                  href={href}
-                  aria-current={lesson.id === activeId ? 'page' : undefined}
-                >
-                  {lesson.data.title}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
-    ))
+                return (
+                  <li>
+                    <a
+                      href={href}
+                      aria-current={lesson.id === activeId ? 'page' : undefined}
+                    >
+                      {lesson.data.type === 'unit' ? 'Overview' : lesson.data.title}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </details>
+        );
+      })
+    ) : (
+      visibleSections.map((section) => (
+        <section class="curriculum-nav__section">
+          <h3>{section.title}</h3>
+          <ul>
+            {section.lessons.map((lesson) => {
+              const lessonSlug = getEntryRouteSlug(lesson);
+              const href = `/${courseSlug}/${lessonSlug}`;
+
+              return (
+                <li>
+                  <a
+                    href={href}
+                    aria-current={lesson.id === activeId ? 'page' : undefined}
+                  >
+                    {lesson.data.type === 'unit' ? 'Overview' : lesson.data.title}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ))
+    )
   ) : (
     <p class="muted-copy">No lessons published yet.</p>
   )}

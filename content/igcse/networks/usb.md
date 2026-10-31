@@ -89,6 +89,9 @@ to a computer. Explain each point.
 
 ## Homework
 
+Watch [19. Cambridge IGCSE (0478/0984) 2.1 Universal Serial Bus
+(USB)](https://youtu.be/Pe4dllmwDhY).
+
 Create a two-column table with at least three benefits and two limitations
 of USB. Choose one peripheral and explain whether USB is a suitable
 connection for it, using details from the scenario.

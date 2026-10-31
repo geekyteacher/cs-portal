@@ -218,6 +218,22 @@ main {
   text-transform: uppercase;
 }
 
+.curriculum-nav__group {
+  margin-bottom: 12px;
+}
+
+.curriculum-nav__group summary {
+  color: var(--accent);
+  cursor: pointer;
+  font-weight: 700;
+  line-height: 1.4;
+  list-style-position: outside;
+}
+
+.curriculum-nav__group ul {
+  margin: 10px 0 0 18px;
+}
+
 .curriculum-nav ul,
 .school-links ul {
   display: grid;

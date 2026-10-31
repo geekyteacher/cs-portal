@@ -142,6 +142,17 @@ and `timeout` where appropriate.
 
 ## Homework
 
+Watch the videos that match the error-detection methods:
+
+- [20. Cambridge IGCSE (0478/0984) 2.2 The need for error
+  checking](https://youtu.be/ckvEN_JyiKE)
+- [21. Cambridge IGCSE (0478/0984) 2.2 Error detection
+  methods](https://youtu.be/TEICs3IaKF4)
+- [22. Cambridge IGCSE (0478/0984) 2.2 Check
+  digits](https://youtu.be/p60du0zr_H0)
+- [23. Cambridge IGCSE (0478/0984) 2.2 Automatic Repeat Query
+  (ARQ)](https://youtu.be/SqTS3ZIbwIA)
+
 Complete the parity and error-detection questions assigned by your teacher.
 Then write a four-step explanation of how a checksum is checked, and a
 separate explanation of how ARQ requests a retransmission. Keep detection

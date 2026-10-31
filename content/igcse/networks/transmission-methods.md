@@ -111,6 +111,9 @@ display does not send information back.
 
 ## Homework
 
+Watch [18. Cambridge IGCSE (0478/0984) 2.1 Data transmission
+methods](https://youtu.be/0cIWq4MZmxw).
+
 Write a short response explaining why serial transmission is generally more
 suitable than parallel transmission over a longer distance. Include bit
 skew, crosstalk, and the number of communication paths. Then classify one

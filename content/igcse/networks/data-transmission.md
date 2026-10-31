@@ -96,7 +96,15 @@ Answer from memory:
 
 ## Homework
 
-Without looking at the page, write a short explanation of packet switching.
-Include the three packet parts, the three items of information in the header,
-why packets may take different routes, and how the receiver reassembles them.
-Then check your answer against the page and correct anything you missed.
+Watch:
+
+- [16. Cambridge IGCSE (0478/0984) 2.1 Packet and packet
+  structure](https://www.youtube.com/watch?v=rpOfxVgNsa0&list=PLCiOXwirraUBvcD8XWMzyuzEA-IJG5cH7&index=17)
+- [17. Cambridge IGCSE (0478/0984) 2.1 Packet
+  switching](https://youtu.be/PVbuTBS4Sqc)
+
+Then, without looking at the page, write a short explanation of packet
+switching. Include the three packet parts, the three items of information in
+the header, why packets may take different routes, and how the receiver
+reassembles them. Check your answer against the page and correct anything
+you missed.

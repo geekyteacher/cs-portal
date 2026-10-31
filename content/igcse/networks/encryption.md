@@ -125,6 +125,9 @@ Complete the comparison:
 
 ## Homework
 
+Watch [24. Cambridge IGCSE (0478/0984) 2.3 Symmetric and asymmetric
+encryption](https://youtu.be/Ih7BT2uFKh4).
+
 Create a comparison table for symmetric and asymmetric encryption. Include
 the keys used, one benefit, and one challenge for each method. Then explain
 which key Mina should use to send a confidential message to Ravi and which
