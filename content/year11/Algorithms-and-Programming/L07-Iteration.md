@@ -35,10 +35,10 @@ Try these without running the code:
 2. How many times does this loop output a number? Which numbers?
 
    ```pseudocode
-DECLARE Counter : INTEGER
-FOR Counter <- 1 TO 4
-    OUTPUT Counter
-NEXT Counter
+    DECLARE Counter : INTEGER
+    FOR Counter <- 1 TO 4
+        OUTPUT Counter
+    NEXT Counter
    ```
 
 3. What must eventually happen for a `WHILE` loop to stop?
