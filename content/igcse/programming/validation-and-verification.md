@@ -2,7 +2,7 @@
 title: Validation and Verification
 description: Write a data validation routine in CAIE pseudocode, then explore examples in Python.
 order: 6
-draft: false
+draft: true
 ---
 ## Today you will
 

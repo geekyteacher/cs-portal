@@ -1,0 +1,386 @@
+<section class="packet-simulation" aria-labelledby="packet-simulation-title">
+  <h2 id="packet-simulation-title">Interactive: Route and reorder packets</h2>
+  <p>
+    Assign each packet to a valid route. Then deliver them and use their
+    sequence numbers to put the data back in order.
+  </p>
+
+  <div class="network-map" aria-label="Network map showing three routes">
+    <span class="endpoint">Sender</span>
+    <span class="network-route">A → C → F</span>
+    <span class="network-route">A → D → F</span>
+    <span class="network-route">B → E → F</span>
+    <span class="endpoint">Receiver</span>
+  </div>
+
+  <div class="simulation-stage" data-routing-stage>
+    <h3>1. Choose a route for each packet</h3>
+    <p class="instruction">
+      Select a packet, then select a route, or drag a packet onto a route.
+      Packets can share a route.
+    </p>
+    <p class="simulation-note">
+      This example uses a fixed arrival order to demonstrate one possible
+      outcome; choosing a route does not change that order.
+    </p>
+
+    <div class="packet-tray" data-packet-tray aria-label="Packets to route"></div>
+    <div class="route-list" data-route-list></div>
+
+    <button class="action-button" type="button" data-send disabled>
+      Send packets
+    </button>
+  </div>
+
+  <div class="simulation-stage" data-arrival-stage hidden>
+    <h3>2. Reassemble the data</h3>
+    <p class="instruction">
+      The packets have arrived out of order. Select a packet and a destination
+      slot, or drag it into a slot. Put the sequence numbers in order.
+    </p>
+
+    <p class="arrival-summary" data-arrival-summary></p>
+    <div class="packet-tray" data-arrival-tray aria-label="Arrived packets"></div>
+    <div class="order-slots" data-order-slots aria-label="Reassembly order"></div>
+
+    <button class="action-button" type="button" data-check disabled>
+      Check order
+    </button>
+    <p class="feedback" data-feedback aria-live="polite"></p>
+  </div>
+
+  <button class="reset-button" type="button" data-reset>Start again</button>
+</section>
+
+<script>
+  const simulation = document.querySelector<HTMLElement>('.packet-simulation');
+
+  if (simulation) {
+    const packetNumbers = [1, 2, 3, 4];
+    const arrivalOrder = [3, 1, 4, 2];
+    const routes = ['A → C → F', 'A → D → F', 'B → E → F'];
+    const assignments = new Map<number, string>();
+    const orderedPackets: (number | null)[] = [null, null, null, null];
+    let selectedPacket: number | null = null;
+    let selectedArrivalPacket: number | null = null;
+
+    const packetTray = simulation.querySelector<HTMLElement>('[data-packet-tray]')!;
+    const routeList = simulation.querySelector<HTMLElement>('[data-route-list]')!;
+    const sendButton = simulation.querySelector<HTMLButtonElement>('[data-send]')!;
+    const routingStage = simulation.querySelector<HTMLElement>('[data-routing-stage]')!;
+    const arrivalStage = simulation.querySelector<HTMLElement>('[data-arrival-stage]')!;
+    const arrivalTray = simulation.querySelector<HTMLElement>('[data-arrival-tray]')!;
+    const orderSlots = simulation.querySelector<HTMLElement>('[data-order-slots]')!;
+    const arrivalSummary = simulation.querySelector<HTMLElement>('[data-arrival-summary]')!;
+    const checkButton = simulation.querySelector<HTMLButtonElement>('[data-check]')!;
+    const feedback = simulation.querySelector<HTMLElement>('[data-feedback]')!;
+
+    function packetButton(number: number, group: 'route' | 'arrival') {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'packet-card';
+      button.textContent = `Packet ${number}`;
+      button.draggable = true;
+      button.dataset.packet = String(number);
+      button.dataset.group = group;
+      button.setAttribute('aria-pressed', 'false');
+      button.setAttribute('aria-label', `Packet ${number}`);
+      return button;
+    }
+
+    function renderRoutes() {
+      packetTray.replaceChildren();
+      packetNumbers
+        .filter((number) => !assignments.has(number))
+        .forEach((number) => {
+          const button = packetButton(number, 'route');
+          button.setAttribute('aria-pressed', String(selectedPacket === number));
+          button.addEventListener('click', () => {
+            selectedPacket = selectedPacket === number ? null : number;
+            renderRoutes();
+          });
+          packetTray.append(button);
+        });
+
+      routeList.replaceChildren();
+      routes.forEach((route) => {
+        const lane = document.createElement('button');
+        lane.type = 'button';
+        lane.className = 'route-lane';
+        lane.dataset.route = route;
+        lane.innerHTML = `<span class="route-name">${route}</span>`;
+        lane.setAttribute('aria-label', `Assign selected packet to route ${route}`);
+        lane.addEventListener('click', () => assignSelectedPacket(route));
+        lane.addEventListener('dragover', (event) => event.preventDefault());
+        lane.addEventListener('drop', (event) => {
+          event.preventDefault();
+          const number = Number(event.dataTransfer?.getData('text/plain'));
+          if (packetNumbers.includes(number)) assignPacket(number, route);
+        });
+
+        const assigned = [...assignments.entries()]
+          .filter(([, assignedRoute]) => assignedRoute === route)
+          .map(([number]) => number);
+        assigned.forEach((number) => {
+          const chip = document.createElement('span');
+          chip.className = 'assigned-packet';
+          chip.textContent = `Packet ${number}`;
+          lane.append(chip);
+        });
+        routeList.append(lane);
+      });
+
+      packetTray.querySelectorAll<HTMLButtonElement>('[data-group="route"]').forEach((button) => {
+        button.addEventListener('dragstart', (event) => {
+          event.dataTransfer?.setData('text/plain', button.dataset.packet ?? '');
+        });
+      });
+      sendButton.disabled = assignments.size !== packetNumbers.length;
+    }
+
+    function assignSelectedPacket(route: string) {
+      if (selectedPacket === null) return;
+      assignPacket(selectedPacket, route);
+    }
+
+    function assignPacket(number: number, route: string) {
+      assignments.set(number, route);
+      selectedPacket = null;
+      renderRoutes();
+    }
+
+    function renderReassembly() {
+      arrivalTray.replaceChildren();
+      arrivalOrder.forEach((number) => {
+        if (orderedPackets.includes(number)) return;
+        const button = packetButton(number, 'arrival');
+        button.setAttribute('aria-pressed', String(selectedArrivalPacket === number));
+        button.addEventListener('click', () => {
+          selectedArrivalPacket = selectedArrivalPacket === number ? null : number;
+          renderReassembly();
+        });
+        button.addEventListener('dragstart', (event) => {
+          event.dataTransfer?.setData('text/plain', String(number));
+        });
+        arrivalTray.append(button);
+      });
+
+      orderSlots.replaceChildren();
+      orderedPackets.forEach((number, index) => {
+        const slot = document.createElement('button');
+        slot.type = 'button';
+        slot.className = 'order-slot';
+        slot.setAttribute('aria-label', `Position ${index + 1}${number ? `, packet ${number}` : ', empty'}`);
+        slot.innerHTML = `<span class="slot-number">${index + 1}</span><span>${number ? `Packet ${number}` : 'Drop here'}</span>`;
+        slot.addEventListener('click', () => placeSelectedPacket(index));
+        slot.addEventListener('dragover', (event) => event.preventDefault());
+        slot.addEventListener('drop', (event) => {
+          event.preventDefault();
+          const packet = Number(event.dataTransfer?.getData('text/plain'));
+          if (arrivalOrder.includes(packet)) placePacket(packet, index);
+        });
+        orderSlots.append(slot);
+      });
+
+      checkButton.disabled = orderedPackets.some((number) => number === null);
+    }
+
+    function placeSelectedPacket(index: number) {
+      if (selectedArrivalPacket === null) return;
+      placePacket(selectedArrivalPacket, index);
+    }
+
+    function placePacket(number: number, index: number) {
+      const previousIndex = orderedPackets.indexOf(number);
+      if (previousIndex !== -1) {
+        const displacedPacket = orderedPackets[index];
+        orderedPackets[index] = number;
+        orderedPackets[previousIndex] = displacedPacket;
+      } else {
+        orderedPackets[index] = number;
+      }
+      selectedArrivalPacket = null;
+      feedback.textContent = '';
+      renderReassembly();
+    }
+
+    packetTray.addEventListener('dragstart', (event) => {
+      const target = event.target;
+      if (target instanceof HTMLButtonElement && target.dataset.packet) {
+        event.dataTransfer?.setData('text/plain', target.dataset.packet);
+      }
+    });
+
+    simulation.querySelector<HTMLButtonElement>('[data-send]')?.addEventListener('click', () => {
+      routingStage.hidden = true;
+      arrivalStage.hidden = false;
+      arrivalSummary.textContent = `Arrival order: ${arrivalOrder.join(', ')}.`;
+      renderReassembly();
+    });
+
+    checkButton.addEventListener('click', () => {
+      const correct = orderedPackets.every((number, index) => number === index + 1);
+      feedback.textContent = correct
+        ? 'Correct! The packet sequence numbers restore the original order.'
+        : 'Not quite. Use the sequence number on each packet to restore the original order.';
+      feedback.dataset.correct = String(correct);
+    });
+
+    simulation.querySelector<HTMLButtonElement>('[data-reset]')?.addEventListener('click', () => {
+      assignments.clear();
+      orderedPackets.fill(null);
+      selectedPacket = null;
+      selectedArrivalPacket = null;
+      routingStage.hidden = false;
+      arrivalStage.hidden = true;
+      feedback.textContent = '';
+      delete feedback.dataset.correct;
+      renderRoutes();
+    });
+
+    renderRoutes();
+  }
+</script>
+
+<style>
+  .packet-simulation {
+    margin: 2rem 0;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 1.25rem;
+    background: var(--surface-raised);
+  }
+
+  .network-map {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    margin: 1.25rem 0;
+  }
+
+  .endpoint,
+  .network-route,
+  .assigned-packet,
+  .packet-card,
+  .order-slot {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.45rem 0.8rem;
+  }
+
+  .endpoint {
+    border-color: var(--callout-note);
+    color: var(--callout-note);
+    font-weight: 700;
+  }
+
+  .network-route {
+    font-family: monospace;
+  }
+
+  .simulation-note {
+    font-size: 0.9rem;
+  }
+
+  .packet-tray,
+  .route-list,
+  .order-slots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin: 0.9rem 0;
+  }
+
+  .packet-card,
+  .route-lane,
+  .order-slot,
+  .action-button,
+  .reset-button {
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .packet-card {
+    background: var(--surface);
+  }
+
+  .packet-card[aria-pressed='true'] {
+    outline: 2px solid var(--callout-note);
+    outline-offset: 2px;
+  }
+
+  .route-lane {
+    display: flex;
+    min-width: 10rem;
+    min-height: 4.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1px dashed var(--line);
+    border-radius: 8px;
+    padding: 0.7rem;
+    background: var(--surface);
+  }
+
+  .route-name {
+    width: 100%;
+    font-family: monospace;
+  }
+
+  .assigned-packet {
+    padding: 0.2rem 0.5rem;
+    background: var(--surface-raised);
+  }
+
+  .action-button,
+  .reset-button {
+    margin: 0.5rem 0.5rem 0 0;
+    border: 1px solid var(--callout-note);
+    border-radius: 5px;
+    padding: 0.55rem 0.85rem;
+    background: var(--surface);
+  }
+
+  .action-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+
+  .order-slot {
+    display: inline-flex;
+    min-width: 8rem;
+    align-items: center;
+    gap: 0.5rem;
+    border-style: dashed;
+    background: var(--surface);
+  }
+
+  .slot-number {
+    display: grid;
+    width: 1.5rem;
+    height: 1.5rem;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--surface-raised);
+    font-weight: 700;
+  }
+
+  .feedback[data-correct='true'] {
+    color: var(--callout-tip);
+  }
+
+  .feedback[data-correct='false'] {
+    color: var(--callout-warning);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .packet-card,
+    .route-lane,
+    .order-slot {
+      transition: outline-color 120ms ease, background-color 120ms ease;
+    }
+  }
+</style>

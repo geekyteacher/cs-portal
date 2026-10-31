@@ -1,7 +1,7 @@
 ---
 title: Topologies
 description: Compare common ways of arranging devices in a network.
-order: 4
+order: 10
 draft: true
 ---
 

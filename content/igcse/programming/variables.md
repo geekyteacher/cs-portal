@@ -2,7 +2,7 @@
 title: Variables
 description: Store, update, and use data in a program.
 order: 1
-draft: false
+draft: true
 ---
 
 ## Learning goals

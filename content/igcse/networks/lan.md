@@ -1,7 +1,7 @@
 ---
 title: LAN
 description: Describe local area networks and the devices that connect them.
-order: 1
+order: 7
 draft: true
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: WAN
 description: Describe wide area networks and how they connect locations.
-order: 2
+order: 8
 draft: true
 ---
 
