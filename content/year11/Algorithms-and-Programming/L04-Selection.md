@@ -7,7 +7,7 @@ draft: false
 
 > [!NOTE]
 >
-> Read the explanation, complete the tasks, and record your answers in **Lesson 4** of your **Teams Portfolio Document**.
+> Work through the examples and core tasks. Record your answers in **Lesson 4** of your **Teams Portfolio Document**.
 
 ## Learning Objectives
 
@@ -17,11 +17,13 @@ draft: false
 
 ---
 
-## 1. Explanation: What is Selection?
+## What is Selection?
 
 **Selection** is a programming construct where the path of execution depends on whether a condition evaluates to `TRUE` or `FALSE`.
 
-In CAIE pseudocode, a two-way selection uses the `IF...THEN...ELSE...ENDIF` structure.
+In CAIE pseudocode, a two-way selection uses `IF...THEN...ELSE...ENDIF`.
+The condition is tested first. If it is true, the statements after `THEN` run;
+otherwise, the statements after `ELSE` run.
 
 ### Comparison Operators
 
@@ -34,7 +36,7 @@ In CAIE pseudocode, a two-way selection uses the `IF...THEN...ELSE...ENDIF` stru
 | Greater than or equal to | `>=` | `>=` |
 | Less than or equal to | `<=` | `<=` |
 
-### Pseudocode Example
+### Worked Example: Pass or Fail
 
 ```pseudocode
 DECLARE Mark : INTEGER
@@ -48,41 +50,59 @@ ELSE
 ENDIF
 ```
 
-## 2. Practical Coding Activity
+The comparison `Mark >= 50` includes a mark of exactly `50`.
 
-Run and test the following code in Python:
+### Boundary Check
 
-```python
-mark = int(input("Enter exam mark: "))
+Test the condition with `Mark = 49`, `Mark = 50`, and `Mark = 51`:
 
-if mark >= 50:
-    print("Result: Pass")
-else:
-    print("Result: Fail")
+| Mark | `Mark >= 50` | Output |
+| ---: | --- | --- |
+| 49 | FALSE | Result: Fail |
+| 50 | TRUE | Result: Pass |
+| 51 | TRUE | Result: Pass |
+
+The value at the boundary helps check that the comparison operator matches
+the rule.
+
+## Guided Practice
+
+An account is in credit when its balance is zero or more. Complete the
+algorithm:
+
+```pseudocode
+DECLARE Balance : REAL
+INPUT Balance
+
+IF Balance _____ 0.0 THEN
+    OUTPUT "Account in Credit"
+ELSE
+    OUTPUT "Overdrawn"
+ENDIF
 ```
 
-**Experiment:** Change the condition to check whether the mark is equal to 100 and print `"Perfect Score!"`.
+Choose the comparison operator that includes a balance of exactly zero.
 
-## 3. Portfolio Tasks (Submit to Teams)
+## Core Practice
 
-> [!WARNING]
->
-> Record your answers in **Lesson 4** of your **Algorithm Design Portfolio** in Teams.
+Answer in **CAIE pseudocode**.
 
-1. **Syntax Check:** Identify the syntax error in this pseudocode and rewrite it correctly:
+1. **Fix the syntax:** Identify the missing keywords and rewrite this
+   algorithm correctly.
 
     ```pseudocode
     IF Age > 18
         OUTPUT "Adult"
+    ELSE
+        OUTPUT "Not an adult"
     END
     ```
 
-2. **Algorithm Design (Pass/Fail Gatekeeper):** Write pseudocode that:
-   - Prompts the user to enter their account balance as a `REAL`.
-   - Outputs `"Account in Credit"` if the balance is greater than or equal to `0.0`.
-   - Otherwise, outputs `"Overdrawn"`.
+2. **Account balance:** Write an algorithm that inputs a balance as a `REAL`.
+   Output `"Account in Credit"` if the balance is greater than or equal to
+   `0.0`; otherwise, output `"Overdrawn"`.
 
-3. **Dry Run Task:** What is the output of the following pseudocode if the user inputs `28`?
+3. **Trace:** What is output when `Temp` is `28`? Which branch is taken?
 
     ```pseudocode
     DECLARE Temp : REAL
@@ -99,6 +119,12 @@ else:
     ENDIF
     ```
 
-> [!CHALLENGE]
->
-> Write a Python program that inputs a number and outputs whether it is **Even** or **Odd** using the remainder operator `%`.
+## Explore in Python
+
+After completing the pseudocode, write or run a Python version of the
+account-balance task. Test values below, at, and above zero.
+
+## Stretch
+
+Write pseudocode that inputs a whole number and outputs whether it is even or
+odd. Use `MOD` to test the remainder after division by `2`.

@@ -7,7 +7,7 @@ draft: false
 
 > [!NOTE]
 >
-> Complete the reading and tasks below. Record your work in **Lesson 5** of your **Teams Portfolio Document**.
+> Complete the examples and core tasks. Record your answers in **Lesson 5** of your **Teams Portfolio Document**.
 
 ## Learning Objectives
 
@@ -25,7 +25,66 @@ When a decision depends on more than one condition, use **logical operators**:
 - `OR`: At least one condition must be `TRUE`.
 - `NOT`: Reverses the Boolean outcome.
 
-### Example: CASE Selection
+### Combining conditions with `AND`, `OR` and `NOT`
+
+```pseudocode
+DECLARE Age : INTEGER
+DECLARE HasTicket : BOOLEAN
+INPUT Age, HasTicket
+
+IF Age >= 18 AND HasTicket = TRUE THEN
+    OUTPUT "Entry allowed"
+ELSE
+    OUTPUT "Entry denied"
+ENDIF
+```
+
+Both conditions must be true for entry to be allowed. Use brackets to make
+the intended grouping clear in longer conditions.
+
+### Multiple branches with `ELSEIF`
+
+Conditions are checked in order. The first true branch runs; later branches
+are skipped.
+
+```pseudocode
+DECLARE Mark : INTEGER
+INPUT Mark
+
+IF Mark >= 80 THEN
+    OUTPUT "Grade A"
+ELSEIF Mark >= 60 THEN
+    OUTPUT "Grade B"
+ELSEIF Mark >= 40 THEN
+    OUTPUT "Grade C"
+ELSE
+    OUTPUT "Grade U"
+ENDIF
+```
+
+Put the most restrictive/highest threshold first. For example, if
+`Mark >= 40` came first, marks of 80 or more would be assigned Grade C.
+
+### Nested selection
+
+An `IF` statement can be placed inside another selection when a second
+decision is only needed in one branch:
+
+```pseudocode
+IF Age >= 18 THEN
+    IF HasTicket = TRUE THEN
+        OUTPUT "Entry allowed"
+    ELSE
+        OUTPUT "Ticket required"
+    ENDIF
+ELSE
+    OUTPUT "Minimum age not met"
+ENDIF
+```
+
+Trace the inner condition only when the outer condition leads into it.
+
+### Multi-way selection with `CASE`
 
 ```pseudocode
 DECLARE Grade : CHAR
@@ -41,40 +100,30 @@ CASE OF Grade
 ENDCASE
 ```
 
-## 2. Practical Coding Activity
+Use `CASE` when one value is compared with several possible values. Include
+`OTHERWISE` to handle values that do not match a listed case.
 
-Test compound conditions in Python:
+## Guided Practice
 
-```python
-score = int(input("Enter score: "))
-attendance = float(input("Enter attendance percentage: "))
+For `X = 10`, `Y = 20` and `Z = 5`, evaluate:
 
-if score >= 70 and attendance >= 85.0:
-    print("Award: Distinction Certificate")
-elif score >= 50 or attendance >= 90.0:
-    print("Award: Standard Pass")
-else:
-    print("Award: Re-sit Required")
-```
+- `(X < Y) AND (Y > Z)`
+- `(X = Y) OR (Z < X)`
+- `NOT (Y > X)`
 
-## 3. Portfolio Tasks (Submit to Teams)
+Then trace the grade example with marks `39`, `40`, `60` and `80`.
 
-> [!WARNING]
->
-> Record your answers in **Lesson 5** of your **Algorithm Design Portfolio** in Teams.
+## Core Practice
 
-1. **Logical Operator Analysis:** Evaluate whether each expression is `TRUE` or `FALSE` when `X = 10`, `Y = 20`, and `Z = 5`:
-   - `(X < Y) AND (Y > Z)`
-   - `(X = Y) OR (Z < X)`
-   - `NOT (Y > X)`
+Answer algorithm-design questions in **CAIE pseudocode**.
 
-2. **Algorithm Design (Grade Boundaries):** Write pseudocode that inputs a mark out of 100 and outputs a grade according to these rules:
+1. **Grade boundaries:** Write an algorithm that inputs a mark out of 100 and
+   outputs:
    - `80` or higher: `"Grade A"`
    - `60` to `79`: `"Grade B"`
    - `40` to `59`: `"Grade C"`
    - Below `40`: `"Grade U"`
-
-3. **CASE Structure Conversion:** Convert the following `IF` chain into a `CASE OF` structure in pseudocode:
+2. **CASE conversion:** Convert this `IF` chain to a `CASE OF` structure:
 
     ```pseudocode
     IF Choice = 1 THEN
@@ -88,6 +137,49 @@ else:
     ENDIF
     ```
 
-> [!CHALLENGE]
->
-> Write a Python program that accepts a month number from 1 to 12 and uses selection to print the number of days in that month. Ignore leap years.
+3. **Nested decision:** Write an algorithm that inputs `Age` and
+   `HasPermission`. Output `"Allowed"` only when the person is at least 16
+   and has permission. Otherwise, output a message explaining which
+   requirement was not met.
+
+## Explore in Python
+
+Translate one of your pseudocode answers into Python and test values at
+important boundaries. This is practice; use CAIE pseudocode for Paper 2
+algorithm-design answers.
+
+```python
+mark = int(input("Enter mark: "))
+
+if mark >= 80:
+    print("Grade A")
+elif mark >= 60:
+    print("Grade B")
+elif mark >= 40:
+    print("Grade C")
+else:
+    print("Grade U")
+```
+
+## Support
+
+For the grade task:
+
+- Check the highest boundary first.
+- Use `ELSEIF` for each additional grade range.
+- Use `ELSE` for marks below the final boundary.
+- Test `39`, `40`, `59`, `60`, `79` and `80`.
+
+For `CASE`, each branch compares the same selector (`Choice`) with one value.
+
+## Stretch
+
+Write a Python program that inputs a month number from `1` to `12` and uses
+selection to output the number of days in that month. Ignore leap years.
+Include a message for an invalid month.
+
+## Portfolio Tasks (Submit to Teams)
+
+Record your answers in **Lesson 5** of your **Algorithm Design Portfolio** in
+Teams. Include the logical-operator answers and one completed pseudocode
+algorithm from the core tasks.

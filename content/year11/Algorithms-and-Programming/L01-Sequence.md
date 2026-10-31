@@ -111,13 +111,11 @@ Complete a trace table for the given pseudocode using the test dataset: 4, 12, -
 1. **Sequence Definition:** The execution of statements one after another in the order they are written.
 2. **Pseudocode Answer:**
 ```pseudocode
-DECLARE Num1, Num2, Sum : REAL
-OUTPUT "Enter first number:"
-INPUT Num1
-OUTPUT "Enter second number:"
-INPUT Num2
-Sum <- Num1 + Num2
-OUTPUT "The sum is: ", Sum
+DECLARE Celsius, Fahrenheit : REAL
+OUTPUT "Enter temperature in Celsius:"
+INPUT Celsius
+Fahrenheit <- (Celsius * 1.8) + 32
+OUTPUT "Temperature in Fahrenheit: ", Fahrenheit
 
 ```
 
@@ -128,7 +126,7 @@ OUTPUT "The sum is: ", Sum
 | | 0 | 0 | |
 | 4 | 1 | 4 | |
 | 12 | 2 | 16 | |
-| -3 | | | **16, 2** |
+| -3 | 2 | 16 | **16, 2** |
 
 *(Explanation: When `-3` is input, `Num > 0` evaluates to FALSE, so `Total` and `Count` do not change. The loop terminates because `Num < 0` is TRUE, outputting `16` and `2`.)*
 -->
