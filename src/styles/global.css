@@ -1,18 +1,24 @@
 :root {
   color-scheme: dark;
   font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
-  color: #f4f7f8;
-  background: #101a20;
+  color: #f9fafb;
+  background: #111827;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  --surface: #17262d;
-  --surface-raised: #1d3038;
-  --muted: #a8b8bd;
-  --accent: #54d6c2;
-  --line: #30464e;
-  --callout-note: #83caff;
-  --callout-tip: #54d6c2;
-  --callout-warning: #f2bd68;
+  --surface: #1f2937;
+  --surface-raised: #374151;
+  --muted: #d1d5db;
+  --primary: #3b82f6;
+  --primary-text: #93c5fd;
+  --secondary: #8b5cf6;
+  --secondary-text: #c4b5fd;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --accent: var(--primary-text);
+  --line: #4b5563;
+  --callout-note: var(--primary-text);
+  --callout-tip: var(--success);
+  --callout-warning: var(--warning);
   --callout-challenge: #ff927d;
 }
 
@@ -30,6 +36,14 @@ body {
 
 a {
   color: inherit;
+}
+
+h2 {
+  color: var(--primary);
+}
+
+h3 {
+  color: var(--secondary);
 }
 
 .site-header {
@@ -213,7 +227,7 @@ main {
 
 .curriculum-nav__section h3 {
   margin: 0 0 8px;
-  color: var(--accent);
+  color: var(--secondary-text);
   font-size: 0.78rem;
   text-transform: uppercase;
 }
@@ -251,7 +265,12 @@ main {
 }
 
 .curriculum-nav a[aria-current='page'] {
+  display: block;
+  border-left: 3px solid var(--primary);
+  border-radius: 0 4px 4px 0;
+  padding: 6px 9px;
   color: var(--accent);
+  background: color-mix(in srgb, var(--primary) 16%, var(--surface));
   font-weight: 700;
 }
 
@@ -259,6 +278,19 @@ main {
   min-width: 0;
   padding-bottom: 30px;
   line-height: 1.7;
+}
+
+.lesson-content code {
+  font-size: 1.08em;
+}
+
+.lesson-content pre {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.lesson-content pre code {
+  font-size: inherit;
 }
 
 .lesson-content h1 {
@@ -269,6 +301,8 @@ main {
 
 .lesson-content h2 {
   margin-top: 2rem;
+  border-left: 3px solid var(--primary);
+  padding-left: 0.75rem;
   font-size: 1.45rem;
 }
 

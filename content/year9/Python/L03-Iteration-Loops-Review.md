@@ -21,7 +21,7 @@ Before starting this lesson, you should know how to:
 - Write a basic `if` statement.
 - Use `range()` and lists.
 
-## Quick Knowledge Check
+## 🟢 Quick Knowledge Check
 
 Try these without running the code first:
 
@@ -43,7 +43,7 @@ Try these without running the code first:
 3. In your own words, what is one difference between a `for` loop and a
    `while` loop?
 
-## Learn
+## 🔵 Learn
 
 ### Choosing a loop
 
@@ -94,7 +94,7 @@ Before running each example, ask students to predict what will happen.
    password followed by the correct password, and trace how the value of
    `password` changes.
 
-## Practice
+## 🟣 Practice
 
 ### Task 1: Fix the Broken Code
 
@@ -174,7 +174,7 @@ print("Access Granted!")
 Finished early? Add an `attempts` counter so the program tells the user how
 many guesses they made.
 
-## Summary
+## ✅ Summary
 
 You should now be able to:
 

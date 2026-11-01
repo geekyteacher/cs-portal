@@ -10,14 +10,14 @@ draft: false
 Choose a project idea and plan a program that uses input, variables,
 selection, a loop, and testing.
 
-## Lost your previous work?
+## 🧰 Lost your previous work?
 
 If you have lost your quiz, download the [Year 9 quiz starter
 file](/downloads/year9-quiz-starter.py), save it as a new file, and adapt it
 if you choose the quiz project. For another project choice, start a new file
 and use the planning table below to rebuild your idea.
 
-## Choose one project
+## 🟢 Choose one project
 
 Choose the idea that interests you. Keep the first version small enough to
 finish and test.
@@ -46,7 +46,7 @@ recommendation process for a fixed number of users or choices.
 
 Check a visitor's age, height, or ticket, then repeat for several visitors.
 
-## Connect your idea to a loop
+## 🔵 Connect your idea to a loop
 
 Your loop should have a clear purpose.
 
@@ -58,7 +58,7 @@ Your loop should have a clear purpose.
 | Movie recommendation | Repeat for a set number of users |
 | Theme park checker | Check each visitor in turn |
 
-## Plan the rules
+## 🟢 Plan the rules
 
 Fill in the table for your project.
 
@@ -74,13 +74,13 @@ Fill in the table for your project.
 | What are two normal test cases? | |
 | What is one boundary or stop-condition test? | |
 
-## Set a manageable first version
+## 🔵 Set a manageable first version
 
 Write down the smallest complete version of your program. For example, a
 quiz can start with three questions, a score, and one replay option. Save
 extra themes, graphics, and features for after the core version works.
 
-## Share your plan
+## 🟣 Share your plan
 
 Explain your idea to a partner. Ask them to identify:
 
@@ -88,12 +88,12 @@ Explain your idea to a partner. Ask them to identify:
 - one test that should be added; and
 - how they know the loop will stop.
 
-## Exit check
+## 🟠 Exit check
 
 Describe what changes each time through your loop, and what condition or
 event makes it stop.
 
-## Success Criteria
+## ✅ Success Criteria
 
 - I can describe the purpose and inputs of my chosen project.
 - I can list its variables, decisions, and possible outcomes.

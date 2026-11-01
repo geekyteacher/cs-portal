@@ -10,13 +10,13 @@ draft: false
 Build the first working version of your project using your plan from Lesson
 9. Get the essential features working before adding optional improvements.
 
-## Lost your previous work?
+## 🧰 Lost your previous work?
 
 Download the [Year 9 project starter file](/downloads/year9-project-starter.py),
 save it with a new filename, and adapt its input, decisions, and repeated
 task to match your plan.
 
-## Build in stages
+## 🔵 Build in stages
 
 ### Stage 1: Make one interaction work
 
@@ -76,7 +76,7 @@ condition.
 Finish the normal program flow and make the messages clear. Save your work
 regularly.
 
-## Checkpoint
+## 🟠 Checkpoint
 
 Ask your teacher to check the first working version, or show a partner:
 
@@ -85,7 +85,7 @@ Ask your teacher to check the first working version, or show a partner:
 - the loop repeats the intended task; and
 - the program has a way to finish.
 
-## If you get stuck
+## 🧰 If you get stuck
 
 1. Read the error message and find the line it identifies.
 2. Check punctuation, spelling, indentation, and variable names.
@@ -93,13 +93,13 @@ Ask your teacher to check the first working version, or show a partner:
 4. Compare the actual result with your plan.
 5. Ask for help with the smallest specific problem you can describe.
 
-## Extension
+## 🟣 Extension
 
 Once the essential program works, improve one feature: add clearer
 instructions, another outcome, a score or attempt counter, or a more useful
 end message. Update your plan if the program's rules change.
 
-## Before Asking for Help
+## 🧰 Before Asking for Help
 
 - Did I use `==` to compare values, rather than `=`?
 - Is every `:` present after an `if`, `elif`, `for`, or `while` line?
@@ -107,7 +107,7 @@ end message. Update your plan if the program's rules change.
 - Did I spell every variable name the same way?
 - Did I save my file?
 
-## Success Criteria
+## ✅ Success Criteria
 
 - My program gets input and stores information in variables.
 - My program uses selection to respond to the user's input.

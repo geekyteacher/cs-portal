@@ -28,14 +28,14 @@ programmers work through a cycle:
 Use this cycle as you develop your quiz. A bug is useful information about
 what to fix next.
 
-## Lost your previous work?
+## 🧰 Lost your previous work?
 
 If you cannot find your quiz, download the [Year 9 quiz starter
 file](/downloads/year9-quiz-starter.py), save a copy with a new filename,
 and continue from today's task. You can also use it if you are starting
 without previous quiz work.
 
-## Starter: inspect a quiz
+## 🟢 Starter: inspect a quiz
 
 Read this code. What happens when the user enters `Paris`? What happens if
 they enter a different answer?
@@ -77,7 +77,7 @@ Use the same lowercase form in your comparison. `.lower()` changes letter
 case; `.strip()` removes spaces at the ends. Neither changes spaces inside
 the answer.
 
-## Build the core quiz
+## 🔵 Build the core quiz
 
 Start with a score of zero. Ask three questions, check each answer, and add
 one point for each correct answer.
@@ -112,7 +112,7 @@ print("Your score is", score, "out of 3")
 Change the questions to a topic you know. Make sure that the expected answer
 matches what your program checks.
 
-## Check your understanding
+## 🟣 Check your understanding
 
 1. Why does `score` start at zero?
 2. Which lines increase the score?
@@ -120,7 +120,7 @@ matches what your program checks.
 4. What would happen if you forgot to increase the score after a correct
    answer?
 
-## Choose your next step
+## 🟣 Choose your next step
 
 ### Core: make the quiz your own
 
@@ -142,7 +142,7 @@ today's core task; Lesson 5 will introduce the idea for everyone.
 
 If you finish, plan how a player could choose to play the quiz again.
 
-## Exit check
+## 🟠 Exit check
 
 Write one sentence explaining what `score += 1` does.
 
@@ -155,7 +155,7 @@ Write one sentence explaining what `score += 1` does.
 4. The quiz could display a score that is too low, even when an answer was
    correct.
 
-## Success Criteria
+## ✅ Success Criteria
 
 - I can ask at least three questions using `input()`.
 - I can use a variable to keep score.
