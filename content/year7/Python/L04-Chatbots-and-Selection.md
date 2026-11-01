@@ -14,6 +14,76 @@ By the end, you should be able to:
 - use `if` and `else` to choose between actions; and
 - add a choice to a chatbot.
 
+<details class="quick-check-disclosure">
+<summary>Quick knowledge check</summary>
+
+<h3>Quick Check 1</h3>
+<pre><code class="language-python">
+answer = "yes"
+if answer == "yes":
+    print("Correct")</code></pre>
+
+<p>What is displayed?</p>
+
+<ol type="A">
+  <li><code>yes</code></li>
+  <li><code>Correct</code></li>
+  <li><code>Wrong</code></li>
+  <li><code>Nothing</code></li>
+</ol>
+
+<h3>Quick Check 2</h3>
+
+<pre><code class="language-python">
+answer = "no"
+if answer == "yes":
+    print("Correct")
+else:
+    print("Wrong")</code></pre>
+
+<p>What is displayed?</p>
+
+<ol type="A">
+  <li><code>yes</code></li>
+  <li><code>no</code></li>
+  <li><code>Correct</code></li>
+  <li><code>Wrong</code></li>
+</ol>
+
+<h3>Quick Check 3</h3>
+
+<p>Which symbol checks if two things are equal?</p>
+
+<ol type="A">
+  <li><code>=</code></li>
+  <li><code>==</code></li>
+  <li><code>:</code></li>
+  <li><code>()</code></li>
+</ol>
+
+<h3>Quick Check 4</h3>
+
+<p>What happens if the code under an <code>if</code> statement is not indented correctly?</p>
+
+<ol type="A">
+  <li>Python ignores the line</li>
+  <li>Python runs the code normally</li>
+  <li>Python shows an error</li>
+  <li>Python changes the value automatically</li>
+</ol>
+
+<h3>Quick Check 5</h3>
+
+<p>What does <code>input()</code> do?</p>
+
+<ol type="A">
+  <li>Displays text on the screen</li>
+  <li>Allows the user to enter information</li>
+  <li>Deletes a variable</li>
+  <li>Stops the program</li>
+</ol>
+</details>
+
 <!-- Suggested pace for a 45-minute lesson: Remember (5 min), Watch and predict
 (5 min), Run it together (10 min), Change the code (10 min), Make your
 chatbot (10 min), Check and hand in (5 min). -->
@@ -118,3 +188,11 @@ Before handing in, check:
 Save your Python program as your teacher has shown you. Use the submission
 link for your class at the bottom of this page and follow the instructions
 there to send in your file.
+
+## Answers
+
+1. **B**
+2. **D**
+3. **B**
+4. **C**
+5. **B**
