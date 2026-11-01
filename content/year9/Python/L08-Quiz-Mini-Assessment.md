@@ -10,7 +10,7 @@ draft: false
 Independently build a short quiz that uses input, variables, selection, and a
 loop. Use your own questions and answers.
 
-## 🟠 Assessment task
+## Assessment task
 
 Create a quiz with at least three questions. Your program must:
 
@@ -24,14 +24,14 @@ Create a quiz with at least three questions. Your program must:
 You may use a `for` loop to go through a list of questions, or a
 `while` loop to allow the player to replay the quiz.
 
-## 🧰 Lost your previous work?
+## Lost your previous work?
 
 The assessment is to build a quiz independently. If you have lost your work,
 ask your teacher whether to restart with a blank file or download the [Year 9
 quiz starter file](/downloads/year9-quiz-starter.py). If you use the starter,
 adapt it yourself and make sure you can explain each part.
 
-## 🔵 Quick Python reminders
+## Quick Python reminders
 
 - For text answers, `input("Your answer: ").strip().lower()` removes spaces
   at the ends and converts letters to lowercase. Compare it with a lowercase
@@ -41,7 +41,7 @@ adapt it yourself and make sure you can explain each part.
 - For a replay response, `.strip().lower()` lets inputs such as ` YES ` and
   `Yes` match `"yes"`.
 
-## 🟢 Plan before coding
+## Plan before coding
 
 | Planning question | Your plan |
 | --- | --- |
@@ -53,7 +53,7 @@ adapt it yourself and make sure you can explain each part.
 | What will happen for an incorrect answer? | |
 | How will the player see their final score? | |
 
-## 🔵 Loop support
+## Loop support
 
 If you need a reminder, choose the pattern that fits your plan.
 
@@ -81,12 +81,12 @@ while play_again == "yes":
 Replace the comment with your quiz. The loop needs to ask for a new
 `play_again` value so the player can stop.
 
-## 🟣 Work independently
+## Work independently
 
 Do not copy a complete quiz from another person. You may use the support
 patterns above and your own notes. Test the program after writing it.
 
-## 🟠 Self-check
+## Self-check
 
 | Requirement | Complete? | Evidence |
 | --- | --- | --- |
@@ -103,7 +103,7 @@ patterns above and your own notes. Test the program after writing it.
 This is an independent assessment, so there is no single correct program.
 Check each requirement against the completed program and test evidence.
 
-## 🧰 Before Asking for Help
+## Before Asking for Help
 
 - Did I use `==` to compare values, rather than `=`?
 - Is every `:` present after an `if`, `for`, or `while` line?
@@ -111,7 +111,7 @@ Check each requirement against the completed program and test evidence.
 - Did I spell every variable name the same way?
 - Did I save my file?
 
-## ✅ Success Criteria
+## Success Criteria
 
 - My quiz asks at least three questions and accepts answers using `input()`.
 - My program uses variables, selection, and a loop.

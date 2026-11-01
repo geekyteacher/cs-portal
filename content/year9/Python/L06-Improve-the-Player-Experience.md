@@ -10,17 +10,17 @@ draft: false
 Improve how your quiz feels to play by adding a welcome, a player's name, and
 a message based on the final score.
 
-## 🧰 Lost your previous work?
+## Lost your previous work?
 
 Download the [Year 9 quiz starter file](/downloads/year9-quiz-starter.py),
 save it with a new filename, and continue from today's task.
 
-## 🟢 Starter: choose a message
+## Starter: choose a message
 
 A quiz has five questions. What message should it show for scores of `5`, `4`,
 `2`, and `0`? Write down your ideas before looking at the example.
 
-## 🔵 Welcome the player
+## Welcome the player
 
 Add a welcome and ask for the player's name near the start of your quiz:
 
@@ -36,7 +36,7 @@ Use `player_name` in a message at the end too.
 not use `.lower()` on a player's name unless you want to display it entirely
 in lowercase.
 
-## 🔵 Respond to the final score
+## Respond to the final score
 
 After the quiz has finished, use `if`, `elif`, and `else` to select one
 message. In this example, the maximum score is five:
@@ -55,7 +55,7 @@ runs that branch and skips the remaining branches. Put the most specific
 condition first: if `score >= 3` came before `score == 5`, a score of five
 would receive `Well done` instead of `Perfect score`.
 
-## 🟣 Practice
+## Practice
 
 ### Core
 
@@ -74,7 +74,7 @@ If `elif` is new, begin with two outcomes using `if` and `else`. Then add an
 - Add a message for a score of zero.
 - If you have a replay loop, reset `score` at the start of each new game.
 
-## 🟠 Test your messages
+## Test your messages
 
 | Score | Expected message |
 | --- | --- |
@@ -85,7 +85,7 @@ If `elif` is new, begin with two outcomes using `if` and `else`. Then add an
 Change `score` temporarily to each test value to check the branches. Restore
 your quiz so it calculates the score normally.
 
-## 🟠 Exit check
+## Exit check
 
 Why should `score == 5` be checked before `score >= 3`?
 
@@ -94,7 +94,7 @@ Why should `score == 5` be checked before `score >= 3`?
 Because five also satisfies `score >= 3`. Python runs the first true branch,
 so the exact perfect-score condition must come first.
 
-## 🧰 Before Asking for Help
+## Before Asking for Help
 
 - Did I use `==` to compare values, rather than `=`?
 - Is every `:` present after an `if` or `elif` line?
@@ -102,7 +102,7 @@ so the exact perfect-score condition must come first.
 - Did I spell every variable name the same way?
 - Did I save my file?
 
-## ✅ Success Criteria
+## Success Criteria
 
 - I can display a welcome and ask for the player's name.
 - I can personalise a message using a variable.

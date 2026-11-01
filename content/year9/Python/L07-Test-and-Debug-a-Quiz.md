@@ -10,18 +10,18 @@ draft: false
 Test a partner's quiz systematically, identify errors, and help verify that
 any fixes work.
 
-## 🧰 Lost your previous work?
+## Lost your previous work?
 
 Download the [Year 9 quiz starter file](/downloads/year9-quiz-starter.py),
 save it with a new filename, and continue today's testing and debugging
 practice.
 
-## 🟢 Testing agreement
+## Testing agreement
 
 Swap programs with a partner. Run only the program they have agreed to share.
 Do not change their original file; write down the tests and results first.
 
-## 🟠 Test the quiz
+## Test the quiz
 
 Use this table to check the program. Add extra tests if you find a problem.
 
@@ -49,7 +49,7 @@ if answer == "paris":
 letters to lowercase. The expected answer must also use lowercase. To count
 a correct response, `score += 1` is a shorter form of `score = score + 1`.
 
-## 🟣 Report a useful bug
+## Report a useful bug
 
 For each issue, record:
 
@@ -67,7 +67,7 @@ Check for:
 - a replay loop that will not stop; and
 - a loop that does not ask for updated input.
 
-## 🔵 Fix and retest
+## Fix and retest
 
 Give the program back to its author with your notes. The author chooses which
 suggestions to use, fixes the code, and repeats the failed test. A fix is not
@@ -77,7 +77,7 @@ If a loop keeps running, use the editor's stop button. Then inspect whether
 the loop condition can change and whether the program updates the relevant
 variable inside the loop.
 
-## 🟣 Reflection
+## Reflection
 
 Write:
 
@@ -85,7 +85,7 @@ Write:
 - the evidence that helped you identify it; and
 - the result after the program was retested.
 
-## 🟠 Exit check
+## Exit check
 
 Why is "I tried it and it seemed fine" weaker evidence than recording the
 input, expected result, and actual result?
@@ -96,7 +96,7 @@ A recorded test makes it clear what was checked and whether the result
 matched expectations. It helps another person repeat the test and verify a
 fix.
 
-## 🧰 Before Asking for Help
+## Before Asking for Help
 
 - Did I use `==` to compare values, rather than `=`?
 - Is every `:` present after an `if`, `for`, or `while` line?
@@ -104,7 +104,7 @@ fix.
 - Did I spell every variable name the same way?
 - Did I save my file?
 
-## ✅ Success Criteria
+## Success Criteria
 
 - I can record the input, expected result, and actual result for a test.
 - I can describe a bug clearly enough for someone else to reproduce it.

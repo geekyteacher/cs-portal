@@ -301,8 +301,6 @@ main {
 
 .lesson-content h2 {
   margin-top: 2rem;
-  border-left: 3px solid var(--primary);
-  padding-left: 0.75rem;
   font-size: 1.45rem;
 }
 

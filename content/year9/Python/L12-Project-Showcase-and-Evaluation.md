@@ -10,13 +10,13 @@ draft: false
 Demonstrate your project, test a classmate's program respectfully, and
 evaluate what you learned.
 
-## 🧰 Lost your previous work?
+## Lost your previous work?
 
 Download the [Year 9 project starter file](/downloads/year9-project-starter.py),
 save it with a new filename, and use your project plan to rebuild a small
 working version before the showcase.
 
-## 🟢 Prepare a short demonstration
+## Prepare a short demonstration
 
 Show the program running. Explain:
 
@@ -28,7 +28,7 @@ Show the program running. Explain:
 
 Choose inputs that demonstrate at least two different outcomes.
 
-## 🟠 Peer testing
+## Peer testing
 
 With the creator's permission, try the program using the tests they prepared.
 Record specific evidence rather than only saying whether you liked it.
@@ -44,7 +44,7 @@ Record specific evidence rather than only saying whether you liked it.
 Give feedback kindly. Do not edit another person's program without
 permission.
 
-## 🟣 Evaluate your own work
+## Evaluate your own work
 
 Complete these sentences:
 
@@ -56,13 +56,13 @@ Complete these sentences:
 - One problem I fixed was...
 - If I had another lesson, I would improve...
 
-## 🟣 Final reflection
+## Final reflection
 
 Which skill improved most during this sequence: writing conditions, using
 loops, testing, debugging, or explaining your code? Give one example from
 your project as evidence.
 
-## 🧰 Before Asking for Help
+## Before Asking for Help
 
 - Did I use `==` to compare values, rather than `=`?
 - Is every `:` present after an `if`, `elif`, `for`, or `while` line?
@@ -70,7 +70,7 @@ your project as evidence.
 - Did I spell every variable name the same way?
 - Did I save my file?
 
-## ✅ Success Criteria
+## Success Criteria
 
 - I can demonstrate at least two outcomes from my program.
 - I can explain its input, a decision, and what its loop repeats and how it

@@ -10,13 +10,13 @@ draft: false
 Complete your project, test the important outcomes, fix errors, and make at
 least one improvement based on evidence.
 
-## 🧰 Lost your previous work?
+## Lost your previous work?
 
 Download the [Year 9 project starter file](/downloads/year9-project-starter.py),
 save it with a new filename, and rebuild the core of your program using your
 project plan and the steps below.
 
-## 🔵 Finish the core program
+## Finish the core program
 
 Before adding another feature, check that your program:
 
@@ -29,7 +29,7 @@ Before adding another feature, check that your program:
 
 If any item is missing, finish it before polishing.
 
-## 🟠 Test your program
+## Test your program
 
 Write a test plan that matches your own project's rules.
 
@@ -46,7 +46,7 @@ For a quiz, test both a correct and incorrect answer. For a password-attempt
 simulation, check the allowed and exhausted attempts. For a theme park
 checker, test values on either side of an age or height boundary.
 
-## 🔵 Fix and retest
+## Fix and retest
 
 When a test fails:
 
@@ -59,7 +59,7 @@ When a test fails:
 If a loop does not stop, stop the program using the editor's stop button.
 Then check the condition and the variable or input that should change it.
 
-## 🟣 Improve one feature
+## Improve one feature
 
 Use a test result or feedback to make one useful improvement. Examples:
 
@@ -76,7 +76,7 @@ and is a shorter form of `score = score + 1`.
 
 Record what you changed and which test shows that it works.
 
-## 🟢 Prepare to showcase
+## Prepare to showcase
 
 Save your program with a clear filename. Prepare a short explanation of:
 
@@ -85,7 +85,7 @@ Save your program with a clear filename. Prepare a short explanation of:
 - what its loop repeats and how it stops; and
 - one test or improvement you are proud of.
 
-## 🧰 Before Asking for Help
+## Before Asking for Help
 
 - Did I use `==` to compare values, rather than `=`?
 - Is every `:` present after an `if`, `elif`, `for`, or `while` line?
@@ -93,7 +93,7 @@ Save your program with a clear filename. Prepare a short explanation of:
 - Did I spell every variable name the same way?
 - Did I save my file?
 
-## ✅ Success Criteria
+## Success Criteria
 
 - My project uses input, variables, and selection.
 - My loop repeats a meaningful task and stops when expected.
