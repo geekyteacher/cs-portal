@@ -84,6 +84,37 @@ In your own words, explain how routers help packets travel from a sender to a
 receiver. Include why packets might arrive out of order and how the receiver
 reassembles the data.
 
+> [!CHALLENGE]
+>
+> ### Challenge Yourself: Find the Missing Packet
+>
+> A file is divided into 100 packets. The receiver gets packets `1` to `56`,
+> then `58` to `100`.
+>
+> Explain how the receiver can detect that a packet is missing, what may
+> happen next, and how the missing packet fits into the reassembled file.
+> Include enough detail to show how packet numbers help the receiver.
+>
+> ### Optional stretch questions
+>
+> Complete these if you finish the main challenge. You can try one or both.
+>
+> **1. Different routes**
+>
+> Packet A travels `School → Router X → Router Y → Home`. Packet B travels
+> `School → Router Z → Home`.
+>
+> Why might packets from the same file take different routes?
+>
+> **2. Evaluate packet switching**
+>
+> Give two advantages of packet switching compared with sending one large
+> block of data, and one possible disadvantage. Explain each point.
+
+**Quality over quantity:** You do not need to answer every stretch question.
+A clear explanation with relevant details about packets, routes, or
+reassembly is more valuable than rushing through all the questions.
+
 ## Exit check
 
 Answer from memory:
