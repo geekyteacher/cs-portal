@@ -14,6 +14,11 @@ Use repetition to make a quiz easier to extend and replay.
 - Use a `while` loop when repetition should continue until a condition
   changes.
 
+## Lost your previous work?
+
+Download the [Year 9 quiz starter file](/downloads/year9-quiz-starter.py),
+save it with a new filename, and continue from today's task.
+
 ## Starter: predict
 
 Without running the code, how many lines are printed? What values does
@@ -126,3 +131,18 @@ When would you choose a `for` loop? When would you choose a `while` loop?
 The starter prints three lines. `number` takes the values `1`, `2`, and `3`.
 A `for` loop suits a known sequence or number of repetitions. A `while` loop
 suits repetition that continues until a condition changes.
+
+## Before Asking for Help
+
+- Did I use `==` to compare values, rather than `=`?
+- Is every `:` present after an `if`, `for`, or `while` line?
+- Is the code inside the loop indented consistently?
+- Did I spell every variable name the same way?
+- Did I save my file?
+
+## Success Criteria
+
+- I can use a `for` loop to repeat instructions or go through a sequence.
+- I can use a `while` loop and update its condition so it can stop.
+- I can use a loop to display quiz questions or offer replay.
+- I can test that the loop repeats and ends as expected.

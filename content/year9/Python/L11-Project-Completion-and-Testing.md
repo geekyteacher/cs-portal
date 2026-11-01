@@ -10,6 +10,12 @@ draft: false
 Complete your project, test the important outcomes, fix errors, and make at
 least one improvement based on evidence.
 
+## Lost your previous work?
+
+Download the [Year 9 project starter file](/downloads/year9-project-starter.py),
+save it with a new filename, and rebuild the core of your program using your
+project plan and the steps below.
+
 ## Finish the core program
 
 Before adding another feature, check that your program:
@@ -78,3 +84,18 @@ Save your program with a clear filename. Prepare a short explanation of:
 - one decision it makes;
 - what its loop repeats and how it stops; and
 - one test or improvement you are proud of.
+
+## Before Asking for Help
+
+- Did I use `==` to compare values, rather than `=`?
+- Is every `:` present after an `if`, `elif`, `for`, or `while` line?
+- Is the code under each condition and loop indented consistently?
+- Did I spell every variable name the same way?
+- Did I save my file?
+
+## Success Criteria
+
+- My project uses input, variables, and selection.
+- My loop repeats a meaningful task and stops when expected.
+- I have recorded actual results for normal and boundary or unusual tests.
+- I fixed at least one issue or made an improvement based on testing.

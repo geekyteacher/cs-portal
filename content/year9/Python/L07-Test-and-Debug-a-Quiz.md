@@ -10,6 +10,12 @@ draft: false
 Test a partner's quiz systematically, identify errors, and help verify that
 any fixes work.
 
+## Lost your previous work?
+
+Download the [Year 9 quiz starter file](/downloads/year9-quiz-starter.py),
+save it with a new filename, and continue today's testing and debugging
+practice.
+
 ## Testing agreement
 
 Swap programs with a partner. Run only the program they have agreed to share.
@@ -89,3 +95,17 @@ input, expected result, and actual result?
 A recorded test makes it clear what was checked and whether the result
 matched expectations. It helps another person repeat the test and verify a
 fix.
+
+## Before Asking for Help
+
+- Did I use `==` to compare values, rather than `=`?
+- Is every `:` present after an `if`, `for`, or `while` line?
+- Is the code under each condition and loop indented consistently?
+- Did I spell every variable name the same way?
+- Did I save my file?
+
+## Success Criteria
+
+- I can record the input, expected result, and actual result for a test.
+- I can describe a bug clearly enough for someone else to reproduce it.
+- I can fix an issue and repeat the test to check the correction.

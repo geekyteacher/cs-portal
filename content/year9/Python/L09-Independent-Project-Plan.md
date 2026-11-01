@@ -10,6 +10,13 @@ draft: false
 Choose a project idea and plan a program that uses input, variables,
 selection, a loop, and testing.
 
+## Lost your previous work?
+
+If you have lost your quiz, download the [Year 9 quiz starter
+file](/downloads/year9-quiz-starter.py), save it as a new file, and adapt it
+if you choose the quiz project. For another project choice, start a new file
+and use the planning table below to rebuild your idea.
+
 ## Choose one project
 
 Choose the idea that interests you. Keep the first version small enough to
@@ -85,3 +92,10 @@ Explain your idea to a partner. Ask them to identify:
 
 Describe what changes each time through your loop, and what condition or
 event makes it stop.
+
+## Success Criteria
+
+- I can describe the purpose and inputs of my chosen project.
+- I can list its variables, decisions, and possible outcomes.
+- I can explain what the loop repeats and how it stops.
+- I have planned normal and boundary or stop-condition tests.

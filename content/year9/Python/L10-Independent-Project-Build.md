@@ -10,6 +10,12 @@ draft: false
 Build the first working version of your project using your plan from Lesson
 9. Get the essential features working before adding optional improvements.
 
+## Lost your previous work?
+
+Download the [Year 9 project starter file](/downloads/year9-project-starter.py),
+save it with a new filename, and adapt its input, decisions, and repeated
+task to match your plan.
+
 ## Build in stages
 
 ### Stage 1: Make one interaction work
@@ -92,3 +98,18 @@ Ask your teacher to check the first working version, or show a partner:
 Once the essential program works, improve one feature: add clearer
 instructions, another outcome, a score or attempt counter, or a more useful
 end message. Update your plan if the program's rules change.
+
+## Before Asking for Help
+
+- Did I use `==` to compare values, rather than `=`?
+- Is every `:` present after an `if`, `elif`, `for`, or `while` line?
+- Is the code under each condition and loop indented consistently?
+- Did I spell every variable name the same way?
+- Did I save my file?
+
+## Success Criteria
+
+- My program gets input and stores information in variables.
+- My program uses selection to respond to the user's input.
+- My loop repeats the task in my plan and has a way to stop.
+- I have run the program and checked at least one outcome.

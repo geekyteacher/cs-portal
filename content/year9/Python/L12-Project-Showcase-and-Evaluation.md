@@ -10,6 +10,12 @@ draft: false
 Demonstrate your project, test a classmate's program respectfully, and
 evaluate what you learned.
 
+## Lost your previous work?
+
+Download the [Year 9 project starter file](/downloads/year9-project-starter.py),
+save it with a new filename, and use your project plan to rebuild a small
+working version before the showcase.
+
 ## Prepare a short demonstration
 
 Show the program running. Explain:
@@ -55,3 +61,19 @@ Complete these sentences:
 Which skill improved most during this sequence: writing conditions, using
 loops, testing, debugging, or explaining your code? Give one example from
 your project as evidence.
+
+## Before Asking for Help
+
+- Did I use `==` to compare values, rather than `=`?
+- Is every `:` present after an `if`, `elif`, `for`, or `while` line?
+- Is the code under each condition and loop indented consistently?
+- Did I spell every variable name the same way?
+- Did I save my file?
+
+## Success Criteria
+
+- I can demonstrate at least two outcomes from my program.
+- I can explain its input, a decision, and what its loop repeats and how it
+  stops.
+- I can give specific, respectful feedback based on a test.
+- I can evaluate one improvement using evidence from my work.

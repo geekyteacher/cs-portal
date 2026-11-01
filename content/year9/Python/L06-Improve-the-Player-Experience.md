@@ -10,6 +10,11 @@ draft: false
 Improve how your quiz feels to play by adding a welcome, a player's name, and
 a message based on the final score.
 
+## Lost your previous work?
+
+Download the [Year 9 quiz starter file](/downloads/year9-quiz-starter.py),
+save it with a new filename, and continue from today's task.
+
 ## Starter: choose a message
 
 A quiz has five questions. What message should it show for scores of `5`, `4`,
@@ -88,3 +93,18 @@ Why should `score == 5` be checked before `score >= 3`?
 
 Because five also satisfies `score >= 3`. Python runs the first true branch,
 so the exact perfect-score condition must come first.
+
+## Before Asking for Help
+
+- Did I use `==` to compare values, rather than `=`?
+- Is every `:` present after an `if` or `elif` line?
+- Is the code under each condition indented consistently?
+- Did I spell every variable name the same way?
+- Did I save my file?
+
+## Success Criteria
+
+- I can display a welcome and ask for the player's name.
+- I can personalise a message using a variable.
+- I can use `if`, `elif`, and `else` to show different final messages.
+- I can test the different score outcomes.

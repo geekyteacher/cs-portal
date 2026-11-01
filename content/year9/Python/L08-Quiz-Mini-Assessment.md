@@ -24,6 +24,13 @@ Create a quiz with at least three questions. Your program must:
 You may use a `for` loop to go through a list of questions, or a
 `while` loop to allow the player to replay the quiz.
 
+## Lost your previous work?
+
+The assessment is to build a quiz independently. If you have lost your work,
+ask your teacher whether to restart with a blank file or download the [Year 9
+quiz starter file](/downloads/year9-quiz-starter.py). If you use the starter,
+adapt it yourself and make sure you can explain each part.
+
 ## Quick Python reminders
 
 - For text answers, `input("Your answer: ").strip().lower()` removes spaces
@@ -95,3 +102,18 @@ patterns above and your own notes. Test the program after writing it.
 
 This is an independent assessment, so there is no single correct program.
 Check each requirement against the completed program and test evidence.
+
+## Before Asking for Help
+
+- Did I use `==` to compare values, rather than `=`?
+- Is every `:` present after an `if`, `for`, or `while` line?
+- Is the code under each condition and loop indented consistently?
+- Did I spell every variable name the same way?
+- Did I save my file?
+
+## Success Criteria
+
+- My quiz asks at least three questions and accepts answers using `input()`.
+- My program uses variables, selection, and a loop.
+- Correct and incorrect answers produce appropriate feedback.
+- The final score is displayed and matches my test results.
