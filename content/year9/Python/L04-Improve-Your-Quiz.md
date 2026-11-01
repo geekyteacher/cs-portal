@@ -52,15 +52,15 @@ else:
 If the player types `paris` or adds a space, this exact comparison will not
 match. Python has string methods that can make text answers more consistent.
 
-### Python Tip: `.lower()`
+> [!TIP]
+>
+> **`.lower()`** converts letters in a string to lowercase. For example,
+> `"YES"`, `"Yes"`, and `"yEs"` all become `"yes"`.
 
-`.lower()` converts letters in a string to lowercase. For example, `"YES"`,
-`"Yes"`, and `"yEs"` all become `"yes"`.
-
-### Python Tip: `.strip()`
-
-`.strip()` removes spaces from the beginning and end of a string. For
-example, `" Paris "` becomes `"Paris"`.
+> [!TIP]
+>
+> **`.strip()`** removes spaces from the beginning and end of a string. For
+> example, `" Paris "` becomes `"Paris"`.
 
 You can combine them when reading an answer:
 
