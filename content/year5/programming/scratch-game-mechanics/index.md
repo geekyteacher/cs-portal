@@ -3,7 +3,7 @@ title: Scratch Game Mechanics
 description: Build Scratch games using patrol enemies, scores, timers, and other game mechanics.
 type: unit
 order: 0
-draft: false
+draft: true
 ---
 
 # Scratch Game Mechanics

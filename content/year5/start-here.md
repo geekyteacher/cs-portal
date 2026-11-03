@@ -1,14 +1,16 @@
 ---
 title: Year 5 Computing
-description: Computing lessons, projects, and resources for Year 5.
+description: Scratch game projects and computing resources for Year 5.
 order: 1
-draft: true
+draft: false
 ---
 
 # Year 5 Computing
 
-Add a short introduction to the course and its units.
+Welcome to Year 5 Computing. Choose a unit to explore its lessons and
+projects.
 
 ## Units
 
-Add lesson files in this folder as the curriculum takes shape.
+- [Maze Collector: Build a Scratch Maze Game](/year5/programming/maze-collector)
+- [Scratch Game Mechanics: Loops and Patrol Enemies](/year5/programming/scratch-game-mechanics)

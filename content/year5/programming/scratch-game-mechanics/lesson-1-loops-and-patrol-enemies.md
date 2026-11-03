@@ -2,7 +2,7 @@
 title: Loops and Patrol Enemies
 description: Use repeat and forever loops to bring a patrolling enemy to life in Scratch.
 order: 1
-draft: false
+draft: true
 ---
 
 Games use loops to keep things happening. A game repeatedly checks your controls, moves characters, and looks for collisions. Without loops, those actions would happen only once.
