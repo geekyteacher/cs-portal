@@ -18,6 +18,40 @@ Debug the program so it checks the right room and saves a booking.
 - Access and update an item in a 2D list.
 - Use a loop and counter to process a row of data.
 
+## Python lists and CAIE arrays: same grid, different indexing
+
+Both examples represent floors and rooms in a two-dimensional structure, but
+their indexing rules are not automatically the same. In CAIE pseudocode, use
+the array bounds given in the question. In this example, the floor bounds are
+`0` to `2` and the room bounds are `1` to `3`, so the labels can be used
+directly:
+
+```pseudocode
+DECLARE HotelGrid : ARRAY[0:2, 1:3] OF CHAR
+HotelGrid[Floor, Room] ← "B"
+```
+
+In Python, this grid is a list containing three lists. Python list indexes
+start at `0` in each list, so room numbers `1` to `3` must be translated to
+indexes `0` to `2`:
+
+```python
+floor_index = int(input("Enter floor (0 to 2): "))
+room_number = int(input("Enter room (1 to 3): "))
+room_index = room_number - 1
+
+hotel_grid[floor_index][room_index] = "B"
+```
+
+| | CAIE array in this example | Python nested list |
+| --- | --- | --- |
+| Floor positions | `0` to `2` | `0` to `2` |
+| Room positions | `1` to `3` | `0` to `2` |
+| Access a room | `HotelGrid[Floor, Room]` | `hotel_grid[floor_index][room_index]` |
+
+For an exam question, follow the declared bounds; do not assume every CAIE
+array starts at `0` or that its indexes match a Python list.
+
 ### Success criteria
 
 - The program checks the selected room without a type or index error.
@@ -108,11 +142,31 @@ each available room.
 Test your count with at least two floors. Remember that the booking happens
 before the count, so the selected floor's updated status should be counted.
 
+## Whole-hotel availability report
+
+Once your selected-floor counter works, extend it to report the number of
+available rooms on **each floor**. Use one loop to visit each floor and a
+second loop to count `"A"` values on that floor. Display the floor number and
+its available-room count.
+
+Before running your code, predict the counts from the starting grid. Then
+book floor `0`, room `1` and check how the report changes. If you finish,
+calculate and display the total number of available rooms in the hotel.
+
 > [!CHALLENGE]
 >
 > Add range checks so a floor outside `0` to `2` or a room outside `1` to `3`
 > is rejected with a helpful message rather than selecting the wrong room or
 > crashing.
+
+## Exit ticket
+
+Answer these before you finish:
+
+1. A guest chooses floor `1`, room `3`. What Python indexes locate that room?
+2. Why does the room number need changing, but the floor number does not?
+3. If floor `0`, room `1` is booked, how many available rooms remain on floor
+   `0`?
 
 ## Check your understanding
 
@@ -161,6 +215,27 @@ The floor is converted to an integer for indexing. The room is also converted,
 then shifted by one because the room labels start at `1` while Python list
 indexes start at `0`. The assignment updates the nested list in place. The
 counter starts at zero and increases once for each `"A"` on the selected floor.
+
+### Whole-hotel availability report
+
+```python
+for floor_index, floor in enumerate(hotel_grid):
+    available_count = 0
+    for room_status in floor:
+        if room_status == "A":
+            available_count += 1
+    print("Floor", floor_index, "available rooms:", available_count)
+```
+
+From the starting grid, the counts are 2, 2, and 1 for floors 0, 1, and 2.
+After booking floor 0, room 1, the counts are 1, 2, and 1.
+
+### Exit ticket answers
+
+1. `[1][2]` (`floor_index` 1 and `room_index` 2).
+2. The floor labels already match Python's outer-list indexes; room labels
+   start at 1 while Python's inner-list indexes start at 0.
+3. One available room remains.
 
 ### Check your understanding
 
