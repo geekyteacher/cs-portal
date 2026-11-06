@@ -175,7 +175,7 @@ Answer these before you finish:
 3. What changes in the grid when a room is booked?
 4. What does the available-room counter need to be set to before the loop?
 
-## Answers
+<!-- ## Answers
 
 ### Debugged program
 
@@ -243,4 +243,4 @@ After booking floor 0, room 1, the counts are 1, 2, and 1.
 2. Floor labels already match the grid indexes (`0`, `1`, `2`), but room labels
    (`1`, `2`, `3`) are one greater than their indexes (`0`, `1`, `2`).
 3. Its `"A"` value is replaced with `"B"`.
-4. It must start at `0` before counting available rooms.
+4. It must start at `0` before counting available rooms. -->
