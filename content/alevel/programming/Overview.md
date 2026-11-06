@@ -1,0 +1,8 @@
+---
+title: Porgramming Overview
+description: Design, implement, and test robust data validation, then evaluate what validation can and cannot guarantee.
+order: 1
+draft: false
+---
+## Useful Links
+- [[Student-Guide-to-Pseudocode.pdf]]

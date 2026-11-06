@@ -1,7 +1,7 @@
 ---
 title: Validation and Verification
 description: Design, implement, and test robust data validation, then evaluate what validation can and cannot guarantee.
-order: 1
+order: 2
 draft: false
 ---
 ## Learning goals

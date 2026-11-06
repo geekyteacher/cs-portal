@@ -1,7 +1,7 @@
 ---
 title: The Hotel Grid Booker
 description: Debug a room-booking program using integer input, 2D-list indexing, and state changes.
-order: 2
+order: 3
 draft: false
 ---
 
