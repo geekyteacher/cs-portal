@@ -5,4 +5,5 @@ order: 1
 draft: false
 ---
 ## Useful Links
-- [[Student-Guide-to-Pseudocode.pdf]]
+%%[Hotel Grid Booker starter program](/downloads/hotel-grid-booker-starter.py).%%
+- [Student-Guide-to-Pseudocode.pdf](/downloads/Student-Guide-to-Pseudocode.pdf)
