@@ -4,5 +4,19 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"terminal.integrated.env.windows": {
+			"PATH": "${env:USERPROFILE}\\bin\\nodejs\\node-v24.22.0-win-x64;${env:PATH}"
+		},
+		"terminal.integrated.profiles.windows": {
+			"CS Portal Command Prompt": {
+				"path": "${env:windir}\\System32\\cmd.exe",
+				"args": [
+					"/k",
+					"set PATH=%USERPROFILE%\\bin\\nodejs\\node-v24.22.0-win-x64;%PATH%"
+				]
+			}
+		},
+		"terminal.integrated.defaultProfile.windows": "CS Portal Command Prompt"
+	}
 }

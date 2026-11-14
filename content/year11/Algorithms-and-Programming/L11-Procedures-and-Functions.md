@@ -4,131 +4,110 @@ description: "Define and call procedures and functions using parameters, return 
 order: 11
 draft: false
 ---
-## Topics in this page
-
-- Procedures and functions
-- Parameters
-- Return values
-- Local and global variables
-- Maintainable algorithms
 
 ## Learning Objectives
 
-By the end of this lesson sequence you should be able to:
+- Distinguish between procedures (actions) and functions (calculations returning a value).
+- Define and call subprograms using up to three parameters.
+- Understand the scope difference between local and global variables.
+- Use built-in string and library routines (`SUBSTRING`, `LCASE`, `DIV`, `MOD`, `ROUND`).
 
-- Explain why a problem may be divided into subprograms.
-- Define and call a procedure with or without parameters.
-- Define and call a function that returns a value.
-- Distinguish between local and global variables.
-- Use meaningful identifiers and appropriate comments.
+---
 
-## Quick Check
+## 1. Starter (5 mins — Do this first)
+
+Answer these questions in your book.
 
 1. What does a parameter allow a subprogram to receive?
-2. Which is clearer: `x` or `NumberOfTickets`? Why?
-3. Does a function return a value, or does a procedure return a value?
+2. Which identifier is clearer: `x` or `NumberOfTickets`? Why?
+3. Does a **function** return a value, or does a **procedure** return a value?
 
-## Learn
+---
 
-Subprograms divide a solution into smaller named parts. They can make an
-algorithm easier to understand, test and maintain. In the syllabus,
-procedures and functions may use up to three parameters.
-Their definitions are placed at the start of the code, before the main
-program statements.
+## 2. Learn: Subprograms & Library Routines
 
-### Procedures
+### Procedures vs Functions
 
-A **procedure** performs instructions. It may have parameters, but it does not
-return a value.
+#### Procedure
 
-```pseudocode
-PROCEDURE ShowTotal(Amount : REAL)
-    OUTPUT "Total cost: ", Amount
-ENDPROCEDURE
-```
+A **procedure** performs a set of instructions.
 
-Call a procedure using `CALL`:
+- May accept parameters.
+- Does **not** return a value.
+- Called using `CALL`.
 
 ```pseudocode
-CALL ShowTotal(12.50)
-```
-
-A procedure with no parameters can be called without brackets:
-
-```pseudocode
-PROCEDURE ShowWelcome
-    OUTPUT "Welcome"
+PROCEDURE DisplayMessage()
+    OUTPUT "Hello"
 ENDPROCEDURE
 
-CALL ShowWelcome
+CALL DisplayMessage()
 ```
 
-### Functions
+#### Function
 
-A **function** calculates and returns one value. The function's return type
-appears in its definition. Use `RETURN` to give the value back.
+A **function** calculates and returns a single value.
+
+- Uses `RETURN`.
+- Returns a value to the calling code.
+- Used inside expressions.
+- Never called with `CALL`.
 
 ```pseudocode
-FUNCTION CalculateArea(Length : REAL, Width : REAL) RETURNS REAL
-    RETURN Length * Width
+FUNCTION Square(Number : INTEGER) RETURNS INTEGER
+    RETURN Number * Number
 ENDFUNCTION
+
+OUTPUT Square(5)
 ```
 
-Use the function call as part of an expression. Do **not** use `CALL` for a
-function:
+---
+
+### Useful CAIE Library Routines
+
+| Routine | Purpose | Example |
+|----------|----------|----------|
+| `LENGTH(Text)` | Returns the number of characters in a string | `LENGTH("Hello")` → `5` |
+| `LCASE(Text)` | Converts text to lowercase | `LCASE("HELLO")` → `"hello"` |
+| `UCASE(Text)` | Converts text to uppercase | `UCASE("hello")` → `"HELLO"` |
+| `SUBSTRING(Text, Start, Length)` | Extracts part of a string | `SUBSTRING("Computer", 1, 3)` → `"Com"` |
+| `DIV(A, B)` | Integer division | `17 DIV 5` → `3` |
+| `MOD(A, B)` | Returns the remainder | `17 MOD 5` → `2` |
+| `ROUND(Value, Places)` | Rounds a real number | `ROUND(3.14159, 2)` → `3.14` |
+
+---
+
+### Scope
+
+#### Local Variables
+
+Local variables only exist inside the subprogram where they are declared.
 
 ```pseudocode
-Area <- CalculateArea(5.0, 3.0)
-OUTPUT Area
+PROCEDURE Example()
+    DECLARE Count : INTEGER
+    Count <- 1
+ENDPROCEDURE
 ```
 
-### Parameters and local variables
+The variable `Count` cannot be accessed outside the procedure.
 
-A **parameter** is a named input in a subprogram definition. When the
-subprogram is called, the argument value is supplied for that parameter. The
-argument data type must match the parameter's data type.
+#### Global Variables
 
-A **local variable** is declared inside a subprogram and is used within that
-subprogram. A **global variable** is declared outside subprograms and can be
-used by the main algorithm and subprograms. Prefer parameters and local
-variables where practical, because they make data dependencies clearer and
-reduce accidental changes to shared values.
+Global variables are declared in the main program and can be accessed by multiple subprograms.
 
-### Useful string operations and library routines
+```pseudocode
+DECLARE Total : INTEGER
+Total <- 0
+```
 
-These standard operations can be used as part of expressions:
+In general, using parameters and local variables is preferred because it reduces bugs and makes programs easier to maintain.
 
-| Operation | Purpose | Example |
-| --- | --- | --- |
-| `LENGTH(Text)` | Returns the number of characters. | `LENGTH("Happy Days")` returns `10`. |
-| `LCASE(Text)` | Returns the text in lower case. | `LCASE("HELLO")` returns `"hello"`. |
-| `UCASE(Text)` | Returns the text in upper case. | `UCASE("Happy")` returns `"HAPPY"`. |
-| `SUBSTRING(Text, Start, Length)` | Returns part of a string. | `SUBSTRING("Happy Days", 1, 5)` returns `"Happy"`. |
-| `DIV(A, B)` | Returns the integer quotient. | `DIV(10, 3)` returns `3`. |
-| `MOD(A, B)` | Returns the remainder. | `MOD(10, 3)` returns `1`. |
-| `ROUND(Value, Places)` | Rounds a real number. | `ROUND(3.14159, 2)` returns `3.14`. |
-| `RANDOM()` | Returns a random real from 0 to 1 inclusive. | `RANDOM()`. |
+---
 
-For `SUBSTRING`, the start position is generally `1` for the first character.
-`DIV` and `MOD` use integer operands. Use parentheses to make complex
-expressions clear.
+## 3. Guided Practice (We do this together)
 
-### Maintainable algorithms
-
-Make algorithms easier to read and update by using:
-
-- Meaningful names for variables, constants, arrays, procedures and functions.
-- Subprograms for tasks that can be named and reused.
-- Short comments that explain a purpose or a non-obvious decision.
-- Consistent indentation and clear structure.
-
-Selection and iteration can be nested when a problem needs a decision or a
-loop inside another structure. Trace each level carefully; the syllabus
-expects no more than three levels of nesting.
-
-## Guided Practice
-
-Complete this function so it returns the larger of two values:
+Complete this function so it returns the larger of two integer values.
 
 ```pseudocode
 FUNCTION LargerValue(First : INTEGER, Second : INTEGER) RETURNS INTEGER
@@ -138,60 +117,99 @@ FUNCTION LargerValue(First : INTEGER, Second : INTEGER) RETURNS INTEGER
         RETURN _____
     ENDIF
 ENDFUNCTION
-
-OUTPUT LargerValue(12, 9)
 ```
 
-1. Fill in the return values.
-2. State the output.
-3. Explain why `LargerValue(12, 9)` is used inside `OUTPUT`, rather than with
-   `CALL`.
+1. Fill in the missing return statements.
+2. Explain why `LargerValue(12, 9)` is written inside an `OUTPUT` statement rather than preceded by `CALL`.
 
-## Core Practice
+---
 
-1. Write a procedure called `DisplayLine` that takes an integer parameter
-   `Length` and outputs that many `*` characters.
-2. Write a function called `CalculateTotal` with parameters `Price` and
-   `Quantity`. It returns `Price * Quantity`.
-3. Show how to call each subprogram.
-4. Identify one local variable in a subprogram and explain what makes it
-   local.
+## 4. Core Practice (Paper / Exam Style)
 
-## Support
+### Task 1: Procedure with a Parameter
 
-Use these patterns:
+Write a procedure called `DisplayLine` that:
 
-```pseudocode
-PROCEDURE ProcedureName(Parameter : INTEGER)
-    // instructions
-ENDPROCEDURE
+- Accepts an integer parameter called `Length`.
+- Outputs that many `*` characters.
 
-CALL ProcedureName(Value)
+Example:
+
+```text
+CALL DisplayLine(5)
 ```
 
-```pseudocode
-FUNCTION FunctionName(Parameter : INTEGER) RETURNS INTEGER
-    RETURN Result
-ENDFUNCTION
+Output:
 
-Answer <- FunctionName(Value)
+```text
+*****
 ```
 
-Remember: use `CALL` for procedures; use a function as part of an expression.
+---
 
-## Stretch
+### Task 2: Function with a Return Value
 
-Design a program that calculates the total cost of several items. Decompose
-the solution into:
+Write a function called `CalculateTotal` that:
 
-- A procedure that displays instructions.
-- A function that calculates the cost for one item.
-- A main algorithm that inputs values, calls the subprograms and outputs the
-  final total.
+- Accepts:
+  - `Price` (REAL)
+  - `Quantity` (INTEGER)
+- Returns:
 
-Use meaningful names and no more than three parameters in any subprogram.
+```text
+Price × Quantity
+```
 
-## Homework
+---
 
-In your own words, explain the difference between a procedure and a function.
-Include how each one is called and whether it returns a value.
+### Task 3: Calling Subprograms
+
+Show the correct pseudocode required to call:
+
+1. Your `DisplayLine` procedure.
+2. Your `CalculateTotal` function.
+
+Demonstrate each being used inside a complete algorithm.
+
+---
+
+## 5. Python Implementation (Thonny Lab Check)
+
+Open Thonny and translate your `CalculateTotal` function into Python.
+
+```python
+def calculate_total(price, quantity):
+    return price * quantity
+```
+
+Test it with several sample inputs.
+
+Save your program as:
+
+```text
+l11_subprograms.py
+```
+
+Upload it to the Teams assignment when finished.
+
+---
+
+## 6. Stretch (Finished Early?)
+
+Design a modular program for a shopping system that includes:
+
+1. A procedure to display a welcome banner.
+2. A function to calculate the total cost of an item.
+3. A main routine that:
+   - Repeatedly inputs item prices and quantities.
+   - Uses the function to calculate each item total.
+   - Accumulates a running basket total.
+4. Outputs the final basket cost.
+
+### Challenge Extension
+
+Modify your design to:
+
+- Apply a 10% discount when the basket total exceeds 200.
+- Use a separate function to calculate the discount.
+- Output both the original total and the discounted total.

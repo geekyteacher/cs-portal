@@ -1,202 +1,261 @@
 ---
 title: "Lesson 13: Algorithm Design and Decomposition"
-description: "Analyse a problem, decompose it and design a tested solution using pseudocode, flowcharts or structure diagrams."
+description: "Analyse a problem, decompose it and design a tested solution using pseudocode, structure diagrams and file handling."
 order: 13
 draft: false
 ---
-## Topics in this page
-
-- Program development life cycle
-- Decomposition and sub-systems
-- Inputs, processes, outputs and storage
-- Structure diagrams, flowcharts and pseudocode
-- Designing, testing and amending algorithms
 
 ## Learning Objectives
 
-By the end of this lesson sequence you should be able to:
+- Describe the program development life cycle stages (Analysis, Design, Coding, Testing).
+- Decompose complex problems into manageable sub-systems.
+- Select and use structure diagrams, flowcharts, or pseudocode.
+- Implement CAIE pseudocode text file handling (`OPENFILE`, `READFILE`, `WRITEFILE`, `CLOSEFILE`).
 
-- Describe the analysis, design, coding and testing stages.
-- Break a problem into smaller sub-problems.
-- Identify inputs, processes, outputs and storage.
-- Select a suitable representation for an algorithm.
-- Design and amend an algorithm using suitable test data.
+---
 
-## Quick Check
+## 1. Starter (5 mins — Do this first)
 
-For a program that calculates the total price of a shopping basket:
+For an online shopping cart program:
 
-1. Name two possible inputs.
-2. Name one process.
-3. Name one output.
-4. What information might need to be stored?
+1. Name two inputs.
+2. Name one processing step.
+3. Name what data must be stored persistently.
 
-## Learn
+---
 
-### The program development life cycle
+## 2. Learn: Life Cycle & File Handling
 
-| Stage | What happens |
-| --- | --- |
-| Analysis | Identify the problem, requirements, inputs, processes, outputs and storage. Use abstraction to focus on relevant details and decompose the problem into manageable parts. |
-| Design | Plan the solution using structure diagrams, flowcharts and/or pseudocode. |
-| Coding | Write program code and test it repeatedly as it is developed. |
-| Testing | Use suitable test data to check that the solution works and correct errors. |
+### Program Development Life Cycle
 
-The stages support each other. Testing may reveal a problem that requires
-changes to the design or code.
+Most software projects follow four key stages:
+
+| Stage | Purpose |
+|---------|---------|
+| **Analysis** | Identify the problem, requirements, inputs, outputs, processing, and storage needed. |
+| **Design** | Plan the solution using pseudocode, flowcharts, structure diagrams, and data structures. |
+| **Coding** | Translate the design into a programming language. |
+| **Testing** | Check the program works correctly using suitable test data. |
+
+---
 
 ### Decomposition
 
-**Decomposition** means breaking a problem into smaller parts, or
-sub-systems. Each part should have a clear purpose and connect to the overall
-requirements.
+**Decomposition** means breaking a large problem into smaller, manageable parts.
 
-For a checkout program, possible parts are:
+For example, an online shopping system could be decomposed into:
 
-1. Input item details.
-2. Calculate each line total.
-3. Add line totals to a basket total.
-4. Apply any discount.
-5. Display the receipt.
+1. User login system.
+2. Product catalogue.
+3. Shopping basket.
+4. Payment processing.
+5. Order confirmation.
 
-For each part, identify its inputs, processing, outputs and any data that must
-be stored.
+Benefits of decomposition:
 
-### Choosing a design method
+- Makes programs easier to design.
+- Makes testing simpler.
+- Allows different programmers to work on different parts.
+- Makes maintenance easier.
 
-- A **structure diagram** shows how a system or problem is divided into
-  smaller parts.
-- A **flowchart** represents the control flow of an algorithm using standard
-  symbols.
-- **Pseudocode** describes an algorithm in a language-independent, structured
-  form.
+---
 
-Use the conventions and symbols specified by the task. Pseudocode needs
-precise operators and instructions; for example, write `Score >= 50`, not
-“Score is at least 50”.
+### File Handling in CAIE Pseudocode
 
-For Paper 2 algorithm questions, write the solution in pseudocode. Coding
-practice is still useful; the syllabus permits pseudocode or Python, Visual
-Basic or Java for the 15-mark scenario question.
+Files allow data to be stored after a program closes.
 
-### From design to testing
-
-After writing an algorithm:
-
-1. Check that every requirement is represented.
-2. Check that variables are declared and have suitable data types.
-3. Follow sequence, selection and iteration carefully.
-4. Use test data and state the expected results.
-5. Amend the algorithm if a test reveals a problem.
-
-When asked to amend an existing solution, preserve the parts that already
-meet the requirements and change the specific step that causes the problem.
-
-## Guided Practice
-
-Design a program that inputs a student's name and three assessment marks,
-calculates the average, and outputs the name and average.
-
-Complete the planning table:
-
-| Category | Possible data |
-| --- | --- |
-| Inputs |  |
-| Processes |  |
-| Outputs |  |
-| Storage |  |
-| Sub-problems |  |
-
-Then write a short pseudocode outline. You do not need to write every
-instruction yet.
-
-## Core Practice
-
-### Task: School club booking system
-
-A school needs a program to record bookings for a club. It must collect a
-student's name and year group, check that the year group is allowed, store
-accepted bookings, and display how many students have booked.
-
-1. List the requirements in your own words.
-2. Identify the inputs, processes, outputs and stored data.
-3. Decompose the problem into at least four sub-problems.
-4. Draw a structure diagram or flowchart for the main parts.
-5. Write pseudocode for the booking and counting process.
-6. Suggest normal, abnormal, extreme and boundary test data for the year
-   group check. State the expected result.
-7. Implement one small part of your solution in Python, then amend it after
-   testing an invalid year group.
-
-## Support
-
-Use this planning scaffold:
-
-1. **Input:** What does the user provide?
-2. **Check:** What rules must the input satisfy?
-3. **Process:** What calculations or updates are needed?
-4. **Storage:** What values must be remembered?
-5. **Output:** What should the user or teacher see?
-6. **Test:** What valid and invalid examples will you try?
-
-Start your pseudocode with:
-
-```pseudocode
-DECLARE StudentName : STRING
-DECLARE YearGroup, BookingCount : INTEGER
-
-BookingCount <- 0
-OUTPUT "Enter student name:"
-INPUT StudentName
-OUTPUT "Enter year group:"
-INPUT YearGroup
-
-// Add the range check, storage/update and outputs
-```
-
-## Stretch
-
-Choose a familiar system, such as a library loan, canteen order or sports
-booking.
-
-- Draw a structure diagram that decomposes the system into sub-systems.
-- Identify one requirement that is not relevant to the problem and explain
-  why it can be abstracted away.
-- Design a flowchart or pseudocode solution for one sub-system.
-- Give test data and expected outcomes for the key decision.
-
-## Additional syllabus focus: file handling
-
-Some programs need to keep data after they close. In CAIE pseudocode, a file
-is opened in one mode, read from or written to, and then closed.
+#### Reading from a File
 
 ```pseudocode
 DECLARE LineOfText : STRING
 
-OPENFILE "Names.txt" FOR READ
-READFILE "Names.txt", LineOfText
-CLOSEFILE "Names.txt"
+OPENFILE "Data.txt" FOR READ
+READFILE "Data.txt", LineOfText
+CLOSEFILE "Data.txt"
 ```
 
-To write a line, open the file in `WRITE` mode and use `WRITEFILE`:
+---
+
+#### Writing to a File
 
 ```pseudocode
-DECLARE LineOfText : STRING
-
-LineOfText <- "Ada Lovelace"
-OPENFILE "Names.txt" FOR WRITE
-WRITEFILE "Names.txt", LineOfText
-CLOSEFILE "Names.txt"
+OPENFILE "Data.txt" FOR WRITE
+WRITEFILE "Data.txt", "New Record"
+CLOSEFILE "Data.txt"
 ```
 
-`READFILE` and `WRITEFILE` can handle single items of data or a line of text.
-Opening a file for writing creates a new file and replaces existing contents,
-so use it carefully. Files should be closed when they are no longer needed.
-File handling is an additional Paper 2 skill beyond the original 24 lesson
-titles.
+> [!WARNING]
+> Opening a file using `FOR WRITE` removes any existing contents before writing new data.
 
-## Homework
+---
 
-Complete the planning and design for one sub-system in the club booking
-scenario. Include inputs, processes, outputs, storage, pseudocode and at
-least two test cases with expected results.
+### Inputs, Processes, Outputs and Storage (IPOS)
+
+When analysing a problem, identify:
+
+| Component | Description |
+|------------|-------------|
+| **Input** | Data entered into the system. |
+| **Process** | Operations performed on the data. |
+| **Output** | Information produced by the system. |
+| **Storage** | Data retained for future use. |
+
+---
+
+## 3. Guided Practice (We do this together)
+
+A school needs a program that:
+
+- Inputs a student's name.
+- Inputs three test marks.
+- Calculates the average mark.
+- Outputs the student name and average.
+
+Complete an IPOS planning table.
+
+| Category | Examples |
+|-----------|----------|
+| Inputs | |
+| Processes | |
+| Outputs | |
+| Storage | |
+
+### Extension Question
+
+How could the program be decomposed into separate modules or subprograms?
+
+---
+
+## 4. Core Practice (Paper / Exam Style)
+
+### Club Booking System Scenario
+
+A school needs a program that:
+
+- Records club bookings.
+- Stores student names.
+- Stores year groups.
+- Checks students are in allowed year groups.
+- Counts the total number of bookings.
+- Stores records for future use.
+
+---
+
+### Task 1: Decomposition
+
+Break the system into at least four sub-systems.
+
+For example:
+
+- Input module
+- Validation module
+- Storage module
+- Reporting module
+
+Explain the purpose of each.
+
+---
+
+### Task 2: Booking Algorithm
+
+Write CAIE pseudocode that:
+
+1. Inputs a student's name.
+2. Inputs their year group.
+3. Validates that the year group is permitted.
+4. Records valid bookings.
+5. Maintains a running total of bookings.
+6. Outputs the booking count.
+
+---
+
+### Task 3: File Handling
+
+Write pseudocode that saves the final booking count to a file called:
+
+```text
+Bookings.txt
+```
+
+Use the file-handling commands:
+
+- `OPENFILE`
+- `WRITEFILE`
+- `CLOSEFILE`
+
+---
+
+## 5. Python Implementation (Thonny Lab Check)
+
+Write a Python program that:
+
+1. Opens a file called `scores.txt` in write mode.
+2. Stores three student names.
+3. Closes the file.
+4. Reopens the file in read mode.
+5. Displays the contents on the screen.
+
+Example structure:
+
+```python
+file = open("scores.txt", "w")
+
+file.write("Alice\n")
+file.write("Ben\n")
+file.write("Charlie\n")
+
+file.close()
+
+file = open("scores.txt", "r")
+
+for line in file:
+    print(line.strip())
+
+file.close()
+```
+
+Save your program as:
+
+```text
+l13_files.py
+```
+
+Upload it to the Teams assignment when complete.
+
+---
+
+## 6. Stretch (Finished Early?)
+
+Choose a complex real-world system such as:
+
+- Library management system
+- Hospital appointment system
+- Cinema booking system
+- School management system
+
+### Task 1: Structure Diagram
+
+Draw a top-level structure diagram that decomposes the system into at least three major sub-systems.
+
+Example:
+
+```text
+Library System
+├── Member Management
+├── Book Loans
+└── Reporting
+```
+
+### Task 2: Abstraction
+
+Explain how **abstraction** helps developers focus only on relevant details.
+
+For your chosen system:
+
+- What details would a librarian need to see?
+- What details could be hidden from them?
+- Why is hiding unnecessary complexity useful?
+
+### Challenge Extension
+
+Extend your structure diagram further by decomposing one of your sub-systems into smaller modules and explaining how they interact.

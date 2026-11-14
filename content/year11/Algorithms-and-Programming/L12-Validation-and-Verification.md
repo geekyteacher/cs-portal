@@ -4,156 +4,223 @@ description: "Choose validation and verification checks and apply normal, abnorm
 order: 12
 draft: false
 ---
-## Topics in this page
-
-- Validation checks
-- Verification checks
-- Test data: normal, abnormal, extreme and boundary
 
 ## Learning Objectives
 
-By the end of this lesson sequence you should be able to:
+- Distinguish between validation (checking data reasonableness) and verification (checking data accuracy against a source).
+- Identify appropriate validation checks (range, length, type, presence, format, check digit).
+- Describe verification methods (visual check, double entry).
+- Select rigorous test data: normal, abnormal, extreme, and boundary.
 
-- Explain why input data is validated and verified.
-- Identify and choose suitable validation checks.
-- Explain visual checking and double-entry verification.
-- Select suitable test data and state the expected result.
+---
 
-## Quick Check
+## 1. Starter (5 mins — Do this first)
 
-1. Does a check that a mark is between 0 and 100 prove that the correct
-   student's mark was entered?
-2. What is the difference between the largest acceptable value and a value
-   just outside the acceptable range?
-3. Name one way to check that data has been copied accurately.
+Answer these questions in your book.
 
-## Learn
+1. Does passing a range check (`0` to `100`) prove that the correct student's mark was entered?
+2. What is the difference between an **extreme** value and a **boundary** value?
+3. Name one verification method used to prevent typing mistakes when entering a new password.
 
-### Validation and verification are different
+---
 
-**Validation** checks whether data is reasonable and follows specified rules.
-It does not prove that the data is correct.
+## 2. Learn: Data Quality & Testing
 
-**Verification** checks whether data has been entered or copied accurately
-from its source. It does not prove that the original data was correct.
+### Validation vs Verification
 
-For example, a mark of `76` may pass a range check of `0` to `100` but still
-belong to the wrong student. A second check against the original source is
-verification.
+#### Validation
 
-### Validation checks
+Validation uses automated checks to ensure data is sensible and follows predefined rules.
 
-| Check | What it checks | Example |
-| --- | --- | --- |
-| Range | A value is within stated limits. | A mark must be from 0 to 100. |
-| Length | A string has an allowed number of characters. | A code must contain 6 characters. |
-| Type | A value is the required data type. | A quantity must be an integer. |
-| Presence | A required value has been entered. | A surname cannot be blank. |
-| Format | Data follows a specified pattern. | A date must follow `DD/MM/YYYY`. |
-| Check digit | A digit calculated from other digits is valid. | A barcode check digit is recalculated and compared. |
+Common validation checks include:
 
-The suitable checks depend on the rules for the data. A range check cannot,
-for example, detect every incorrectly entered value if the wrong value is
-still within the allowed range.
+- **Range check** - e.g. age must be between 11 and 18.
+- **Length check** - e.g. password must contain exactly 8 characters.
+- **Type check** - e.g. an exam mark must be an integer.
+- **Presence check** - e.g. a username cannot be left blank.
+- **Format check** - e.g. an email address must contain `@`.
+- **Check digit** - e.g. barcode or ISBN validation.
 
-### Verification checks
+> Validation checks whether data is reasonable, not whether it is correct.
 
-| Check | How it works | Example |
-| --- | --- | --- |
-| Visual check | A person compares entered data with the original. | Compare a typed address with the paper form. |
-| Double entry | Data is entered twice and the two entries are compared. | Type a new password twice; accept only if the entries match. |
+#### Verification
 
-These methods help detect copying or typing mistakes. They do not decide
-whether the source data itself is valid.
+Verification checks whether data has been copied accurately from an original source.
 
-### Selecting test data
+Common verification methods include:
 
-Test data is used to check an algorithm or validation rule. State the expected
-result for each test.
+- **Visual check**
+  - A user compares the entered data with the original source.
+- **Double entry**
+  - The user enters the data twice and both entries must match.
 
-| Type | Meaning | Example for a mark from 0 to 100 inclusive |
-| --- | --- | --- |
-| Normal | Typical valid data. | `63` |
-| Abnormal | Invalid data that should be rejected. | `-1` or `101` |
-| Extreme | The smallest or largest acceptable value. | `0` or `100` |
-| Boundary | The extreme acceptable value and the nearest rejected value. | `-1`, `0`, `100`, `101` |
+> Verification checks accuracy of entry, not validity of the original data.
 
-For a pass rule of `Mark >= 50`, also test `49` and `50` to check the pass
-boundary. Do not confuse an input-range boundary (`0` and `100`) with a
-decision boundary (`49` and `50`).
+---
 
-## Guided Practice
+### Test Data Categories
 
-A club accepts an integer age from `11` to `18`, inclusive. The age is
-required, and the user is asked to type it twice.
+| Test Type | Description |
+|------------|------------|
+| **Normal** | Typical valid data that should be accepted. |
+| **Abnormal** | Invalid data that should be rejected. |
+| **Extreme** | The smallest or largest valid values. |
+| **Boundary** | An extreme valid value and its nearest invalid neighbour. |
 
-1. Suggest a presence check.
-2. Suggest a range check.
-3. Give one abnormal value.
-4. Give both extreme values.
-5. Give one pair of boundary values.
-6. Describe how double entry could verify the age.
-7. Explain why matching double entries do not prove the age is true.
+#### Example
 
-## Core Practice
+If valid ages are from **11 to 18 inclusive**:
 
-### Task 1: Choose validation checks
+| Type | Example |
+|--------|--------|
+| Normal | `15` |
+| Extreme (Lower) | `11` |
+| Extreme (Upper) | `18` |
+| Boundary (Lower) | `10`, `11` |
+| Boundary (Upper) | `18`, `19` |
+| Abnormal | `-3`, `"cat"` |
 
-For each item, choose a suitable check and explain what it would accept or
-reject:
+---
 
-1. A username must not be blank.
-2. A product code must contain exactly eight characters.
-3. A quantity must be a whole number from 1 to 50.
-4. A date must be entered in `DD/MM/YYYY` format.
-5. A code includes a final check digit.
+## 3. Guided Practice (We do this together)
 
-### Task 2: Select test data
+A youth club accepts an integer age from `11` to `18` inclusive.
 
-A program accepts a percentage from `0` to `100`, inclusive, and outputs
-`"Pass"` for values of `50` or more.
+The age field is required and users must enter it twice.
 
-Give normal, abnormal, extreme and boundary test data. State the expected
-acceptance or rejection and output for each value. Include the pass threshold
-values `49` and `50`.
+Answer the following:
 
-### Task 3: Verification
+1. Suggest an appropriate validation check for the age range.
+2. State one abnormal test value.
+3. State the pair of lower boundary test values.
+4. Explain why matching double-entry inputs do not prove the entered age is actually true.
 
-Explain when a visual check and a double-entry check would be appropriate.
-Give one limitation of each.
+---
 
-## Support
+## 4. Core Practice (Paper / Exam Style)
 
-Use these sentence starters:
+### Task 1: Validation Matching
 
-- “A range check would check that ...”
-- “This is validation because ...”
-- “Double entry compares ...”
-- “This test is boundary data because ...”
-- “The expected result should be ...”
+Match each rule to the most appropriate validation check.
 
-For Task 2, organise your test data in this table:
+| Rule | Validation Check |
+|--------|--------|
+| Username cannot be blank | |
+| PIN must contain exactly 4 digits | |
+| Age must be between 11 and 18 | |
+| Exam mark must be numeric | |
+| School email must follow the correct format | |
 
-| Test value | Type of test data | Accept or reject? | Expected output |
-| ---: | --- | --- | --- |
-| 63 | Normal |  |  |
-| -1 | Abnormal |  |  |
-| 0 | Extreme |  |  |
-| -1 and 0 | Boundary |  |  |
-| 49 and 50 | Pass threshold |  |  |
+---
 
-## Stretch
+### Task 2: Test Data Table
 
-A school collects a student ID made of two letters followed by four digits.
-The ID is entered twice.
+A program accepts percentages from `0` to `100` inclusive.
 
-1. Suggest a format check for the ID.
-2. Explain how double entry verifies the ID.
-3. Explain why both checks may still fail to identify an ID that belongs to
-   the wrong student.
-4. Propose another check that could improve the process.
+It outputs:
 
-## Homework
+```text
+Pass
+```
 
-For a new online account form, give one example each of a validation check and
-a verification check. Explain how they differ.
+for scores of `50` or above.
+
+Create a complete test data table including:
+
+- Normal data
+- Abnormal data
+- Extreme values
+- Input boundaries:
+  - `-1`
+  - `0`
+  - `100`
+  - `101`
+- Decision boundary values:
+  - `49`
+  - `50`
+
+Your table should include:
+
+| Test Value | Test Type | Expected Result | Reason |
+|------------|------------|------------|------------|
+| | | | |
+
+---
+
+### Task 3: Verification Limitations
+
+Explain one limitation of using a **visual check** when transcribing a long handwritten serial number.
+
+Consider:
+
+- Human error.
+- Similar-looking characters.
+- Fatigue when checking large amounts of data.
+
+---
+
+## 5. Python Implementation (Thonny Lab Check)
+
+Write a Python program that validates a score between `0` and `100`.
+
+```python
+score = int(input("Enter score (0-100): "))
+
+while score < 0 or score > 100:
+    print("Invalid score. Try again.")
+    score = int(input("Enter score (0-100): "))
+
+print("Valid score entered.")
+```
+
+Save your program as:
+
+```text
+l12_validation.py
+```
+
+Upload it to the Teams assignment when complete.
+
+---
+
+## 6. Stretch (Finished Early?)
+
+Check digits are often used to detect data-entry mistakes.
+
+Examples include:
+
+- ISBN numbers
+- Credit card numbers
+- Product codes
+- Barcodes
+
+### Challenge
+
+Design a check-digit system for a four-digit product code where the final digit is calculated using modulo-11 arithmetic.
+
+Your answer should:
+
+1. Explain how the check digit is calculated.
+2. Provide a worked example.
+3. Show how the system would detect an error such as:
+
+```text
+1234
+```
+
+being entered as:
+
+```text
+1243
+```
+
+### Extension
+
+Research a real-world check-digit system such as:
+
+- ISBN-10
+- ISBN-13
+- EAN-13
+- Credit card numbers (Luhn Algorithm)
+
+Compare it with your own design and explain which is likely to detect more errors.
