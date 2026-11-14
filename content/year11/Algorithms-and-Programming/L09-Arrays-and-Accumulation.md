@@ -1,62 +1,68 @@
 ---
 title: "Lesson 9: Arrays, Traversal and Accumulation"
-description: "Declare and traverse one-dimensional and two-dimensional arrays, then use totalling and counting algorithms."
+description: "Declare and traverse 1D and 2D arrays, and apply totalling and counting algorithms in CAIE pseudocode."
 order: 9
 draft: false
 ---
-## Topics in this page
-
-- One-dimensional and two-dimensional arrays
-- Reading and writing array values using iteration
-- Totalling
-- Counting
-- Nested iteration
 
 ## Learning Objectives
 
-By the end of this lesson sequence you should be able to:
+- Explain why an array is used to store related data under a single identifier.
+- Declare and access elements in one-dimensional and two-dimensional arrays.
+- Write iteration loops to traverse arrays for totalling and counting.
+- Translate array traversal logic from pseudocode into Python.
 
-- Explain why an array is useful for storing related values.
-- Declare and access one-dimensional and two-dimensional arrays.
-- Read from and write to array elements using loops and index variables.
-- Use an accumulator to total values and a counter to count items meeting a condition.
+---
 
-## Quick Check
+## 1. Starter (5 mins — Do this first)
 
-1. What values does `Index` take in this loop?
+Answer these questions in your book without running any code.
 
-   ```pseudocode
-   FOR Index <- 1 TO 4
-       OUTPUT Index
-   NEXT Index
-   ```
+1. What values does `Counter` take in this loop?
 
-2. Why should `Total` be set to `0` before adding values to it?
-3. What is the difference between updating a total and updating a count?
+```pseudocode
+DECLARE Counter : INTEGER
 
-## Learn
+FOR Counter <- 1 TO 3
+    OUTPUT Counter
+NEXT Counter
+```
 
-### What is an array?
+2. Why must `Total` always be initialised to `0` *before* a loop starts adding numbers to it?
 
-An **array** stores a group of related values under one identifier. Each
-element is accessed using an index. The index can start at `0` or `1`;
-always use the index range given in the question or declaration.
+3. In an array declared as:
+
+```pseudocode
+DECLARE Marks : ARRAY[1:5] OF INTEGER
+```
+
+what is the index of the final element?
+
+---
+
+## 2. Learn: Arrays & Traversal
+
+### What is an Array?
+
+An **array** stores a group of data items of the **same data type** under one name. Each individual item is accessed using an **index number**.
+
+In CAIE pseudocode, array index bounds are declared explicitly:
 
 ```pseudocode
 DECLARE Scores : ARRAY[1:5] OF INTEGER
 ```
 
-This declares five integer elements, `Scores[1]` to `Scores[5]`.
+- **Reading/Writing:**  
+  `Scores[1] <- 72` assigns a value to the first element.
 
-Assign or input values into individual elements:
+  ```pseudocode
+  Scores[1] <- 72
+  ```
 
-```pseudocode
-Scores[1] <- 72
-Scores[2] <- 65
-INPUT Scores[3]
-```
+  `INPUT Scores[3]` reads a value directly into the third element.
 
-Use an index variable to work through the array:
+- **Traversal:**  
+  A `FOR` loop is the standard way to visit every element in an array using an index variable.
 
 ```pseudocode
 DECLARE Index : INTEGER
@@ -66,73 +72,74 @@ FOR Index <- 1 TO 5
 NEXT Index
 ```
 
-### Two-dimensional arrays
+### Two-Dimensional Arrays
 
-A two-dimensional array stores values in rows and columns. It needs two
-indexes, commonly a row and a column:
+A 2D array stores data in **rows and columns** (like a table or spreadsheet).
+
+It requires two index variables: one for the row and one for the column.
 
 ```pseudocode
-DECLARE Seats : ARRAY[1:3, 1:4] OF BOOLEAN
-Seats[2, 3] <- TRUE
+DECLARE Grid : ARRAY[1:3, 1:4] OF INTEGER
+
+Grid[2, 3] <- 10
 ```
 
-The value at row 2, column 3 is accessed as `Seats[2, 3]`. A nested loop can
-visit every element:
+To traverse a 2D array, use **nested loops**.
 
 ```pseudocode
-DECLARE Row, Column : INTEGER
+DECLARE Row, Col : INTEGER
 
 FOR Row <- 1 TO 3
-    FOR Column <- 1 TO 4
-        OUTPUT Seats[Row, Column]
-    NEXT Column
+    FOR Col <- 1 TO 4
+        OUTPUT Grid[Row, Col]
+    NEXT Col
 NEXT Row
 ```
 
-The inner loop processes every column for the current row. The outer loop
-then moves to the next row.
+### Totalling vs Counting Patterns
 
-### Totalling and counting
+#### Accumulating a Total
 
-A **total** is an accumulator: initialise it before the loop and add each
-relevant value to it.
+Initialise the total before the loop starts.
 
 ```pseudocode
-DECLARE Scores : ARRAY[1:4] OF INTEGER
-DECLARE Index, Total : INTEGER
-
 Total <- 0
-FOR Index <- 1 TO 4
-    INPUT Scores[Index]
+
+FOR Index <- 1 TO 5
     Total <- Total + Scores[Index]
 NEXT Index
-
-OUTPUT Total
 ```
 
-A **count** records how many values meet a condition. Initialise it to `0`
-and increase it by `1` when the condition is true:
+#### Conditional Counting
+
+Initialise the counter before the loop starts.
 
 ```pseudocode
-DECLARE Index, PassCount : INTEGER
 PassCount <- 0
 
-FOR Index <- 1 TO 4
+FOR Index <- 1 TO 5
     IF Scores[Index] >= 50 THEN
         PassCount <- PassCount + 1
     ENDIF
 NEXT Index
-
-OUTPUT PassCount
 ```
 
-Do not confuse the value being counted with the counter. `PassCount` increases
-by one for each qualifying score; it does not increase by the score itself.
+---
 
-## Guided Practice
+## 3. Guided Practice (We do this together)
 
-The values in `Scores` are `12`, `7`, `15`, and `6`. Trace the total and the
-count of values greater than `10`.
+Trace the algorithm below.
+
+The array `Scores` contains the values:
+
+```text
+[12, 7, 15, 6]
+```
+
+Complete the trace table tracking:
+
+- The running total.
+- The count of values greater than `10`.
 
 ```pseudocode
 DECLARE Scores : ARRAY[1:4] OF INTEGER
@@ -142,78 +149,116 @@ Scores[1] <- 12
 Scores[2] <- 7
 Scores[3] <- 15
 Scores[4] <- 6
+
 Total <- 0
 Count <- 0
 
 FOR Index <- 1 TO 4
     Total <- Total + Scores[Index]
+
     IF Scores[Index] > 10 THEN
         Count <- Count + 1
     ENDIF
 NEXT Index
 ```
 
-| `Index` | `Scores[Index]` | `Total` | `Scores[Index] > 10` | `Count` |
-| ---: | ---: | ---: | --- | ---: |
-| - | - | 0 | - | 0 |
-| 1 | 12 |  |  |  |
-| 2 | 7 |  |  |  |
-| 3 | 15 |  |  |  |
-| 4 | 6 |  |  |  |
+| Index | Scores[Index] | Total | Scores[Index] > 10 | Count |
+|---------|---------|---------|-------------------|---------|
+| — | — | 0 | — | 0 |
+| 1 | 12 | 12 | TRUE | 1 |
+| 2 | 7 | | | |
+| 3 | 15 | | | |
+| 4 | 6 | | | |
 
-## Core Practice
+1. Complete rows 2, 3 and 4 of the table.
+2. What are the final values of `Total` and `Count`?
 
-Complete both tasks using CAIE pseudocode.
+---
 
-### Task 1: Record and total scores
+## 4. Core Practice (Paper / Exam Style)
 
-Declare an integer array to store six scores. Use a loop to input all six
-values and calculate their total. Output the total after the loop.
+Complete these tasks on your worksheet or in your book.
 
-### Task 2: Count temperatures
+### Task 1: Record and Total Scores
 
-An array stores the temperatures for seven days. Write an algorithm that
-traverses the array and counts how many temperatures are below `10`. Output
-the count.
+Write a CAIE pseudocode algorithm that:
 
-## Support
+1. Declares an integer array to store **six** test scores.
+2. Uses a `FOR` loop to input all six scores.
+3. Calculates the overall total of all six scores.
+4. Outputs the final total after the loop finishes.
 
-Use the scaffold for Task 2:
+---
+
+### Task 2: Temperature Threshold Counter
+
+An array called `Temperature` stores daily readings for a seven-day week.
 
 ```pseudocode
-DECLARE Index, ColdDays : INTEGER
-ColdDays <- _____
-
-FOR Index <- _____ TO _____
-    IF Temperature[Index] _____ 10 THEN
-        ColdDays <- ColdDays + _____
-    ENDIF
-NEXT Index
-
-OUTPUT ColdDays
+Temperature[1] ... Temperature[7]
 ```
 
-Check that:
+Write an algorithm that:
 
-- The array has one element for each day.
-- The loop visits every valid index exactly once.
-- The count is initialised before the loop.
-- The count increases only when the condition is true.
+1. Traverses the array.
+2. Counts how many temperatures are **below 10**.
+3. Outputs the final count with a clear label.
 
-## Stretch
+---
 
-A school records the scores of three students in four subjects using
-`Scores[Student, Subject]`.
+### Task 3: Spot the Array Boundary Bug
 
-1. Declare a two-dimensional integer array for these scores.
+This algorithm is supposed to process an array of five scores, but it crashes or behaves incorrectly.
+
+```pseudocode
+DECLARE Marks : ARRAY[1:5] OF INTEGER
+DECLARE Index, Total : INTEGER
+
+Total <- 0
+
+FOR Index <- 0 TO 5
+    Total <- Total + Marks[Index]
+NEXT Index
+
+OUTPUT Total
+```
+
+1. What are the **two** indexing errors in the `FOR` loop range?
+2. Rewrite the corrected pseudocode.
+
+---
+
+## 5. Python Implementation (Thonny Lab Check)
+
+Once your pseudocode is written and checked, open Thonny and implement **Task 2** as a Python script.
+
+1. Create a list of 7 integers representing temperatures.
+2. Use a `for` loop and an `if` statement to count how many values are `< 10`.
+3. Save your script as:
+
+```text
+l09_temperatures.py
+```
+
+4. Upload it to the Teams assignment when finished.
+
+---
+
+## 6. Stretch (Finished Early?)
+
+A school records exam scores for **3 students** across **4 subjects** using a two-dimensional array:
+
+```pseudocode
+Scores[Student, Subject]
+```
+
+1. Write the pseudocode declaration for this 2D array.
 2. Write nested loops to input every score.
-3. Write an algorithm to calculate and output the total score for each
-   student.
-4. Explain which loop processes the subjects and which loop moves between
-   students.
+3. Write an algorithm that calculates and outputs the **total score for each student** (summing across all four subjects).
 
-## Homework
+### Challenge Extension
 
-Complete any unfinished core task. Then write one sentence explaining when
-you would use a one-dimensional array and when you would use a
-two-dimensional array.
+Modify your solution so that it also outputs:
+
+- The highest total score.
+- Which student achieved that score.

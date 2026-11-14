@@ -147,6 +147,8 @@ Write an algorithm that:
 
 > **Hint:** You will need a counter variable to track attempts, and `AND` or `OR` in your `UNTIL` condition.
 
+Need a starting point for Task 2? Look [[#5. Support & Scaffolds|here]] 
+
 ### Task 3: Spot and Fix the Bug
 
 The algorithm below is meant to input numbers until the user types `-1` and output the sum of all numbers entered (**not** including `-1`).
