@@ -4,264 +4,216 @@ description: "Choose, trace and write count-controlled and condition-controlled 
 order: 7
 draft: false
 ---
-## Topics in this page
-
-- Count-controlled iteration
-- Condition-controlled iteration
-- Loop tracing and practice
 
 ## Learning Objectives
 
-By the end of this lesson sequence you should be able to:
+- Choose between count-controlled (`FOR`) and condition-controlled (`WHILE`, `REPEAT ... UNTIL`) loops.
+- Trace loops accurately, identifying exact stopping conditions.
+- Write loops in CAIE pseudocode that update variables and terminate cleanly.
 
-- Explain why iteration is used in an algorithm.
-- Choose between a count-controlled loop and a condition-controlled loop.
-- Trace a loop and predict its output.
-- Write loops that update their variables and terminate correctly.
+---
 
-## Quick Check
+## 1. Starter (5 mins — Do this first)
 
-Try these without running the code:
+Look at the two algorithms below. Without running them, answer the questions in your book.
 
-1. What is the value of `Total` after these instructions?
+### Algorithm A
+
+```pseudocode
+DECLARE Total, Count : INTEGER
+Total <- 10
+
+FOR Count <- 1 TO 3
+    Total <- Total - 2
+NEXT Count
+
+OUTPUT Total
+```
+
+### Algorithm B
+
+```pseudocode
+DECLARE Number : INTEGER
+Number <- 5
+
+WHILE Number > 0 DO
+    OUTPUT Number
+ENDWHILE
+```
+
+1. What is the final value output by **Algorithm A**?
+2. Why will **Algorithm B** never stop running?
+3. What single line would fix **Algorithm B**?
+
+---
+
+## 2. Learn: The Three CAIE Loops
+
+**Iteration** repeats a block of instructions. Choosing the right loop depends on whether you know how many repetitions are needed before the loop starts.
+
+| Loop Type | Syntax | When condition is checked | Best used when... |
+|------------|----------|--------------------------|-------------------|
+| Count-controlled | `FOR ... TO ... NEXT` | Managed automatically by counter | You know the exact number of repetitions before the loop starts. |
+| Pre-condition | `WHILE ... DO ... ENDWHILE` | **Before** each repetition | The loop might need to run **zero** times (e.g. checking valid input first). |
+| Post-condition | `REPEAT ... UNTIL` | **After** each repetition | The loop must run **at least once** (e.g. a menu or password prompt). |
+
+### Key Rules for CAIE Pseudocode
+
+1. **`FOR` loops include the end value.**  
+   `FOR X <- 1 TO 5` runs 5 times (`1, 2, 3, 4, 5`).
+
+   Use `STEP` to count in jumps or backwards:
 
    ```pseudocode
-   DECLARE Total : INTEGER
-   Total <- 0
-   Total <- Total + 6
-   Total <- Total + 4
+   FOR X <- 10 TO 2 STEP -2
    ```
 
-2. How many times does this loop output a number? Which numbers?
+   Never manually change the counter inside a `FOR` loop.
 
-   ```pseudocode
-    DECLARE Counter : INTEGER
-    FOR Counter <- 1 TO 4
-        OUTPUT Counter
-    NEXT Counter
-   ```
+2. **`WHILE` vs `REPEAT` logic is opposite.**
 
-3. What must eventually happen for a `WHILE` loop to stop?
+   - `WHILE` continues while the condition is **TRUE** (stops when FALSE).
+   - `REPEAT ... UNTIL` continues while the condition is **FALSE** (stops when TRUE).
 
-## Learn
+> [!WARNING]
+> **The Infinite Loop Trap**
+>
+> In `WHILE` and `REPEAT` loops, the variable tested in the condition **must** be updated inside the loop body, or the loop will run forever.
 
-### What is iteration?
+---
 
-**Iteration** means repeating one or more instructions. A loop can make an
-algorithm shorter and easier to update than writing the same instructions
-many times.
+## 3. Guided Practice (We do this together)
 
-Choose a **count-controlled loop** when the number of repetitions is known.
-Choose a **condition-controlled loop** when repetition should continue until
-a condition changes or becomes true.
+Trace the algorithm below on paper.
 
-### Count-controlled iteration: `FOR`
-
-A `FOR` loop repeats for a specified range of values. In CAIE pseudocode, the
-loop counter takes each value from the start value to the end value,
-including the end value.
+Remember: `REPEAT ... UNTIL` checks its condition at the **bottom** of the loop.
 
 ```pseudocode
-DECLARE Counter : INTEGER
+DECLARE Value, Steps : INTEGER
 
-FOR Counter <- 1 TO 5
-    OUTPUT Counter
-NEXT Counter
-```
-
-This outputs `1`, `2`, `3`, `4`, and `5`. The loop ends after the final value.
-
-The loop counter changes automatically. Do not assign a new value to the
-counter inside the loop unless the task specifically requires it.
-
-The start and end values are included. If the start and end values are equal,
-the loop runs once; if the start value is greater than the end value, it does
-not run. Use `STEP` to change the increment:
-
-```pseudocode
-FOR Counter <- 2 TO 10 STEP 2
-    OUTPUT Counter
-NEXT Counter
-```
-
-This outputs the even numbers from `2` to `10`. The `STEP` value must be an
-integer. A negative step can count down.
-
-### Pre-condition loop: `WHILE`
-
-A `WHILE` loop checks its condition before each repetition. It continues while
-the condition is `TRUE`. The statements inside the loop must make progress
-towards the condition becoming `FALSE`, or the loop may never stop.
-
-```pseudocode
-DECLARE Number : INTEGER
-Number <- 1
-
-WHILE Number <= 4 DO
-    OUTPUT Number
-    Number <- Number + 1
-ENDWHILE
-```
-
-The values output are `1`, `2`, `3`, and `4`. After `Number` becomes `5`, the
-condition is false and the loop ends.
-
-### Post-condition loop: `REPEAT ... UNTIL`
-
-A `REPEAT ... UNTIL` loop checks its condition after the loop statements have
-run. Therefore, its instructions run at least once.
-
-```pseudocode
-DECLARE Number : INTEGER
-Number <- 1
+Value <- 20
+Steps <- 0
 
 REPEAT
-    OUTPUT Number
-    Number <- Number + 1
-UNTIL Number > 4
+    Value <- Value - 6
+    Steps <- Steps + 1
+UNTIL Value < 5
+
+OUTPUT Steps, Value
 ```
 
-This also outputs `1`, `2`, `3`, and `4`. Notice that the loop stops when the
-`UNTIL` condition becomes `TRUE`.
+| Steps | Value | Value < 5 (Stop?) |
+|---------|---------|------------------|
+| 0 | 20 | — |
+| 1 | 14 | FALSE |
 
-| Loop | When is the condition checked? | Useful when... |
-| --- | --- | --- |
-| `FOR` | The number of repetitions is managed by the loop counter. | You know how many times to repeat. |
-| `WHILE` (pre-condition) | Before each repetition. | The loop may run zero or more times, depending on a condition. |
-| `REPEAT ... UNTIL` (post-condition) | After each repetition. | The loop must run at least once. |
+1. Complete the remaining rows of the trace table.
+2. What are the two numbers output at the end?
+3. If `Value` started at `3` instead of `20`, how many times would this loop run? Why?
 
-### A common loop error
+---
 
-Check that a condition-controlled loop changes something used in its
-condition:
+## 4. Core Practice (Paper / Exam Style)
 
-```pseudocode
-Number <- 1
-WHILE Number <= 4 DO
-    OUTPUT Number
-    Number <- Number + 1
-ENDWHILE
+Complete these tasks in your book or on your worksheet.
+
+**Do not copy the examples. Read the rules carefully.**
+
+### Task 1: Countdown with `FOR`
+
+Write an algorithm using a `FOR` loop that outputs all multiples of 3 from `30` down to `3` (`30, 27, 24 ... 3`).
+
+After the loop finishes, output:
+
+```text
+Lift off!
 ```
 
-If `Number <- Number + 1` is missing, `Number` stays at `1`. The condition
-stays true, so the loop does not terminate.
+### Task 2: Password Lockout (`REPEAT ... UNTIL`)
 
-## Teacher Demonstration
+A security system asks a user to enter a four-digit PIN.
 
-Before each run, ask students to predict the output and explain the loop's
-stopping point.
+The correct PIN is:
 
-1. Trace the `FOR` example. Write down each value of `Counter` and check that
-   the final value, `5`, is included.
-2. Trace the `WHILE` example using a table with columns `Number`, condition
-   result, and output. Identify the point where the condition becomes false.
-3. Compare it with the `REPEAT ... UNTIL` example. Ask why its condition is
-   written as the point to stop, and why its body runs at least once.
-4. Remove the update from the `WHILE` example. Ask students to predict what
-   happens; restore the update before running to avoid an endless program.
-
-## Guided Practice
-
-Complete the trace table for this algorithm:
-
-```pseudocode
-DECLARE Counter : INTEGER
-Counter <- 2
-
-WHILE Counter < 8 DO
-    OUTPUT Counter
-    Counter <- Counter + 2
-ENDWHILE
+```text
+4821
 ```
 
-| Counter | `Counter < 8` | Output |
-| ---: | --- | --- |
-| 2 | TRUE | 2 |
-| 4 |  |  |
-| 6 |  |  |
-| 8 |  |  |
+Write an algorithm that:
 
-Then explain why `8` is not output.
+1. Repeatedly asks the user to input a PIN until they enter `4821` **OR** they have made `3` failed attempts.
+2. Outputs `"Access Granted"` if they entered the correct PIN.
+3. Outputs `"Account Locked"` if all 3 attempts are used.
 
-## Core Practice
+> **Hint:** You will need a counter variable to track attempts, and `AND` or `OR` in your `UNTIL` condition.
 
-Complete both tasks. Use CAIE pseudocode and test your work by tracing it.
+### Task 3: Spot and Fix the Bug
 
-### Task 1: Count-controlled loop
+The algorithm below is meant to input numbers until the user types `-1` and output the sum of all numbers entered (**not** including `-1`).
 
-Write an algorithm that outputs the five times table from `5` to `50`, one
-multiple per line. Use a `FOR` loop and a loop counter from `1` to `10`.
-
-### Task 2: Condition-controlled loop
-
-Write an algorithm that repeatedly inputs a number until the user enters `0`.
-After the loop, output `"Input complete"`.
-
-Choose either `WHILE` or `REPEAT ... UNTIL`. Make sure the input is updated on
-every repetition and that the algorithm handles `0` as the stopping value.
-
-## Support
-
-Use the scaffolds if you need a starting point.
-
-### Task 1 scaffold
+However, it contains **two logic errors**.
 
 ```pseudocode
-DECLARE Counter : INTEGER
+DECLARE Num, Total : INTEGER
 
-FOR Counter <- 1 TO _____
-    OUTPUT Counter * _____
-NEXT Counter
-```
-
-### Task 2 scaffold using `REPEAT ... UNTIL`
-
-```pseudocode
-DECLARE Number : INTEGER
+Total <- 0
 
 REPEAT
-    OUTPUT "Enter a number (0 to stop):"
-    INPUT Number
-UNTIL Number _____ 0
+    INPUT Num
+    Total <- Total + Num
+UNTIL Num = 0
 
-OUTPUT "Input complete"
+OUTPUT Total
 ```
 
-Check your work:
+1. Identify the two errors.
+2. Rewrite the corrected algorithm in CAIE pseudocode.
 
-- Does the loop body run the expected number of times?
-- Does the loop condition eventually stop the loop?
-- Is the stopping value handled correctly?
+---
 
-## Stretch
+## 5. Support & Scaffolds
 
-Write an algorithm that inputs exactly 5 test scores, adds them to `Total`,
-and outputs the total. Use a `FOR` loop and initialise `Total` before the
-loop.
+> [!TIP]
+> **Need a starting point for Task 2?**
+>
+> Use this structure and fill in the missing logic:
 
-Then adapt the algorithm so it keeps inputting scores until a sentinel value
-of `-1` is entered. The sentinel should stop the loop but must **not** be
-included in the total.
+```pseudocode
+DECLARE Pin, Attempts : INTEGER
 
-Explain which loop you chose for each version and why.
+Attempts <- 0
 
-## Portfolio Evidence (Existing Teams Document)
+REPEAT
+    OUTPUT "Enter PIN:"
+    INPUT Pin
+    Attempts <- Attempts + 1
+UNTIL Pin = _____ OR Attempts = _____
 
-In the existing **Year 11 Algorithm Design Portfolio**, complete the
-iteration work under Lessons 7–9. For this combined page, make sure your
-portfolio includes:
+IF Pin = 4821 THEN
+    OUTPUT "Access Granted"
+ELSE
+    // What goes here?
+ENDIF
+```
 
-- One count-controlled loop and its trace or test evidence.
-- One condition-controlled loop and an explanation of how it terminates.
+---
 
-Keep using the existing portfolio and Teams assignment. You do not need to
-create a separate submission for this page. The teacher will announce when
-the portfolio checkpoint is due.
+## 6. Stretch (Finished Early?)
 
-## Homework
+Write an algorithm using a `WHILE` loop that:
 
-Finish any core task you did not complete in class. Then answer:
+1. Inputs a positive integer `N`.
+2. Calculates the **factorial** of `N`.
+3. Outputs the result.
 
-1. Give one situation where a `FOR` loop is suitable.
-2. Give one situation where a condition-controlled loop is suitable.
-3. Explain one way to prevent an unintended infinite loop.
+Example:
+
+```text
+5! = 5 × 4 × 3 × 2 × 1 = 120
+```
+
+Ensure your algorithm still outputs `1` if the user enters:
+
+```text
+0
+```

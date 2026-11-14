@@ -139,7 +139,7 @@ have changed during transmission.
 A packet is corrupted while being transmitted. Describe how error detection
 and ARQ can lead to the packet being sent again. Use the terms `ACK`, `NAK`,
 and `timeout` where appropriate.
-
+<!-- 
 ## Homework
 
 Watch the videos that match the error-detection methods:
@@ -156,7 +156,7 @@ Watch the videos that match the error-detection methods:
 Complete the parity and error-detection questions assigned by your teacher.
 Then write a four-step explanation of how a checksum is checked, and a
 separate explanation of how ARQ requests a retransmission. Keep detection
-and retransmission as distinct steps.
+and retransmission as distinct steps. -->
 
 ## Exit check
 
