@@ -1,129 +1,79 @@
 ---
-title: Assembly Language
-description: Read, trace, write, and debug short assembly-language routines using the CAIE 9618 instruction set.
+title: "Assembly Language (CAIE 9618)"
+description: "Read, trace, write, and debug short assembly-language routines using the CAIE 9618 instruction set."
 order: 2
 draft: false
 ---
 
-## Learning goals
+<!-- ## Quick Navigation
+* [1. Starter](#1-starter)
+* [2. Quick Reference](#2-quick-reference)
+* [3. Guided Practice](#3-guided-practice)
+* [4. Core Practice Tasks](#4-core-practice)
+* [5. Exit Check](#5-exit-check) -->
 
-- Explain the relationship between assembly language and machine code.
-- Describe the two passes of an assembler.
-- Recognise the syllabus instruction groups and addressing modes.
-- Trace changes to registers and memory.
-- Write and debug short assembly-language routines.
+## Learning Objectives
 
-## Suggested teaching time
+- Explain the relationship between assembly language, machine code, and a two-pass assembler.
+- Identify the syllabus instruction groups and addressing modes (`Immediate`, `Direct`, `Indirect`, `Indexed`, `Relative`).
+- Dry-run and trace changes to registers (`ACC`, `IX`) and main memory.
+- Write and debug short CAIE assembly routines.
 
-Use this page for Doubles 5–7 in the [unit plan](./index): first learn the
-assembler and instruction set, then trace routines, then write and debug
-programs.
+---
 
-## 1. Assembly language and the two-pass assembler
+## 1. Starter (5 mins — Forced Recall)
 
-Assembly language uses mnemonics and operands to represent machine
-instructions in a form that is easier for people to read. The assembler
-translates the program into machine code.
+Answer these in your notebook before looking at the notes below:
 
-In a **two-pass assembler**:
+1. In a Von Neumann CPU, which register holds the intermediate results of arithmetic and logic operations?
+2. Which register holds the address of the *next* instruction to be fetched?
+3. Why do programmers write in assembly language rather than pure binary machine code?
 
-1. **Pass 1** scans the program and records the addresses associated with
-   labels.
-2. **Pass 2** translates the instructions into machine code, using the
-   recorded label addresses to resolve references such as jumps.
+---
 
-An instruction consists of an **opcode** (the operation) and, where needed,
-an **operand** (the value, register, or address used by the operation).
-Labels identify instruction addresses and are written before a colon.
+## 2. Learn: How to Read Assembly (The Whiteboard & Postbox Model)
 
-| Part | Meaning |
-| --- | --- |
-| **Label** | Optional symbolic name for an instruction address, for example `LOOP:`. |
-| **Opcode** | The operation to perform, for example `LDM`, `ADD`, or `JMP`. |
-| **Operand** | The value, register, address, or label used by the opcode. Some instructions have no operand. |
+Assembly language replaces binary machine code with human-readable **mnemonics**. Before execution, a **two-pass assembler** translates it:
 
-For numeric operands, the syllabus notation uses `#` for a decimal number,
-`B` for a binary number, and `&` for a hexadecimal number. For example,
-`#12`, `B00001100`, and `&0C` represent the same value.
+- **Pass 1:** Scans the code and builds a symbol table mapping labels (e.g., `LOOP:`) to memory addresses.
+- **Pass 2:** Translates opcodes and operands into binary machine code, replacing labels with their recorded addresses.
 
-## 2. Instruction groups
+### The Mental Model
 
-The syllabus instruction set includes these groups:
+- **Accumulator (`ACC`):** Think of this as a **whiteboard on the teacher's desk**. Almost every calculation happens here.
+- **Main Memory:** Think of this as a wall of **numbered postboxes** (`100`, `101`, `200`, etc.).
+- **Opcode & Operand:** Every instruction has an **Opcode** (the action, e.g., `LDD`) and usually an **Operand** (the target, e.g., `200`).
+- **Number Prefixes:**
+  - `#` = Denary (`#12`)
+  - `B` = Binary (`B00001100`)
+  - `&` = Hexadecimal (`&0C`)
 
-| Group | Instructions and purpose |
-| --- | --- |
-| **Data movement** | `LDM`, `LDD`, `LDI`, and `LDX` load values into the ACC; `LDR` loads an immediate value into IX; `MOV` copies the ACC to a register; `STO` stores the ACC in memory. |
-| **Arithmetic** | `ADD` adds a value to the ACC; `SUB` subtracts a value from the ACC; `INC` and `DEC` add or subtract 1 from a register. |
-| **Compare and conditional control** | `CMP` and `CMI` compare the ACC with a value or memory contents; `JPE` and `JPN` jump depending on whether the previous comparison was true or false. |
-| **Unconditional control** | `JMP` jumps to an address. `END` returns control to the operating system. |
-| **Input and output** | `IN` reads a character and stores its ASCII value in the ACC; `OUT` displays the character whose ASCII value is in the ACC. |
+### The 5 Addressing Modes (Examiner Favourite)
 
-All questions assume one general-purpose register, the **ACC**, is
-available. The **IX** is the index register. Use the syllabus instruction
-table to check the precise operand form for an instruction.
+| Mode | How the CPU finds the data | Example & Effect |
+| :--- | :--- | :--- |
+| **Immediate** | The operand *is* the actual value. | `LDM #5` → Put the literal number `5` into `ACC`. |
+| **Direct** | The operand is the memory address containing the value. | `LDD 200` → Go to address `200`, copy the value into `ACC`. |
+| **Indirect** | The address contains a pointer to another address. | `LDI 40` → Look in `40` (finds `200`), then load the value stored at address `200`. |
+| **Indexed** | Add the Index Register (`IX`) to the base address. | `LDX 100` (if `IX = 3`) → Effective address = `103`; load `Memory[103]`. |
+| **Relative** | Add an offset to the Program Counter (`PC`). | Branch at `120` (PC now `121`) with offset `+4` → Jump to `125`. |
 
-### Core instruction examples
+### Core CAIE 9618 Instruction Set
 
-| Instruction | Effect |
-| --- | --- |
-| `LDM #5` | Load the immediate value 5 into the ACC. |
-| `LDD 200` | Load the contents of memory address 200 into the ACC. |
-| `LDI 40` | Use the contents of address 40 as the address to read, then load the contents of that second address into the ACC. |
-| `LDX 100` | Add the contents of IX to 100 and load the contents of the calculated address into the ACC. |
-| `LDR #3` | Load the immediate value 3 into IX. |
-| `MOV IX` | Copy the contents of the ACC into IX. |
-| `STO 200` | Store the contents of the ACC at memory address 200. |
-| `ADD #2` | Add the immediate value 2 to the ACC. |
-| `CMP #5` | Compare the ACC with the immediate value 5. |
-| `JPE DONE` | If the previous comparison was true, jump to the instruction labelled `DONE`. |
+| Group | Mnemonics & Action |
+| :--- | :--- |
+| **Data Movement** | `LDM #n`, `LDD <addr>`, `LDI <addr>`, `LDX <addr>`, `LDR #n`, `MOV IX`, `STO <addr>` |
+| **Arithmetic** | `ADD #n` / `ADD <addr>`, `SUB #n` / `SUB <addr>`, `INC <reg>`, `DEC <reg>` |
+| **Compare & Jump** | `CMP #n` / `CMP <addr>`, `CMI <addr>`, `JPE <label>`, `JPN <label>`, `JMP <label>` |
+| **I/O & Control** | `IN`, `OUT`, `END` |
 
-## 3. Addressing modes
+---
 
-An addressing mode describes how an instruction locates its operand.
+## 3. Guided Practice: Tracing Together (15 mins)
 
-| Mode | How the operand is found | Syllabus instruction example |
-| --- | --- | --- |
-| **Immediate** | The operand is the value in the instruction. | `LDM #12` loads the value 12 into the ACC. |
-| **Direct** | The operand gives the memory address containing the value. | `LDD 200` loads the contents of address 200. |
-| **Indirect** | The given memory address contains the address of the value. | If `Memory[40] = 200`, `LDI 40` loads `Memory[200]` into the ACC. |
-| **Indexed** | The effective address is the given address plus the contents of IX. | If `IX = 3`, `LDX 100` loads `Memory[103]`. |
-| **Relative** | The target address is calculated by adding an offset to the PC, rather than using an absolute address. | If the branch is at address 120, the PC has advanced to 121, and the relative offset is `+4`, the target is `121 + 4 = 125`. |
+Never trace assembly in your head. Always build a step-by-step register grid.
 
-Be precise when tracing indirect and indexed modes: first calculate the
-effective address, then read the value stored at that address.
-
-### Worked example: relative addressing
-
-Suppose a conditional branch instruction is stored at address 120. After
-fetching it, the PC contains 121, the address of the next instruction. The
-branch operand is a relative offset of `+4`.
-
-```text
-Target address = PC + offset
-               = 121 + 4
-               = 125
-```
-
-If the branch condition is true, execution continues at address 125; if it
-is false, execution continues at address 121. The offset is relative, so
-moving the whole routine to another location does not change the distance
-from the branch to its target. When tracing an exam example, use the PC
-value and offset convention given in the question.
-
-## 4. Trace an assembly routine
-
-When tracing a routine:
-
-1. Read one instruction at a time.
-2. Identify the opcode, operand, and addressing mode.
-3. Apply its effect to the ACC, IX, or specified memory location.
-4. Record updated values before moving to the next instruction.
-5. For `CMP` or `CMI`, determine whether the comparison is true; follow
-   `JPE` or `JPN` accordingly.
-
-### Worked trace
-
-Assume `Memory[20] = 0` at the start.
+Let's trace this routine together assuming `Memory[20] = 0` at the start:
 
 ```text
 LDM #5
@@ -132,38 +82,114 @@ STO 20
 LDD 20
 ```
 
-| Instruction | ACC before | Memory[20] before | Effect | ACC after | Memory[20] after |
-| --- | ---: | ---: | --- | ---: | ---: |
-| `LDM #5` | 0 | 0 | Load immediate value 5. | 5 | 0 |
-| `ADD #3` | 5 | 0 | Add 3 to the ACC. | 8 | 0 |
-| `STO 20` | 8 | 0 | Store the ACC at address 20. | 8 | 8 |
-| `LDD 20` | 8 | 8 | Load the contents of address 20 into the ACC. | 8 | 8 |
+| Instruction | ACC Before | Memory[20] Before | CPU Action | ACC After | Memory[20] After |
+| :--- | :---: | :---: | :--- | :---: | :---: |
+| `LDM #5` | 0 | 0 | Load immediate value `5` into `ACC` | **5** | 0 |
+| `ADD #3` | 5 | 0 | Add literal `3` to `ACC` | **8** | 0 |
+| `STO 20` | 8 | 0 | Copy `ACC` (`8`) into address `20` | 8 | **8** |
+| `LDD 20` | 8 | 8 | Load contents of address `20` into `ACC` | **8** | 8 |
 
-## 5. Class practice
+*Discussion check:* Why does `STO 20` leave `8` inside `ACC` instead of wiping it to `0`?
 
-1. Label the opcode and operand in `LDM #12`, `STO 200`, and `JPE FINISH`.
-2. Trace the worked routine and explain why `STO` does not change the ACC.
-3. If `Memory[40] = 200` and `Memory[200] = 17`, trace `LDI 40`.
-4. If `IX = 4` and `Memory[104] = 9`, trace `LDX 100`.
-5. Trace a compare followed by `JPE` and `JPN`; show which instruction
-   executes for both possible comparison results.
-6. Write a routine that reads a value, adds a fixed amount, stores the
-   result, and outputs a character. Annotate each instruction.
-7. Identify and correct errors in a routine with an incorrect memory
-   address, a wrong jump target, and a misplaced `END`.
-8. Explain what information the first and second assembler passes produce.
+---
 
-## Homework
+## 4. Core Practice: Paper Drills (25 mins)
 
-Trace a short routine set by your teacher, recording ACC, IX, and any memory
-locations that change. Then write a routine using at least one data movement
-instruction, one arithmetic instruction, and a conditional jump. Annotate
-the purpose of each instruction.
+Complete these tasks in your notebook using clean trace tables.
 
-## Exit check
+### Task 1: Addressing Mode Workout
 
-1. What happens in each pass of a two-pass assembler?
-2. What is the difference between direct and indirect addressing?
-3. What value does `LDX 100` use as its effective address?
-4. What do `JPE` and `JPN` depend on?
-5. Which register stores the character read by `IN`?
+Assume the following memory state before *each* separate instruction runs:
+
+- `IX = 4`
+- `Memory[40] = 100`
+- `Memory[100] = 17`
+- `Memory[104] = 99`
+
+State the final value loaded into the `ACC` after executing each single instruction:
+
+1. `LDM #40`
+2. `LDD 40`
+3. `LDI 40`
+4. `LDX 100`
+
+---
+
+### Task 2: Tracing a Conditional Loop
+
+Dry-run the routine below by constructing a trace table with columns for:
+
+- `Instruction`
+- `ACC`
+- `Memory[50]`
+- `Output`
+
+Use ASCII values where:
+
+- `65 = 'A'`
+- `66 = 'B'`
+
+Start with:
+
+```text
+Memory[50] = 2
+```
+
+```text
+       LDD 50
+LOOP:  CMP #0
+       JPE DONE
+       SUB #1
+       STO 50
+       LDM #65
+       OUT
+       LDD 50
+       JMP LOOP
+
+DONE:  LDM #66
+       OUT
+       END
+```
+
+---
+
+### Task 3: Spot the Bugs
+
+A student wrote this routine to read two characters from the keyboard and store the **second** one at address `300`, but it contains **three** errors.
+
+Identify and fix them:
+
+```text
+IN
+STO #300
+IN
+LDD 300
+```
+
+---
+
+## 5. Stretch (Finished Early?)
+
+Write a complete CAIE assembly routine that:
+
+1. Initialises `IX` to `0`.
+2. Loops 4 times to set memory locations:
+   - `200`
+   - `201`
+   - `202`
+   - `203`
+   
+   all to the value `#99`.
+3. Ends cleanly with `END`.
+
+---
+
+## 6. Exit Check (5 mins)
+
+Answer from memory before packing up:
+
+1. What is the difference between **Pass 1** and **Pass 2** of a two-pass assembler?
+2. What does `LDI 50` do differently from `LDD 50`?
+3. Which instruction pair is used to make a conditional decision in CAIE assembly?
+
+[↑ Back to top](#learning-objectives)
