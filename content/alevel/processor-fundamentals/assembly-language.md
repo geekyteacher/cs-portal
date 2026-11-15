@@ -19,6 +19,8 @@ draft: false
 - Dry-run and trace changes to registers (`ACC`, `IX`) and main memory.
 - Write and debug short CAIE assembly routines.
 
+Download the [CAIE 9618 Assembly Language & Bitwise Reference Sheet (PDF)](/downloads/a-level/CAIE%209618%20Assembly%20Language%20%26%20Bitwise%20Reference%20Sheet.pdf) to use as a guide while working through this page.
+
 ---
 
 ## 1. Starter (5 mins — Forced Recall)
@@ -31,22 +33,17 @@ Answer these in your notebook before looking at the notes below:
 
 ---
 
-## 2. Learn: How to Read Assembly (The Whiteboard & Postbox Model)
+## 2. Core Concepts: Assembler Passes & Instruction Reference
 
-Assembly language replaces binary machine code with human-readable **mnemonics**. Before execution, a **two-pass assembler** translates it:
+Assembly language uses mnemonics and operands to represent machine instructions. Before execution, source code is translated by a **two-pass assembler**:
 
-- **Pass 1:** Scans the code and builds a symbol table mapping labels (e.g., `LOOP:`) to memory addresses.
-- **Pass 2:** Translates opcodes and operands into binary machine code, replacing labels with their recorded addresses.
+- **Pass 1 (Symbol Resolution):** Scans the program, assigns memory addresses to instructions, and records all labels (e.g., `LOOP:`) and their addresses in a **Symbol Table**. If a label is missing, Pass 1 throws an error.
+- **Pass 2 (Translation):** Scans the program a second time, translates opcodes and operands into machine code, and uses the Symbol Table to resolve symbolic jump references (e.g., replacing `JPE DONE` with its actual address).
 
-### The Mental Model
-
-- **Accumulator (`ACC`):** Think of this as a **whiteboard on the teacher's desk**. Almost every calculation happens here.
-- **Main Memory:** Think of this as a wall of **numbered postboxes** (`100`, `101`, `200`, etc.).
-- **Opcode & Operand:** Every instruction has an **Opcode** (the action, e.g., `LDD`) and usually an **Operand** (the target, e.g., `200`).
-- **Number Prefixes:**
-  - `#` = Denary (`#12`)
-  - `B` = Binary (`B00001100`)
-  - `&` = Hexadecimal (`&0C`)
+### Operand Notation & Prefixes
+- **`#`** = Denary number (e.g., `#12`)
+- **`B`** = Binary number (e.g., `B00001100`)
+- **`&`** = Hexadecimal number (e.g., `&0C`)
 
 ### The 5 Addressing Modes (Examiner Favourite)
 
@@ -66,6 +63,8 @@ Assembly language replaces binary machine code with human-readable **mnemonics**
 | **Arithmetic** | `ADD #n` / `ADD <addr>`, `SUB #n` / `SUB <addr>`, `INC <reg>`, `DEC <reg>` |
 | **Compare & Jump** | `CMP #n` / `CMP <addr>`, `CMI <addr>`, `JPE <label>`, `JPN <label>`, `JMP <label>` |
 | **I/O & Control** | `IN`, `OUT`, `END` |
+
+Download the [CAIE 9618 Assembly Language & Bitwise Reference Sheet (PDF)](/downloads/a-level/CAIE%209618%20Assembly%20Language%20%26%20Bitwise%20Reference%20Sheet.pdf)
 
 ---
 
