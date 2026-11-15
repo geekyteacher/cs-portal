@@ -13,13 +13,13 @@ draft: false
 
 - Identify and select appropriate elementary data types (`INTEGER`, `REAL`, `CHAR`, `STRING`, `BOOLEAN`).
 - Perform variable declaration and assignment using standard CAIE pseudocode syntax (`<-`).
-- Trace variable value updates and swapping logic[cite: 4, 7].
+- Trace variable value updates and swapping logic.
 
 ---
 
 ## 1. Explanation: Variables & Data Types
 
-A **variable** is a named memory location used to store data that can change during program execution[cite: 5]. Every variable must be declared with a specific **data type**:
+A **variable** is a named memory location used to store data that can change during program execution. Every variable must be declared with a specific **data type**:
 
 | CAIE Data Type | Description | Pseudocode Example |
 | --- | --- | --- |
@@ -31,7 +31,7 @@ A **variable** is a named memory location used to store data that can change dur
 
 > [!TIP]
 >
-> In CAIE Pseudocode, assignment uses the arrow symbol `<-` (e.g., `Age <- 16`), whereas Python uses `=`[cite: 1, 4].
+> In CAIE Pseudocode, assignment uses the arrow symbol `<-` (e.g., `Age <- 16`), whereas Python uses `=`.
 
 ---
 

@@ -9,13 +9,13 @@ order: 1
 
 ## 🎯 Learning Objectives
 By the end of this self-paced lesson, you will be able to:
-1. Understand how a problem can be decomposed into sub-systems (inputs, processes, outputs, and storage)[cite: 1].
-2. Use formal design methods including structure diagrams, flowcharts, and pseudocode to plan solutions[cite: 2].
+1. Understand how a problem can be decomposed into sub-systems (inputs, processes, outputs, and storage).
+2. Use formal design methods including structure diagrams, flowcharts, and pseudocode to plan solutions.
 
 ---
 
 ## 📖 1. Read & Explore: The Problem-Solving Blueprint
-Before we write a single line of Python, we have to design the logic. Every computer system is built from smaller sub-systems[cite: 1]. 
+Before we write a single line of Python, we have to design the logic. Every computer system is built from smaller sub-systems. 
 
 When given a problem, we break it down using:
 * **Structure Diagrams:** Showing a top-down hierarchical breakdown of a task.

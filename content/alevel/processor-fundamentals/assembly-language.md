@@ -5,13 +5,6 @@ order: 2
 draft: false
 ---
 
-<!-- ## Quick Navigation
-* [1. Starter](#1-starter)
-* [2. Quick Reference](#2-quick-reference)
-* [3. Guided Practice](#3-guided-practice)
-* [4. Core Practice Tasks](#4-core-practice)
-* [5. Exit Check](#5-exit-check) -->
-
 ## Learning Objectives
 
 - Explain the relationship between assembly language, machine code, and a two-pass assembler.
@@ -33,13 +26,61 @@ Answer these in your notebook before looking at the notes below:
 
 ---
 
-## 2. Core Concepts: Assembler Passes & Instruction Reference
 
-Assembly language uses mnemonics and operands to represent machine instructions. Before execution, source code is translated by a **two-pass assembler**:
+## 2A. Assembler Translation and the Two-Pass Process
 
-- **Pass 1 (Symbol Resolution):** Scans the program, assigns memory addresses to instructions, and records all labels (e.g., `LOOP:`) and their addresses in a **Symbol Table**. If a label is missing, Pass 1 throws an error.
-- **Pass 2 (Translation):** Scans the program a second time, translates opcodes and operands into machine code, and uses the Symbol Table to resolve symbolic jump references (e.g., replacing `JPE DONE` with its actual address).
+Before a program written in assembly language (source code) can be executed, it must be translated into machine code by an **assembler**. 
 
+### The Role of an Assembler
+* **Translation:** Converts each assembly instruction into its corresponding machine code instruction.
+* **Syntax Checking:** Ensures only valid opcodes from the instruction set are used, catching errors before execution to speed up development time.
+
+### Single-Pass vs. Two-Pass Assemblers
+* **Single-pass assemblers:** Translate instructions and place the machine code straight into computer memory for immediate execution.
+* **Two-pass assemblers:** Produce an intermediate object program that can be stored, loaded later (using a **loader**), and then executed. A two-pass approach is necessary because programs often contain **forward references**—where a jump instruction refers to a label before that label's memory address has been defined.
+
+---
+
+### The Two-Pass Process
+
+#### Pass 1: Symbol Table Generation
+1. Read the source program one line at a time.
+2. Ignore non-executable elements such as comments.
+3. Allocate a sequential memory address for each line of code.
+4. Verify that each opcode belongs to the instruction set.
+5. Record any new labels and their assigned memory addresses into the **Symbol Table**.
+
+#### Pass 2: Object Code Generation
+1. Read the source program a second time, line by line.
+2. Generate the final object code (combining opcode and resolved operands) using the Symbol Table built in Pass 1.
+3. Save or execute the compiled program.
+
+---
+
+### Worked Example: Handling Forward References
+
+Consider this code snippet starting at memory address `100` (assuming each instruction/address slot takes 1 memory unit):
+
+| Label | Opcode | Operand |
+| :--- | :--- | :--- |
+| `Notfound:` | `LDD` | `200` |
+| | `CMP` | `#0` |
+| | `JPN` | `Found` |
+| | `JPE` | `Notfound` |
+| `Found:` | `OUT` | |
+
+Because `Found` appears as an operand on line 3 before the `Found:` label is defined on line 5, a single-pass assembler would fail. 
+
+During **Pass 1**, the assembler scans through, calculates the addresses for every line starting at `100`, and populates the **Symbol Table**:
+
+| Label | Address |
+| :--- | :---: |
+| `Notfound` | `100` |
+| `Found` | `104` |
+
+During **Pass 2**, the assembler looks up `Found` in the Symbol Table and successfully substitutes the actual target address (`104`) into the machine code instruction for `JPN`.
+
+## 2B: Core Concepts: Assembler Passes & Instruction Reference
 ### Operand Notation & Prefixes
 - **`#`** = Denary number (e.g., `#12`)
 - **`B`** = Binary number (e.g., `B00001100`)
