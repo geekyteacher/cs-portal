@@ -27,21 +27,21 @@ Answer these in your notebook before looking at the notes below:
 ---
 
 
-## 2A. Assembler Translation and the Two-Pass Process
+## Teacher input
 
-Before a program written in assembly language (source code) can be executed, it must be translated into machine code by an **assembler**. 
+### Why assembly language still matters
 
-### The Role of an Assembler
-* **Translation:** Converts each assembly instruction into its corresponding machine code instruction.
-* **Syntax Checking:** Ensures only valid opcodes from the instruction set are used, catching errors before execution to speed up development time.
+Before a program written in assembly language (source code) can be executed, it must be translated into machine code by an **assembler**.
 
-### Single-Pass vs. Two-Pass Assemblers
-* **Single-pass assemblers:** Translate instructions and place the machine code straight into computer memory for immediate execution.
-* **Two-pass assemblers:** Produce an intermediate object program that can be stored, loaded later (using a **loader**), and then executed. A two-pass approach is necessary because programs often contain **forward references**—where a jump instruction refers to a label before that label's memory address has been defined.
+* **Translation:** converts each assembly instruction into its corresponding machine code instruction.
+* **Syntax checking:** ensures only valid opcodes from the instruction set are used, catching errors before execution.
 
----
+### Single-pass vs two-pass assemblers
 
-### The Two-Pass Process
+* **Single-pass assemblers:** translate instructions and place the machine code straight into memory for immediate execution.
+* **Two-pass assemblers:** produce an intermediate object program that can be stored, loaded later, and then executed. This is needed when a program contains **forward references**—where a jump instruction refers to a label before that label has been defined.
+
+### The two-pass process
 
 #### Pass 1: Symbol Table Generation
 1. Read the source program one line at a time.
@@ -55,9 +55,7 @@ Before a program written in assembly language (source code) can be executed, it 
 2. Generate the final object code (combining opcode and resolved operands) using the Symbol Table built in Pass 1.
 3. Save or execute the compiled program.
 
----
-
-### Worked Example: Handling Forward References
+### Worked example: handling forward references
 
 Consider this code snippet starting at memory address `100` (assuming each instruction/address slot takes 1 memory unit):
 
@@ -69,7 +67,7 @@ Consider this code snippet starting at memory address `100` (assuming each instr
 | | `JPE` | `Notfound` |
 | `Found:` | `OUT` | |
 
-Because `Found` appears as an operand on line 3 before the `Found:` label is defined on line 5, a single-pass assembler would fail. 
+Because `Found` appears as an operand on line 3 before the `Found:` label is defined on line 5, a single-pass assembler would fail.
 
 During **Pass 1**, the assembler scans through, calculates the addresses for every line starting at `100`, and populates the **Symbol Table**:
 
@@ -80,13 +78,14 @@ During **Pass 1**, the assembler scans through, calculates the addresses for eve
 
 During **Pass 2**, the assembler looks up `Found` in the Symbol Table and successfully substitutes the actual target address (`104`) into the machine code instruction for `JPN`.
 
-## 2B: Core Concepts: Assembler Passes & Instruction Reference
-### Operand Notation & Prefixes
+## 2. Addressing modes and instruction reference
+
+### Operand notation and prefixes
 - **`#`** = Denary number (e.g., `#12`)
 - **`B`** = Binary number (e.g., `B00001100`)
 - **`&`** = Hexadecimal number (e.g., `&0C`)
 
-### The 5 Addressing Modes (Examiner Favourite)
+### The 5 addressing modes
 
 | Mode | How the CPU finds the data | Example & Effect |
 | :--- | :--- | :--- |
@@ -109,7 +108,7 @@ Download the [CAIE 9618 Assembly Language & Bitwise Reference Sheet (PDF)](/down
 
 ---
 
-## 3. Guided Practice: Tracing Together (15 mins)
+## 3. Guided practice: tracing together (15 mins)
 
 Never trace assembly in your head. Always build a step-by-step register grid.
 
@@ -133,11 +132,11 @@ LDD 20
 
 ---
 
-## 4. Core Practice: Paper Drills (25 mins)
+## 4. Independent task: paper drills (25 mins)
 
 Complete these tasks in your notebook using clean trace tables.
 
-### Task 1: Addressing Mode Workout
+### Task 1: Addressing mode workout
 
 Assume the following memory state before *each* separate instruction runs:
 
@@ -155,7 +154,7 @@ State the final value loaded into the `ACC` after executing each single instruct
 
 ---
 
-### Task 2: Tracing a Conditional Loop
+### Task 2: Tracing a conditional loop
 
 Dry-run the routine below by constructing a trace table with columns for:
 
@@ -193,7 +192,7 @@ DONE:  LDM #66
 
 ---
 
-### Task 3: Spot the Bugs
+### Task 3: Spot the bugs
 
 A student wrote this routine to read two characters from the keyboard and store the **second** one at address `300`, but it contains **three** errors.
 
@@ -224,12 +223,32 @@ Write a complete CAIE assembly routine that:
 
 ---
 
-## 6. Exit Check (5 mins)
+## 6. Check for understanding
 
 Answer from memory before packing up:
 
 1. What is the difference between **Pass 1** and **Pass 2** of a two-pass assembler?
 2. What does `LDI 50` do differently from `LDD 50`?
 3. Which instruction pair is used to make a conditional decision in CAIE assembly?
+
+## 7. Plenary
+
+In one sentence, explain why assembly language is still useful even though high-level languages are easier to write.
+
+## 8. Homework / extension
+
+Write a short assembly routine that:
+- loads a value into `ACC`
+- adds or subtracts a second value
+- stores the result in memory
+- prints the final value
+
+## Success criteria
+
+By the end of this lesson, students should be able to:
+- explain the role of an assembler and the difference between single-pass and two-pass translation
+- identify and use the main addressing modes in the CAIE specification
+- trace a short assembly routine step by step
+- debug a simple routine with a small number of errors
 
 [↑ Back to top](#learning-objectives)

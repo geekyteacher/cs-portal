@@ -30,13 +30,23 @@ three main parts:
 
 | Part | Purpose |
 | --- | --- |
-| **Header** | Contains the destination address, the originator's address, and the packet number. |
-| **Payload** | Contains part of the data being sent. |
-| **Trailer** | Marks the end of the packet. |
+| **Header** | Contains the destination address, the originator's address, the packet number, and packet size. |
+| **Payload** | Contains part of the data being sent, usually about 64KiB. |
+| **Trailer** | Marks the end of the packet, an error checking method. |
 
 The packet number identifies the packet's position in the original data. The
 destination and originator addresses identify where the packet is going and
 where it came from.
+
+### Cyclic redundancy checks (CRCs) 
+A CRC is used to check data packets. It involves 
+* the sending computer adding up all the 1-bits in the payload 
+* storing this as a hex value in the trailer before it is sent
+* the receiving computer recalculates the number of 1-bits in the payload
+* it checks this value against the one sent in the trailer
+* if the two values match, 
+   * no transmission errors have occurred 
+   * otherwise the packet needs to be re-sent
 
 ## Packet switching
 
