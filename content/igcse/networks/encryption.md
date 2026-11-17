@@ -34,6 +34,15 @@ access.
 
 Encryption is used to help keep data confidential if it is intercepted.
 
+```text
+                  encryption                       decryption
+Readable data  ----------------->  Ciphertext  ----------------->  Readable data
+  plaintext                         may be intercepted
+```
+
+The message can still be intercepted while being sent, but encryption makes
+its contents difficult to understand without the appropriate key.
+
 ## Symmetric encryption
 
 In **symmetric encryption**, the same secret key is used to encrypt and
@@ -46,6 +55,15 @@ decrypt the data.
 The sender and receiver must keep the key secret. They need a secure way to
 share it; if someone else obtains the key, that person may be able to decrypt
 the data.
+
+```text
+                         same secret key
+                       /                 \
+Sender: plaintext -> [encrypt] -> ciphertext -> [decrypt] -> plaintext :Receiver
+                       K                                   K
+
+             The key must be shared securely before sending.
+```
 
 ## Asymmetric encryption
 
@@ -63,6 +81,20 @@ To send confidential data to a receiver:
 The public key can be shared without giving away the private key. The
 receiver must keep the private key secure.
 
+```text
+Mina                         Message                         Ravi
+                         (can be intercepted)
+plaintext -> [encrypt with Ravi's public key] -> ciphertext
+                                                    |
+                                  [decrypt with Ravi's private key]
+                                                    |
+                                                plaintext
+```
+
+For confidentiality, the sender uses the **receiver's public key**; the
+receiver uses the matching **private key**. The private key belongs to the
+receiver and is never shared.
+
 ## Compare the approaches
 
 | Feature | Symmetric encryption | Asymmetric encryption |
@@ -75,6 +107,9 @@ The methods can be used together: asymmetric encryption can help establish
 or share a secret key, and symmetric encryption can then be used for the
 data. Follow the wording and scope of the question when describing a system.
 
+**Remember:** encryption protects the confidentiality of data; it does not
+stop someone from intercepting the ciphertext.
+
 ## Worked example
 
 Alex wants to send a confidential message to Sam using asymmetric
@@ -85,6 +120,12 @@ encryption.
 
 Alex does not use Alex's private key to decrypt this message; the private key
 belongs to the intended receiver, Sam.
+
+### Pair check
+
+Tell a partner how Mina can send Ravi a confidential message. Use the terms
+**plaintext**, **ciphertext**, **Ravi's public key**, and **Ravi's private
+key** in the correct order.
 
 ## Practice
 
@@ -122,6 +163,14 @@ Complete the comparison:
 3. Which keys are used when encrypting a confidential message for someone
    with asymmetric encryption?
 4. Why can a public key be shared openly?
+
+### 4. Apply your understanding
+
+For each situation, identify the encryption method and explain the key
+challenge:
+
+1. Two people use one secret key to encrypt and decrypt their messages.
+2. A sender encrypts a message using the recipient's public key.
 
 ## Homework
 
