@@ -2,7 +2,7 @@
 title: "Halloween Ghost Catcher Game"
 description: Make a Scratch ghost move around the screen, then click it to score points.
 order: 1
-draft: false
+draft: true
 ---
 ## Today’s mission
 

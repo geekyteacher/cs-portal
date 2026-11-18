@@ -2,7 +2,7 @@
 title: "Lesson 7: Showcase and Evaluate"
 description: Share the finished game, explain its mechanics, and evaluate it using evidence from testing.
 order: 7
-draft: false
+draft: true
 ---
 
 ## Today you will

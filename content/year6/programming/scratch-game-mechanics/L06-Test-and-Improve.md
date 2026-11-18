@@ -2,7 +2,7 @@
 title: "Lesson 6: Test, Debug, and Improve"
 description: Use planned tests and peer feedback to find a problem and improve the game.
 order: 6
-draft: false
+draft: true
 ---
 
 ## Today you will

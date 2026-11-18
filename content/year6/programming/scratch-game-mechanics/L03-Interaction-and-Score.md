@@ -1,40 +1,35 @@
 ---
-title: "Lesson 3: Add Interactions and Score"
-description: Make sprites respond to the player and use a variable to show progress in the game.
+title: "Lesson 3: Add Collectibles and a Bonus Key"
+description: Use a score variable for ordinary items and a special key, then plan where they appear on both maze levels.
 order: 3
 draft: false
 ---
 
 ## Today you will
 
-Make an object respond when the player reaches it, then use a variable to
-show progress.
+Add three ordinary collectibles worth one point each and a special key
+worth five points. Plan a position for each item on both levels.
 
-## Starter: retrieve your variable knowledge
+## Starter: predict the score
 
-Your quiz used a variable to store information. For a game, what could a
-variable keep track of? Suggest one value that might go up and one that
-might go down.
+The score starts at `0`. The player collects two ordinary items and then
+the bonus key. What should the score show after each collection?
 
-## Create a score
+## Create the variables
 
-Open your game and create a variable called `Score` for all sprites. Reset
-it when the game starts:
+Create `Score` and `Level` variables for all sprites. When the green flag
+is clicked, set `Score` to `0` and `Level` to `1`. The score is reset when
+the game starts and again when the player enters Level 2.
 
-```text
-When green flag clicked
-Set Score to 0
-```
+## Add ordinary collectibles
 
-Set the score once at the start, not inside the player's movement loop.
-
-## Make an object respond
-
-Choose an item or target sprite. For a collectible, make it disappear after
-the player touches it so the same item cannot keep adding points:
+Add three item sprites. Put each one on a path in Level 1 and record a
+second safe path position for it in Level 2. Use a separate script on each
+item:
 
 ```text
 When green flag clicked
+Go to x: (Level 1 item X) y: (Level 1 item Y)
 Show
 Forever
     If touching Player? then
@@ -42,50 +37,74 @@ Forever
         Hide
 ```
 
-Use the correct player sprite name in the `touching` block. If your game
-uses targets rather than collectibles, you could move the target to a new
-position instead of hiding it.
+When the player reaches Level 2, the same items can reappear at their
+Level 2 positions:
 
-The score variable and touch check use ideas you have already met in your
-quiz and other Scratch work. The new part is connecting them to a game
-interaction.
+```text
+When I receive [Level 2]
+Go to x: (Level 2 item X) y: (Level 2 item Y)
+Show
+```
+
+Use the correct player sprite name in the `touching` block. Hiding an item
+after it is collected prevents it adding points repeatedly.
+
+## Add the bonus key
+
+Add a different-looking key sprite. Use the same pattern, but change the
+score by `5`. Hide it after collection. When Level 2 begins, place it at
+its planned Level 2 position and show it again.
+
+```text
+When green flag clicked
+Go to x: (Level 1 key X) y: (Level 1 key Y)
+Show
+Forever
+    If touching Player? then
+        Change Score by 5
+        Hide
+
+When I receive [Level 2]
+Go to x: (Level 2 key X) y: (Level 2 key Y)
+Show
+```
+
+Make sure each item position is on a path, not inside a wall.
 
 ## Core task
 
-- Reset `Score` to `0` when the game starts.
-- Add at least three items or targets.
-- Make each interaction change the score exactly once.
-- Test that starting again resets the score.
+- Create and initialise `Score` and `Level`.
+- Add three ordinary items that each add one point.
+- Add a special key that adds five points.
+- Plan safe item positions on both backdrops.
+- Test that each item only adds points once per level.
 
-## Challenge choices
-
-- Make a special item worth more than one point.
-- Add a sound or visual effect when an item is collected.
-- Give a target a different point value.
-- Add a message when the player reaches the target score.
-- Make a collected item reappear in a different position.
-
-## Test the interaction
+## Test the score
 
 | Test | Expected result |
 | --- | --- |
-| Click the green flag | Score becomes `0` |
-| Touch or catch one item | Score increases once |
-| Stay on the same item | Score does not keep increasing |
-| Collect three items | Score becomes `3` |
-| Restart the game | Score returns to `0` |
+| Click the green flag | `Score` is `0` and `Level` is `1` |
+| Touch an ordinary item | `Score` increases by `1` |
+| Stay on an item | It does not keep adding points |
+| Touch the bonus key | `Score` increases by `5` |
+| Enter Level 2 | Items appear at their Level 2 positions |
+| Restart the game | Items return to Level 1 positions and `Score` resets |
+
+## Challenge
+
+Make the bonus key appear at a random safe position in each level. Test
+that it never appears inside a wall.
 
 ## Record your evidence
 
-Record one test where the interaction worked and one test that checks it
-does not happen repeatedly. Sketch the score and interaction blocks or
-describe how they work. Keep the Scratch project saved; a screenshot is
-optional.
+Draw or describe one item script. Record your test showing that a normal
+item adds one point, the key adds five, and neither can be collected twice
+in the same level.
 
 ## Exit check
 
-Why does a collectible hide after it is touched? Where should the score be
-reset?
+Why does an item hide after collection? What must happen to the items when
+the player enters Level 2?
 
 ## Save your work
 

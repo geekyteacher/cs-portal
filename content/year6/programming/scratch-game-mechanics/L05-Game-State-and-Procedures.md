@@ -1,107 +1,149 @@
 ---
-title: "Lesson 5: Create a Goal and Ending"
-description: Use a condition and a custom block to manage a clear win or game-over ending.
+title: "Lesson 5: Connect Levels and Manage Game State"
+description: Use a reusable custom block to change levels and check the win and game-over conditions, then test and present the game.
 order: 5
 draft: false
 ---
 
 ## Today you will
 
-Make a clear rule for winning or losing, then put a repeated check into a
-reusable custom block.
+Connect both mazes, use a custom block to manage the game state, test the
+win and game-over rules, and prepare a short demonstration.
 
-## Starter: make the rule precise
+## Starter: make the win rule precise
 
-Write your game's win rule using **if ... then**. For example:
+The player must collect at least three points **and** reach the exit to
+complete each level. Reaching the Level 1 exit moves to Level 2; reaching
+the Level 2 exit with the score target met wins the game.
 
-> If `Score` is at least `3`, then the player wins.
+## Set up the game state
 
-If your game uses a different goal, describe exactly what must happen for
-the player to win. A player should also be able to tell when the game is
-over.
-
-## Add a game state
-
-Create a variable called `Game State`. At the start of the game, set it to
-`Playing`. When the player wins or loses, change it to `Won` or `Game over`.
-This makes it clear which part of the game should happen next.
-
-For a score-based goal, create a custom block from **My Blocks** called
-`check game state`. Add the win condition to its definition:
-
-```text
-define check game state
-If <Score >= 3> then
-    Set Game State to [Won]
-    Broadcast [You Win] and wait
-    Stop all
-```
-
-Call the custom block from a separate loop:
+Create a `Game State` variable for all sprites. On the Stage, when the
+green flag is clicked, set `Level` to `1`, `Score` to `0`, `Lives` to `3`,
+and `Game State` to `Playing`. Switch the backdrop to `Maze 1`, then
+broadcast `Start Game`. The player's existing start script should place it
+at the Level 1 start.
 
 ```text
 When green flag clicked
-Forever
-    If <Game State = [Playing]> then
-        check game state
+Set Level to 1
+Set Score to 0
+Set Lives to 3
+Set Game State to [Playing]
+Switch backdrop to [Maze 1]
+Broadcast [Start Game]
 ```
 
-On the Stage, respond to the message:
+Add a second exit position. Make the Exit sprite move to the Level 2 exit
+when it receives the `Level 2` message:
 
 ```text
-When I receive [You Win]
-Switch backdrop to [You Win]
+When green flag clicked
+Go to x: (Level 1 exit X) y: (Level 1 exit Y)
+
+When I receive [Level 2]
+Go to x: (Level 2 exit X) y: (Level 2 exit Y)
 ```
 
-Create a simple backdrop that tells the player they have won. Use your own
-goal in place of `Score >= 3`. For a game-over rule, make a matching
-`Game over` message and ending.
+On the Stage, switch backdrops when messages arrive:
 
-The custom block is a procedure: it gives a named set of instructions that
-can be called from another script. You can use the same structure for a
-different win rule.
+```text
+When I receive [Level 2]
+Switch backdrop to [Maze 2]
 
-## Core task
+When I receive [You Win]
+Switch backdrop to [You Win]
 
-- Write a clear win condition for your game.
-- Add a `Game State` variable and reset it to `Playing` at the start.
-- Create a custom block that checks the win condition.
-- Show an ending when the player wins.
-- Make sure the game does not keep running after the ending.
+When I receive [Game Over]
+Switch backdrop to [Game Over]
+```
 
-## Challenge choices
+Name the backdrops `Maze 1`, `Maze 2`, `You Win`, and `Game Over`.
 
-- Add a countdown timer and a game-over ending.
-- Add a restart button that resets the score, timer, and game state.
-- Add a custom block called `reset game` to keep setup instructions
-  together.
-- Require two conditions for a win, such as enough points **and** reaching
-  the exit.
-- Add an ending animation or sound.
+## Create the custom block
 
-## Test the ending
+Select the player sprite. In **My Blocks**, make a custom block called
+`check game state`. It handles zero lives, the Level 1 exit, and the Level
+2 win:
+
+```text
+define check game state
+If <Game State = [Playing]> then
+    If <Lives = 0> then
+        Set Game State to [Game Over]
+        Broadcast [Game Over] and wait
+        Stop all
+    If <<touching Exit?> and <Score >= 3>> then
+        If <Level = 1> then
+            Set Game State to [Changing Level]
+            Set Level to 2
+            Set Score to 0
+            Broadcast [Level 2] and wait
+            Go to x: (Level 2 start X) y: (Level 2 start Y)
+            Set Game State to [Playing]
+        Else
+            Set Game State to [Won]
+            Broadcast [You Win] and wait
+            Stop all
+```
+
+Call the custom block repeatedly while the game is being played:
+
+```text
+When I receive [Start Game]
+Forever
+    check game state
+```
+
+The `Level 2` message changes the backdrop, moves the exit, and tells the
+items from Lesson 3 to move to their Level 2 positions and reappear. The
+player keeps any remaining lives, but the score resets for the new level.
+The patrol should stay on a safe route in both mazes.
+
+The custom block is a reusable procedure: the game calls the same named
+group of instructions repeatedly instead of copying the win/loss checks
+into several scripts.
+
+## Test, improve, and prepare to share
+
+Test each condition before presenting the game:
 
 | Test | Expected result |
 | --- | --- |
-| Start the game | Game State is `Playing` |
-| Goal condition is not met | The game continues |
-| Goal condition is met | The win message appears |
-| After the ending | Gameplay stops |
-| Restart, if included | Score and game state reset |
+| Start the game | Level 1, score `0`, lives `3`, and the `Maze 1` backdrop |
+| Touch the Level 1 exit with fewer than 3 points | Stay on Level 1 |
+| Reach the Level 1 exit with at least 3 points | Switch to Level 2; score resets |
+| Enter Level 2 | Player, exit, and items use their Level 2 positions |
+| Reach the Level 2 exit with fewer than 3 points | Stay on Level 2 |
+| Reach the Level 2 exit with at least 3 points | Show the `You Win` backdrop |
+| Lose all 3 lives | Show the `Game Over` backdrop |
+| Click the green flag after an ending | Restart from Level 1 with score `0` and lives `3` |
+
+Ask a partner to play without explaining every step. Record one issue or
+suggestion, make one improvement, and repeat the test that revealed it.
+
+Prepare to show the two levels and explain one script, such as the wall
+check, the bonus key, the life penalty, or `check game state`.
+
+## Core task
+
+- Connect the two maze backdrops with the `Level 2` message.
+- Create and call the `check game state` custom block.
+- Require at least 3 points and the exit to complete each level.
+- Show the correct win or game-over backdrop.
+- Test the game, make one improvement, and prepare to demonstrate it.
 
 ## Record your evidence
 
-Write your win rule in words and record one test showing what happens
-before and after the condition is met. Sketch the custom block or describe
-the condition and ending. If uploads are available, this is a useful point
-to submit a screenshot showing the working game and its win or game-over
-rule.
+Keep your completed test table. Record the improvement you made and the
+result of the repeated test. Be ready to demonstrate your game in class.
 
 ## Exit check
 
-What makes your custom block reusable? How does the player know the game
-has ended?
+Why does the win condition need both `Score >= 3` and touching the exit?
+What instructions are reused by `check game state`?
 
 ## Save your work
 
-Save your Scratch project using your teacher's instructions.
+Save your Scratch project using your teacher's instructions. Make sure the
+project opens and restarts correctly before you present it.

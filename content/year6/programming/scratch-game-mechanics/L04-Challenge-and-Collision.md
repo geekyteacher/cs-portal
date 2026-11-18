@@ -1,28 +1,30 @@
 ---
-title: "Lesson 4: Add a Moving Challenge"
-description: Add a moving hazard or enemy and use a condition to make contact affect the game.
+title: "Lesson 4: Add a Patrol Hazard and Lives"
+description: Create a patrol hazard that removes one life per collision, flashes the player, and sends them back to a safe point.
 order: 4
 draft: false
 ---
 
 ## Today you will
 
-Add a moving challenge and decide what should happen when it touches the
-player.
+Add a patrol hazard and a `Lives` variable. When the player is caught,
+they lose one life, flash, and return to the safe point for their current
+level.
 
-## Starter: predict the condition
+## Starter: plan a fair hazard
 
-Complete this rule:
+Look at both maze maps. Mark a straight corridor where a hazard can patrol
+without blocking the only route. How can the player get past it?
 
-> If the player touches the hazard, then __________.
+## Create and reset lives
 
-Possible responses include returning to the start, losing a life, losing
-points, or ending the game. Choose one response that suits your game.
+Create a `Lives` variable for all sprites. When the green flag is clicked,
+set `Lives` to `3`. Do not reset lives when the player moves to Level 2.
 
-## Make a patrol
+## Make the patrol
 
-Add an enemy or hazard sprite. Start it at one end of a clear route and
-make it move between two points:
+Choose an enemy sprite and a clear patrol route. Use Scratch's glide blocks
+to move it between two points:
 
 ```text
 When green flag clicked
@@ -32,67 +34,73 @@ Forever
     Glide 2 seconds to (first point)
 ```
 
-You can change the travel time to adjust the speed. Make sure the patrol
-stays in an area the player can see.
+Use matching coordinates for the patrol route on both maze backdrops, so
+the same enemy can patrol safely on each level. Keep the route out of walls
+and give the player room to get past.
 
-## Respond to contact
+## Detect one collision at a time
 
-Add a separate script to check whether the hazard touches the player:
+On the hazard, check for contact in a loop and wait until the sprites are
+apart before checking again:
 
 ```text
 When green flag clicked
 Forever
     If touching Player? then
-        Broadcast [Caught]
+        Broadcast [Caught] and wait
         Wait until not touching Player
 ```
 
-On the player, respond to `Caught`. For a simple first version, return the
-player to the start:
+On the player, respond to `Caught`:
 
 ```text
 When I receive [Caught]
-Go to x: (start X) y: (start Y)
+Change Lives by -1
+If <Lives > 0> then
+    If <Level = 1> then
+        Go to x: (Level 1 safe reset X) y: (Level 1 safe reset Y)
+    Else
+        Go to x: (Level 2 safe reset X) y: (Level 2 safe reset Y)
+    Repeat 3
+        Set [ghost] effect to 50
+        Wait 0.1 seconds
+        Clear graphic effects
+        Wait 0.1 seconds
 ```
 
-The `wait until not touching` block prevents the hazard from sending the
-message continuously while the sprites remain in contact. If you choose a
-different penalty, make sure the player has a chance to try again.
+The `wait until not touching` block prevents one long collision from
+removing several lives. The player returns to the current level's safe
+point and keeps their score. If `Lives` reaches `0`, Lesson 5's game-state
+check will show the game-over screen.
 
 ## Core task
 
-- Add one hazard or enemy that moves repeatedly.
-- Make contact trigger one clear response.
-- Test that the hazard follows its route.
-- Check that the player can recover and continue.
+- Start with `3` lives.
+- Make the hazard patrol a safe route.
+- Remove exactly one life for each collision.
+- Flash and return the player to the current level's safe point.
+- Keep the game running while at least one life remains.
 
-## Challenge choices
-
-- Use a `Lives` variable and reduce it when the player is caught.
-- Add a second hazard with a different route or speed.
-- Make the hazard reverse direction when it reaches an edge.
-- Add a short invincibility period after the player is caught.
-- Add a sound or costume effect when contact happens.
-
-## Test the challenge
+## Test the hazard
 
 | Test | Expected result |
 | --- | --- |
-| Click the green flag | Hazard starts at its first point |
-| Wait and watch | Hazard moves between its two points |
-| Touch the hazard | The chosen penalty happens |
-| Move away and touch again | A new contact can trigger the response |
+| Click the green flag | `Lives` becomes `3` |
+| Touch the hazard once | `Lives` decreases by `1` |
+| Stay in contact briefly | Only one life is lost |
+| Touch the hazard again | One more life is lost |
+| Lose a life in Level 2 | Player returns to the Level 2 safe point |
+| Reach zero lives | Lesson 5 will show the game-over ending |
 
 ## Record your evidence
 
-Record what happens on contact and one test showing that the player can
-keep playing. Sketch the hazard or contact blocks, or describe how the
-collision is detected and handled. A screenshot is optional.
+Record one test that proves a single collision removes only one life.
+Describe how the player is given a chance to continue.
 
 ## Exit check
 
-Why is the contact check in a loop? What problem does `wait until not
-touching Player` help prevent?
+Why does the hazard wait until the player is no longer touching it? Which
+safe point should the player return to on Level 2?
 
 ## Save your work
 

@@ -1,100 +1,82 @@
 ---
-title: "Lesson 1: Choose an Idea and Prototype It"
-description: Choose a manageable Scratch game idea, plan its rules, and make a first playable prototype.
+title: "Lesson 1: Plan Two Maze Levels"
+description: Design two connected maze backdrops with clear routes, starts, reset points, exits, collectibles, and a patrol corridor.
 order: 1
 draft: false
 ---
 
 ## Today you will
 
-Choose a game idea, plan how it works, and make a tiny prototype that tests
-one important part of the idea.
+Plan a two-level maze game. Sketch both routes and choose the coordinates
+for the player starts and safe reset points.
 
-## Starter: what makes it a game?
+## Starter: read a maze
 
-Think of a game you enjoy. What does the player do? What makes it
-challenging? How does the player know whether they have succeeded?
+Look at a simple maze. Trace a route from its start to its exit. Where
+could you add a choice of routes, a dead end, or a hazard without making
+the maze impossible?
 
-Write one example for each:
+## Plan both levels
 
-- **Action:** What does the player do?
-- **Challenge:** What gets in the way?
-- **Progress:** What changes as the player plays?
-- **Ending:** How does the player win or lose?
+The Stage is one screen, **480 steps wide by 360 steps high**. In your
+computing book, draw two different maze maps on an 8-column by 6-row grid.
+Make the corridors narrow enough to create a challenge but wide enough for
+your player sprite to fit.
 
-## Choose your game
+Label these on both maps:
 
-Pick one of these starting points, or sketch your own idea:
+- the player start and safe reset point;
+- an entrance and an exit;
+- at least one route choice or dead end;
+- spaces for three ordinary items and a bonus key; and
+- one straight corridor where a patrol enemy can move. Put that corridor
+  at matching coordinates on both levels so the same enemy can patrol
+  safely without a more complex route-changing script.
 
-- **Collector:** collect three objects while avoiding a hazard.
-- **Dodger:** stay away from a moving enemy until the timer ends.
-- **Maze escape:** reach an exit without touching the walls.
-- **Patrol challenge:** cross a screen while an enemy moves between two
-  points.
-- **Target catcher:** move to catch targets before time runs out.
+Make Level 2 harder than Level 1 by adding turns or a dead end, not by
+making it impossible to see or play.
 
-If you are stuck, use **Collector**. You can change the theme without
-changing the mechanics: collect fruit, stars, treasure, or another suitable
-item.
+## Plan start and reset coordinates
 
-Keep the first version small. Use one backdrop, one player, one main
-challenge, and one simple goal.
+The Stage centre is `(0, 0)`. Choose and record the coordinates for both
+levels before building:
 
-## Plan before building
+| Level | Start X | Start Y | Safe reset X | Safe reset Y |
+| --- | ---: | ---: | ---: | ---: |
+| Level 1 | | | | |
+| Level 2 | | | | |
 
-In your book or project log, record:
+Use the same start and safe reset point for each level at first. You can
+choose different points if your map needs them.
 
-1. your game title and idea;
-2. what the player controls or does;
-3. what the challenge is;
-4. how the game will show progress;
-5. what makes the game end; and
-6. two things your first version must do.
+## Build the project shell
 
-Draw one screen and label the player, challenge, important objects, and
-instructions. Make the sprites large enough to see and leave room for them
-to move.
-
-## Prototype one mechanic
-
-A prototype is a quick test of an idea, not a finished game. Choose one
-important mechanic to try:
-
-- make a sprite move with the arrow keys;
-- make a sprite move between two points; or
-- make an object react when the player touches or clicks it.
-
-Use placeholder sprites if that helps you test the idea quickly. Check:
-does the mechanic work, and is it understandable?
+Create a Scratch project. Add a player sprite and two backdrops named
+`Maze 1` and `Maze 2`. Draw the routes from your plan, using one consistent
+colour for the walls. Place a visible exit on each backdrop.
 
 ## Core task
 
-- Choose a game idea and write its rules.
-- Draw and label one screen.
-- Create a Scratch project with a title and suitable sprites or backdrop.
-- Prototype one mechanic that you will need for the game.
+- Draw two connected, labelled maze maps.
+- Choose start, exit, item, bonus-key, and patrol locations.
+- Record the start and safe reset coordinates for each level.
+- Create the project with a player and two maze backdrops.
 - Save the project so you can continue next lesson.
 
-## Challenge choices
+## Design check
 
-- Add a short instruction screen before the game starts.
-- Plan two difficulty settings, but build only one for now.
-- Show your prototype to a partner and ask them to guess what the player
-  should do.
-- Change your sketch after watching someone try the prototype.
+Swap maps with a partner. Ask them to trace a route from the start to the
+exit on both levels. If a route is unclear or blocked, revise the map now.
 
 ## Record your evidence
 
-In your project log, include your labelled plan and record what you tested,
-what happened, and the next feature you will build. You can add a
-screenshot of your prototype if you can upload or save one easily; otherwise
-sketch the screen or describe the mechanic you tested. Keep the Scratch
-project saved for the next lesson.
+Record your two maps and coordinate table in your project log. Note one
+change you made after your partner tried to follow the routes.
 
 ## Exit check
 
-Can someone understand the player's action and goal from your plan? What
-part of the game did your prototype test?
+What is one way Level 2 is more challenging? Why is it useful to record
+each level's safe reset coordinates now?
 
 ## Save your work
 

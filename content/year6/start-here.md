@@ -12,4 +12,4 @@ projects.
 
 ## Units
 
-- [Scratch Game Mechanics: Plan, Build, and Improve a Game](/year6/programming/scratch-game-mechanics)
+- [Multi-Level Maze: Build a Scratch Maze Game](/year6/programming/scratch-game-mechanics)

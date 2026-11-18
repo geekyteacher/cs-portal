@@ -1,89 +1,115 @@
 ---
-title: "Lesson 2: Control the Player"
-description: Use a forever loop, keyboard checks, and coordinates to control a player sprite.
+title: "Lesson 2: Tune Movement and Stop at Walls"
+description: Reuse the Year 5 maze movement and wall-collision pattern, then tune the step size and make the player face left and right.
 order: 2
 draft: false
 ---
 
 ## Today you will
 
-Make the player respond to keyboard controls and test whether the controls
-feel clear and reliable.
+Build four-way controls using the Year 5 maze pattern, then tune the
+movement so the player can navigate the narrower passages in both levels.
 
-## Starter: predict the coordinates
+## Starter: predict the movement
 
-In Scratch, X increases to the right and Y increases upwards. Complete these
-statements in your book:
+In Scratch, X increases to the right and Y increases upwards. Predict what
+happens when the player moves:
 
-- To move right, increase or decrease X?
-- To move left, increase or decrease X?
-- To move up, increase or decrease Y?
-- To move down, increase or decrease Y?
+- right: increase or decrease X?
+- left: increase or decrease X?
+- up: increase or decrease Y?
+- down: increase or decrease Y?
 
-## Build keyboard controls
+## Reuse the Year 5 pattern
 
-Open the project from Lesson 1 and select the player sprite. Start it at a
-useful position when the green flag is clicked.
+Use the same [movement pattern from Year 5](/year5/programming/maze-collector/L01-Maze-Map-and-Movement)
+and [wall-collision pattern from Year 5](/year5/programming/maze-collector/L02-Walls-and-Finish).
+Start with a movement step of `5`, then tune it for your mazes.
 
-Use four key checks inside a `forever` loop:
+Choose one wall colour and use it consistently on both backdrops. After
+each movement, check whether the player touches that colour; if so, undo
+that movement.
 
 ```text
 When green flag clicked
-Go to x: (start X) y: (start Y)
+Go to x: (Level 1 start X) y: (Level 1 start Y)
 Forever
     If right arrow pressed? then
         Change x by 5
+        If touching wall colour? then
+            Change x by -5
     If left arrow pressed? then
         Change x by -5
+        If touching wall colour? then
+            Change x by 5
     If up arrow pressed? then
         Change y by 5
+        If touching wall colour? then
+            Change y by -5
     If down arrow pressed? then
         Change y by -5
+        If touching wall colour? then
+            Change y by 5
 ```
 
-The loop repeatedly checks whether a key is being pressed. Without it, the
-script would check only once. If the player moves too quickly or slowly,
-change the step size and test again.
+In Scratch, use four separate `if` blocks inside one `forever` loop. The
+collision check must happen immediately after the matching movement. Use
+Scratch's `touching color?` block and select your wall colour.
 
-If your game idea uses a different control, first make the arrow-key
-version work, then ask your teacher before adapting it.
+## Tune the step size
+
+Try a step of `2`, `4`, and `6`. Change every movement and matching
+wall-check value together. A larger step moves faster, but may jump over
+thin walls or make narrow corridors difficult to navigate.
+
+| Step size | How it feels | Can you get through narrow routes? |
+| ---: | --- | --- |
+| 2 | | |
+| 4 | | |
+| 6 | | |
+
+Choose one step size that works reliably on both levels.
+
+## Make the player face left and right
+
+If the player costume faces right by default, add this before the movement
+loop:
+
+```text
+Set rotation style [left-right]
+```
+
+In the left-arrow check, point in direction `-90`; in the right-arrow
+check, point in direction `90`. If the sprite faces the wrong way, edit or
+flip its costume. Keep vertical movement from changing its facing direction.
 
 ## Core task
 
-- Add four-way movement to your player.
-- Make the green flag put the player back at the start.
-- Check that the player stays visible on the Stage.
-- Choose a movement speed that is easy to control.
+- Add the four arrow-key controls and wall checks.
+- Use the same movement step in both maze backdrops.
+- Make the player face the direction it moves horizontally.
+- Test that the player cannot pass through any wall.
 
-## Challenge choices
-
-- Add left- and right-facing costumes.
-- Animate the player while a key is pressed.
-- Make the player stop at the edge of the Stage.
-- Compare two movement speeds and record which is easier to control.
-- Add a simple boundary or wall and plan how to stop the player crossing
-  it next lesson.
-
-## Test the controls
+## Test your controls
 
 | Test | Expected result |
 | --- | --- |
-| Press right arrow | X increases and the player moves right |
-| Press left arrow | X decreases and the player moves left |
-| Press up arrow | Y increases and the player moves up |
-| Press down arrow | Y decreases and the player moves down |
-| Click the green flag again | The player returns to the start |
+| Press each arrow key | The player moves in the matching direction |
+| Press left or right | The player faces the direction of travel |
+| Move slowly into each wall | The player stays on the path |
+| Try the narrowest passage | The player can pass without slipping through walls |
+| Restart the project | The player returns to the Level 1 start |
 
 ## Record your evidence
 
-Record one movement test, its result, and whether you changed the movement
-speed. Sketch the key blocks or describe the script in your project log.
-You do not need to upload evidence this lesson.
+Record the step size you chose and one test that showed the wall checks
+worked. Explain why the same step size needs to be used in the movement and
+the reverse movement.
 
 ## Exit check
 
-What does the `forever` loop repeatedly check? Which coordinate changes
-when the player moves upwards?
+What happens if the movement step is too large for a narrow passage? Why
+must the wall check immediately follow the movement?
 
 ## Save your work
 
