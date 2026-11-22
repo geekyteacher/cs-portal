@@ -105,7 +105,7 @@ Before handing in, check:
 - [ ] My ticket checker uses input, variables, and `and`.
 - [ ] I tested more than one set of inputs.
 
-## Answers
+<!-- ## Answers
 
 1. `Entry`: the age condition is false, but the adult condition is true.
 2. `Excellent`
@@ -133,4 +133,4 @@ Before handing in, check:
        print("Entry allowed")
    else:
        print("Entry denied")
-   ```
+   ``` -->
