@@ -22,12 +22,12 @@ that make it your own.
 
 ## The six lessons
 
-1. [Design the maze and move the player](./L01-Maze-Map-and-Movement)
-2. [Add walls and a finish](./L02-Walls-and-Finish)
-3. [Collect items and keep score](./L03-Collectibles-and-Score)
-4. [Create a win condition](./L04-Win-Conditions-and-Timer)
-5. [Playtest and improve](./L05-Playtest-and-Improve)
-6. [Showcase and evaluate](./L06-Showcase-and-Evaluation)
+1. [Design the maze and move the player](./l01-maze-map-and-movement)
+2. [Add walls and a finish](./l02-walls-and-finish)
+3. [Collect items and keep score](./l03-collectibles-and-score)
+4. [Create a win condition](./l04-win-conditions-and-timer)
+5. [Playtest and improve](./l05-playtest-and-improve)
+6. [Showcase and evaluate](./l06-showcase-and-evaluation)
 
 ## The core game
 
