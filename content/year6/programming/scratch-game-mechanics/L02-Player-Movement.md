@@ -20,6 +20,9 @@ happens when the player moves:
 - up: increase or decrease Y?
 - down: increase or decrease Y?
 
+If you need a starting point, download the [sample project with a single maze
+and player movement](/downloads/QuickMaze.sb3).
+
 ## Reuse the Year 5 pattern
 
 Use the same [movement pattern from Year 5](/year5/programming/maze-collector/L01-Maze-Map-and-Movement)

@@ -42,6 +42,9 @@ harder after the controls work.
 
 Choose a player sprite and a maze backdrop. Put this script on the player:
 
+If you need a starting point, download the [sample project with a single maze
+and player movement](/downloads/QuickMaze.sb3).
+
 ```text
 When green flag clicked
 Go to x: (start X) y: (start Y)
